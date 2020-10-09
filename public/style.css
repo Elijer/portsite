@@ -65,9 +65,13 @@ li {
     position: absolute;
     left: 30%;
     top: 10%;
-    border: 1px solid pink;
+/*     border: 1px solid pink; */
     width: 60%;
     height: 80%;
     padding: 20px;
     font-size: 25px;
+}
+
+#text-display {
+    color: lightblue;
 }
