@@ -37,7 +37,7 @@ li {
 }
 
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid */
-/* .grid-container {
+/* .the-list {
     display: grid;
     padding: 0px;
     grid-template-columns: auto auto auto;
@@ -51,7 +51,7 @@ li {
     text-align: center;
 } */
 
-.grid-container {
+.the-list {
     padding: 0px;
     margin: 0px;
 }
