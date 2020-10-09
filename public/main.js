@@ -1,32 +1,34 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    var activeClick = false;
-    var lastClicked = "";
-    let strings = [
+    activeItem = false;
+    lastClicked = "";
+    strings = [
         "Color Picka",
         "Stripe",
         "Unes",
         "Video",
         "Amination",
-        "oysters (interview)",
+        "oysters",
         "say hi",
         "mwesy",
         "rez"
     ];
 
-    var chillun = document.getElementById("the-list").childNodes;
-    console.log(chillun[1].innerHTML);
+    list = document.querySelectorAll("ul#the-list li");
 
-    for (var i = 0; i < strings.length; i++){
-        //console.log(strings[i]);
+    for (i = 0; i < 9; i++){
+        assignHoverEvent(i);
     }
 })
 
-/* function assignHoverEvent(target){
-    let target = document.getElementById(target);
-    let output = document.getElementById("text-display");
+var assignHoverEvent = function(i){
+    output = document.getElementById("text-display");
+    let target = list[i];
+    let blurb = strings[i];
+    //console.log(target);
 
     target.addEventListener("mouseenter", function( event ) {
-        output.innerHTML = someString;
+        output.innerHTML = blurb;
+        console.log(blurb);
     })
 
     target.addEventListener("mouseout", function( event ) {
@@ -35,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     target.addEventListener("click", function( event ) {
         if (activeItem == false){
-            output.innerHTML = someString;
-            lastClicked = someString;
+            output.innerHTML = blurb;
+            lastClicked = blurb;
         } else {
             output.innerHTML = "";
             lastClicked = "";
         }
         activeItem = !activeItem;
     })
-} */
+}
