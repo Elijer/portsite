@@ -2,6 +2,8 @@
     background: black;
     color: pink;
     font-family: 'VT323', monospace;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* #box {
@@ -15,7 +17,7 @@ body {
     float: left;
     text-align: left;
     width: 20%;
-    margin-left: 80px;
+    margin-left: 10%;
     margin-top: 80px;
 }
 
@@ -31,6 +33,7 @@ li {
     text-align: left;
     list-style-type: none;
     font-size: 40px;
+    padding-bottom: 10px;
 }
 
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid */
@@ -56,4 +59,15 @@ li {
 .grid-item:hover {
     background: pink;
     color: black;
+}
+
+#box2 {
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    border: 1px solid pink;
+    width: 60%;
+    height: 80%;
+    padding: 20px;
+    font-size: 25px;
 }
