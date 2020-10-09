@@ -1,0 +1,12 @@
+{
+  "name": "portsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "firebase emulators:start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
