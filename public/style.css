@@ -1,0 +1,43 @@
+* {
+    background: black;
+    color: pink;
+    font-family: 'VT323', monospace;
+}
+
+#box {
+    margin: auto;
+    margin-top: 10%;
+    width: 30%;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 4px solid #a6a7cf;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid */
+.grid-container {
+    display: grid;
+    padding: 0px;
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item {
+    color: #a6a7cf;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.grid-item:hover {
+    background: pink;
+    color: black;
+}
