@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     for (i = 0; i < list.length; i++){
         assignHoverEvent(list, i);
+        list[i].classList.add("noselect");
     }
 })
 
@@ -27,7 +28,6 @@ var assignHoverEvent = function(list, i){
     current.addEventListener("click", function( event ) {
 
         if (current.classList.contains("test")) {
-            console.log("aye! Contains!")
             current.classList.remove("test");
             output.innerHTML = "";
         } else {
@@ -39,9 +39,9 @@ var assignHoverEvent = function(list, i){
                 }
             });
 
-            console.log("nah")
             current.classList.add("test");
             output.innerHTML = blurb;
+
         }
 
 
