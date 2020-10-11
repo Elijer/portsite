@@ -25,7 +25,7 @@ var assignHoverEvent = function(list, i){
     let current = list[i];
     let blurb = strings[i];
 
-    current.addEventListener("click", function( event ) {
+    current.addEventListener("click", function( event ) { 
 
         if (current.classList.contains("test")) {
             current.classList.remove("test");
@@ -47,12 +47,3 @@ var assignHoverEvent = function(list, i){
 
     })
 }
-
-
-/*
-
-Okay. I want, when no option has been clicked, for highlighting another option
-to show that option as long as it is highlighted. Conversely, if an option has been clicked,
-I don't want other options to have any hover
-
-*/
