@@ -51,8 +51,10 @@ li {
 }
 
 .grid-item:hover {
-    background: pink;
-    color: black;
+    background: #090912;
+    border: 1px solid pink;
+    padding: 15px;
+    color: white;
     cursor: pointer;
 }
 
@@ -71,8 +73,9 @@ li {
     color: lightblue;
 }
 
-.test {
-    background: orange;
+.test, .test:hover {
+    background: pink;
+    color: black;
 }
 
 .noselect {
