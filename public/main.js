@@ -26,17 +26,25 @@ var assignHoverEvent = function(list, i){
 
     current.addEventListener("click", function( event ) {
 
-        list.forEach(function(el) {
-            //element.classList.add("test");
-            if (el.classList.contains("test")) {
-                el.classList.remove("test");
-            }
-        });
+        if (current.classList.contains("test")) {
+            console.log("aye! Contains!")
+            current.classList.remove("test");
+            output.innerHTML = "";
+        } else {
 
-        output.innerHTML = blurb;
-        current.classList.add("test");
-        lastClicked = current;
-        
+            list.forEach(function(el) {
+                //element.classList.add("test");
+                if (el.classList.contains("test")) {
+                    el.classList.remove("test");
+                }
+            });
+
+            console.log("nah")
+            current.classList.add("test");
+            output.innerHTML = blurb;
+        }
+
+
     })
 }
 
