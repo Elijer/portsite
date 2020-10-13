@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var typeWriter = function(){
     console.log("ding!");
+
+    var page = document.getElementById("page");
+    page.innerHTML = `Donkey!!`;
 }
 
 /* var assignHoverEvent = function(list, i){

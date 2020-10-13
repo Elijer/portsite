@@ -56,6 +56,11 @@ li {
     height: 40%;
     border-left: none;
     border-right: none;
+
+    font-family: 'Inconsolata', monospace;
+    font-size: 25px;
+    line-height: 35px;
+    color: white;
 }
 
 .grid-container {
@@ -80,15 +85,6 @@ li {
     padding: 14px 14px 16px 16px;
   }
 
-#text-display, a {
-    font-family: 'Inconsolata', monospace;
-    font-size: 25px;
-    line-height: 35px;
-}
-
-#text-display {
-    color: white;
-}
 
 a {
     padding: 2px 8px 6px 8px;
