@@ -32,6 +32,8 @@ var typeWriter = function(){
 }
 
 var typing = function(e){
+    
+    cursor.style.visibility = "visible";
 
     document.getElementById("cursor").style.display = "inline";
     
@@ -71,7 +73,7 @@ var cursorBlink = function(){
             console.log("hidden")
             cursor.style.visibility = "hidden";
         }
-    }, 500);
+    }, 800);
 };
 
 /* var assignHoverEvent = function(list, i){
