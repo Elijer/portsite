@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         `I studied Film & Photography for a year at Virginia Commonwealth University before switching my degree to animation because it was way more fun and there were fewer barriers to what is possibe (and I still graduated on time, with a billion extra credits!) As a result, I came out of my undergrad education with a video portfolio that boasted my editing and animation skills, as well as a job working with the universiy where I created more videos, mostly profiles of research projects. I then worked briefly for a startup called 'Culturescene', which employed me to do artist profiles. You can see all that and more <a href = "https://vimeo.com/squarrow"> here </a>`,
         "Amination",
         "oysters",
-        "say hi",
+        `Text Editor: this is a fast but visually powerful text-editor I always wanted to build. You can use it here: <a href = "editor/editor.html"> use text editor </a>`,
         "mwesy",
         "rez"
     ];

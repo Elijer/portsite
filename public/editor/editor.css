@@ -6,12 +6,6 @@
     padding: 0px;
 }
 
-/* #box {
-    margin: auto;
-    margin-top: 10%;
-    width: 30%;
-    padding: 10px;
-} */
 
 body {
     float: left;
@@ -47,34 +41,32 @@ li {
 /* GRIDS */
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid */
 
-.the-list {
-    padding: 0px;
-    margin: 0px;
-}
-
-.grid-item {
-    font-size: 25px;
-    padding: 16px;
-}
-
-.grid-item:hover {
-    background: #090912;
-    border: 1px solid pink;
-    padding: 15px;
-    color: white;
-    cursor: pointer;
-}
-
 #box2 {
     position: absolute;
-    left: 30%;
+    left: 15%;
     top: 10%;
-/*     border: 1px solid pink; */
     width: 60%;
-    height: 80%;
-    padding: 20px;
-    font-size: 25px;
 }
+
+#page {
+    padding: 5%;
+    font-size: 25px;
+    border: 1px dashed pink;
+    border-top: none;
+    height: 40%;
+}
+
+.grid-container {
+    border: 1px dashed pink;
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+  }
+  .grid-item {
+    padding: 15px;
+    border: 1px dashed pink;
+    font-size: 30px;
+    text-align: center;
+  }
 
 #text-display, a {
     font-family: 'Inconsolata', monospace;
