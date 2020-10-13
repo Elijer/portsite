@@ -43,8 +43,8 @@ li {
 
 #box2 {
     position: absolute;
-    left: 15%;
-    top: 10%;
+    left: 20%;
+    top: 20%;
     width: 60%;
 }
 
@@ -54,18 +54,30 @@ li {
     border: 1px dashed pink;
     border-top: none;
     height: 40%;
+    border-left: none;
+    border-right: none;
 }
 
 .grid-container {
     border: 1px dashed pink;
+    border-right: none;
     display: grid;
     grid-template-columns: repeat(9, auto);
   }
+
   .grid-item {
     padding: 15px;
-    border: 1px dashed pink;
+    border-right: 1px dashed pink;
     font-size: 30px;
     text-align: center;
+  }
+
+  .grid-item:hover {
+    background: #090912;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    padding: 14px 14px 16px 16px;
   }
 
 #text-display, a {
