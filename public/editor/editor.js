@@ -18,8 +18,18 @@ var typeWriter = function(){
 }
 
 var typing = function(e){
-    console.log(e.target.value)
-    //log.textContent = e.target.value;
+
+    var page = document.getElementById("page");
+    var currentText = page.innerHTML
+
+    if (e.inputType === "insertText"){
+        console.log(e.target.value)
+        page.innerHTML = currentText + e.data;
+    } else if (e.inputType === "deleteContentBackward"){
+        page.innerHTML = currentText.substring(0, currentText.length - 1);
+    } else {
+        console.log("Unknown input type: ", e.inputType);
+    }
 }
 
 /* var assignHoverEvent = function(list, i){

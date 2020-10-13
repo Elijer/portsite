@@ -86,7 +86,9 @@ li {
   }
 
   #phantom {
+      position: absolute;
       outline-style: none;
+      z-index: -999;
   }
 
 
