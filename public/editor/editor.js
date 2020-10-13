@@ -2,13 +2,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     string = ``;
 
+    var phantom = document.getElementById("phantom");
+
+    phantom.addEventListener('input', typing);
 })
 
 var typeWriter = function(){
     console.log("ding!");
 
     var page = document.getElementById("page");
+    var phantom = document.getElementById("phantom");
+    phantom.focus();
     page.innerHTML = `Donkey!!`;
+
+}
+
+var typing = function(e){
+    console.log(e.target.value)
+    //log.textContent = e.target.value;
 }
 
 /* var assignHoverEvent = function(list, i){

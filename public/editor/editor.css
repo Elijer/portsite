@@ -85,6 +85,10 @@ li {
     padding: 14px 14px 16px 16px;
   }
 
+  #phantom {
+      outline-style: none;
+  }
+
 
 a {
     padding: 2px 8px 6px 8px;
