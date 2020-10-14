@@ -36,7 +36,14 @@ var typeWriter = function(){
 
     // Get Selection (or just the click I guess)
     var s = window.getSelection();
-    var i = s.anchorOffset; // This is which character is clicked
+    var i = s.type; // This is which character is clicked
+    console.log(i);
+
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById("page"))
+    console.log(range.toString());
+
+
     txt = txt2 + txt3;
     txt2 = txt.substring(0, i);
     txt3 = txt.substring(i, txt.length);
