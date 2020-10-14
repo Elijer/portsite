@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    string = "";
+    txt = "";
 
     var phantom = document.getElementById("phantom");
 
@@ -21,7 +21,7 @@ var typeWriter = function(){
     var entry = document.getElementById("entry");
     var phantom = document.getElementById("phantom");
     phantom.focus();
-    entry.innerHTML = string;
+    entry.innerHTML = txt;
 
 }
 
@@ -40,7 +40,7 @@ var typing = function(e){
     if (e.inputType === "insertText"){
         entry.innerHTML = currentText + e.data;
 
-        string = string + e.data;
+        txt = txt + e.data;
 
     } else if (e.inputType === "deleteContentBackward"){
         entry.innerHTML = currentText.substring(0, currentText.length - 1);
