@@ -49,14 +49,8 @@
       <input id = "phantom">
 
       <div id = "page" onClick = "typeWriter()" >
-        <span id = "entry" onClick = "moveCursor()" >
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </br></br>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </br></br>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </span>
-        <span id = "cursor">|</span>
+        <!-- Newlines in the text editor leave space between stuff :( it's dumb -->
+        <span id = "entry" >Test.</span><span id = "cursor">|</span><span id = "outry"></span>
       </div>
     </div>
 
@@ -74,5 +68,13 @@ not sure why really. I'm gonna mess around with it a bit more though first.
 3. Create some sort of absolute thing, and then just make the cursor the only thing
 visibile. There are so many helpful parts about this. Keeping it in sync is the only
 problem. But honestly it wouldn't be that hard, right?
+
+IMPORTANT NOTES
+
+1. Umm I have a class called .noselect, which makes it impossible to select stuff.
+Wouldn't be surprised if that's causing problems.
+
+2. A span has to have an an span: </span> and I'm pretty sure I didn't include
+one before.
 
 -->

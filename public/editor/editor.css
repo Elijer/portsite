@@ -79,7 +79,7 @@ li {
     border-right: none;
 }
 
-  #entry, #cursor {
+  #entry, #outry, #cursor {
     padding: none;
     margin: none;
     display: inline;
@@ -99,8 +99,9 @@ li {
       font-style: 100px;
       margin: 0px;
       padding: 0px;
-      display: inline;
+      visibility; hidden;
       text-align: left;
+      background: rgb(113, 148, 201);
       color: rgb(113, 148, 201);
   }
 
@@ -126,7 +127,8 @@ a:hover {
     color: black;
 }
 
-.noselect {
+/* add the class period back to this to activate it. Not currently active. */
+noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
        -khtml-user-select: none; /* Konqueror HTML */
@@ -134,4 +136,4 @@ a:hover {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
