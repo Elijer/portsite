@@ -14,10 +14,10 @@ var whereFocus = function(){
 
     if (document.activeElement === phantom){
         phantom.addEventListener('input', typing);
-        cursorBlink(true);
+        cursorBlink();
+        //moveCursor();
     } else {
         phantom.removeEventListener('input', typing);
-        cursorBlink(false);
 
     }
 }
@@ -33,6 +33,9 @@ var typeWriter = function(){
 }
 
 var typing = function(e){
+
+    // consider using &nbsp; or something you can control for multiple spaces
+    // instead whatever default space is being used here. Cause I don't like it.
 
     cursor.style.visibility = "visible";
 
@@ -62,38 +65,57 @@ var typing = function(e){
 var exception = function(e){
         if (e.key === 'Enter') {
 
+        // debugging tool
+        console.log(txt.length, txt);
+        
+        /* Add Newline
             var entry = document.getElementById("entry");
-            txt = entry.innerHTML + `</br>`;
-            entry.innerHTML = txt;
+            txt = entry.innerHTML + "\n";
+            entry.innerHTML = txt; */
             
         }
 }
 
-var cursorBlink = function(on){
+var cursorBlink = function(){
 
     var cursor = document.getElementById("cursor");
+    cursor.style.display = "inline";
 
-    if (on === true){
+    setInterval(function(){
 
-        cursor.style.display = "inline";
+        if (cursor.style.visibility == "hidden"){
+            cursor.style.visibility = "visible";
+        } else {
+            cursor.style.visibility = "hidden";
+        }
+    }, 800);
 
-        setInterval(function(){
-
-            if (cursor.style.visibility == "hidden"){
-                cursor.style.visibility = "visible";
-            } else {
-                cursor.style.visibility = "hidden";
-            }
-        }, 800);
-
-    } else {
-
-        cursor.style.display = "none";
-
-    }
 };
 
 var moveCursor = function(e){
-    s = window.getSelection();
-    console.log(s.anchorOffset)
+
+    if (document.getElementById("cursor")){
+        document.getElementById("cursor").remove();
+    }
+
+    // Get Selection (or just the click I guess)
+    var s = window.getSelection();
+    var i = s.anchorOffset; // This is which character is clicked
+    console.log(i);
+
+    var cursor = `<div id = "cursor" ></div>`
+
+    txt = splice(txt, cursor, i)
+    document.getElementById("entry").innerHTML = txt;
+
+}
+
+var splice = function(str, insert, i){
+
+    var thing;
+    var prefix = str.substring(0, i);
+    var suffix = str.substring(i, str.length);
+    thing = prefix + insert + suffix;
+    return thing;
+
 }
