@@ -13,11 +13,9 @@ var whereFocus = function(){
     var phantom = document.getElementById('phantom');
 
     if (document.activeElement === phantom){
-        console.log("has focus")
         phantom.addEventListener('input', typing);
         cursorBlink(true);
     } else {
-        console.log("Doesn;t");
         phantom.removeEventListener('input', typing);
         cursorBlink(false);
 
@@ -87,7 +85,7 @@ var cursorBlink = function(on){
                 cursor.style.visibility = "hidden";
             }
         }, 800);
-        
+
     } else {
 
         cursor.style.display = "none";
@@ -97,5 +95,5 @@ var cursorBlink = function(on){
 
 var moveCursor = function(e){
     s = window.getSelection();
-    console.log(s)
+    console.log(s.anchorOffset)
 }
