@@ -26,7 +26,16 @@ var whereFocus = function(){
 
 var typeWriter = function(){
 
-    txt2 = document.getElementById("entry").innerHTML;
+    var entry = document.getElementById("entry");
+    var outry = document.getElementById("outry");
+    var phantom = document.getElementById("phantom");
+    var placeholder = document.getElementById("placeholder");
+    entry.innerHTML = "";
+    outry.innerHTML = "";
+    phantom.focus();
+    placeholder.style.display = "none";
+
+/*     txt2 = document.getElementById("entry").innerHTML;
     txt3 = document.getElementById("outry").innerHTML;
 
     var entry = document.getElementById("entry");
@@ -49,26 +58,17 @@ var typeWriter = function(){
     txt3 = txt.substring(i, txt.length);
 
     document.getElementById("entry").innerHTML = txt2;
-    document.getElementById("outry").innerHTML = txt3;
-
-
-
-/*  
-    txt2 = txt.substring(0, i);
-    txt3 = txt.substring(i, txt.length);
-    document.getElementById("entry").innerHTML = txt2;
     document.getElementById("outry").innerHTML = txt3; */
-
 }
 
-var splice = function(str, insert, i){
+var entry = function(){
+    var entry = range.selectNodeContents(document.getElementById("entry"));
+    console.log(entry);
+}
 
-    var thing;
-    var prefix = str.substring(0, i);
-    var suffix = str.substring(i, str.length);
-    thing = prefix + insert + suffix;
-    return thing;
-
+var outry = function(){
+    var outry = range.selectNodeContents(document.getElementById("outry"));
+    console.log(outry);
 }
 
 
@@ -102,6 +102,7 @@ var typing = function(e){
     state.typing = true;
 
     var entry = document.getElementById("entry");
+    var outry = document.getElementById("outry");
     var currentText = entry.innerHTML
 
     if (e.inputType === "insertText"){
@@ -117,6 +118,10 @@ var typing = function(e){
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
+
+    txt = entry + outry;
+    txt2 = entry;
+    txt3 = outry;
 
 }
 

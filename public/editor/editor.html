@@ -50,7 +50,8 @@
 
       <div id = "page" onClick = "typeWriter()" >
         <!-- Newlines in the text editor leave space between stuff :( it's dumb -->
-        <span id = "entry" ></span><span id = "cursor">|</span><span id = "outry"></span>
+        <span id = "placeholder">Click here to write something...</span>
+        <span id = "entry" onClick = "entry()"></span><span id = "cursor">|</span><span id = "outry" onClick = "outry()"></span>
       </div>
     </div>
 

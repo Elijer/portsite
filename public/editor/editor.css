@@ -79,7 +79,7 @@ li {
     border-right: none;
 }
 
-  #entry, #outry, #cursor {
+  #entry, #outry, #cursor, #placeholder {
     padding: none;
     margin: none;
     display: inline;
@@ -87,6 +87,11 @@ li {
     font-size: 25px;
     line-height: 35px;
     color: white;
+  }
+
+  #placeholder {
+      font-weight: 500px;
+      color: rgb(41, 46, 53);
   }
 
   #phantom {
@@ -99,7 +104,7 @@ li {
       font-style: 100px;
       margin: 0px;
       padding: 0px;
-      visibility; hidden;
+      visibility: hidden;
       text-align: left;
       background: rgb(113, 148, 201);
       color: rgb(113, 148, 201);
