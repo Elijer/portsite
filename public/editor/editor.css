@@ -96,6 +96,7 @@ li {
   }
 
   #cursor {
+      font-style: 100px;
       margin: 0px;
       padding: 0px;
       display: inline;

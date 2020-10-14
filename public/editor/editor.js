@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
     string = ``;
 
     var phantom = document.getElementById("phantom");
@@ -32,7 +31,7 @@ var typeWriter = function(){
 }
 
 var typing = function(e){
-    
+
     cursor.style.visibility = "visible";
 
     document.getElementById("cursor").style.display = "inline";
@@ -46,11 +45,15 @@ var typing = function(e){
     if (e.inputType === "insertText"){
         console.log(e.target.value)
         entry.innerHTML = currentText + e.data;
+
+        string = string + e.data;
+
     } else if (e.inputType === "deleteContentBackward"){
         entry.innerHTML = currentText.substring(0, currentText.length - 1);
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
+
 }
 
 var exception = function(e){
