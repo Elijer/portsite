@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     txt = "";
+    txt2 = "";
+    txt3 = "";
 
     document.querySelector('#phantom').addEventListener('keypress', exception);
 
@@ -24,25 +26,31 @@ var whereFocus = function(){
 
 var typeWriter = function(){
 
-    console.log(i);
-    // Get Selection (or just the click I guess)
-    var s = window.getSelection();
-    var i = s.anchorOffset; // This is which character is clicked
-    var current = document.getElementById("entry").innerHTML;
-    document.getElementById("entry").innerHTML = current.substring(0, i);
-    console.log(current.substring(0, i));
-    //document.getElementById("outry").innerHTML = current.substring(i, txt.length);
-
-
-
-
-    console.log(i);
+    txt2 = document.getElementById("entry").innerHTML;
+    txt3 = document.getElementById("outry").innerHTML;
 
     var entry = document.getElementById("entry");
+    
     var phantom = document.getElementById("phantom");
     phantom.focus();
 
-    entry.innerHTML = txt;
+    // Get Selection (or just the click I guess)
+    var s = window.getSelection();
+    var i = s.anchorOffset; // This is which character is clicked
+    txt = txt2 + txt3;
+    txt2 = txt.substring(0, i);
+    txt3 = txt.substring(i, txt.length);
+
+    document.getElementById("entry").innerHTML = txt2;
+    document.getElementById("outry").innerHTML = txt3;
+
+
+
+/*  
+    txt2 = txt.substring(0, i);
+    txt3 = txt.substring(i, txt.length);
+    document.getElementById("entry").innerHTML = txt2;
+    document.getElementById("outry").innerHTML = txt3; */
 
 }
 
@@ -91,13 +99,13 @@ var typing = function(e){
 
     if (e.inputType === "insertText"){
 
-        txt = txt + e.data;
-        entry.innerHTML = txt;
+        txt2 = txt2 + e.data;
+        entry.innerHTML = txt2;
 
     } else if (e.inputType === "deleteContentBackward"){
 
-        txt = txt.substring(0,currentText.length - 1)
-        entry.innerHTML = txt;
+        txt2 = txt2.substring(0,currentText.length - 1)
+        entry.innerHTML = txt2;
 
     } else {
         console.log("Unknown input type: ", e.inputType);
