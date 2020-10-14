@@ -72,51 +72,45 @@ var typeWriter = function(){
 }
 
 var entry = function(){
-/*     var entry = range.selectNodeContents(document.getElementById("entry"));
-    console.log(entry); */
-    var s = window.getSelection();
-    var i = s.anchorOffset;
-    // so then for the outry function, it would be s.anchorOffset + entry.length
-    console.log(i);
 
-    var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
+    var i = window.getSelection().anchorOffset;
 
     var entry = document.getElementById("entry");
-    entry.innerHTML = total.substring(0, i);
-
     var outry = document.getElementById("outry");
-    outry.innerHTML = total.substring(i, total.length);
+    var total = entry.innerHTML + outry.innerHTML;
 
-    //cursorPoint = i;
+    entry.innerHTML = total.substring(0, i);
+    outry.innerHTML = total.substring(i, total.length);
 
 }
 
-var outry = function(){
+var entryOutry = function(m){
 
+    var i = window.getSelection().anchorOffset;
 
-    // just fuckin spell it out before you expect to fix this.
+    // this saves a string
+    var e = document.getElementById("entry").innerHTML;
+    var o = document.getElementById("outry").innerHTML;
 
-    /*     var entry = range.selectNodeContents(document.getElementById("entry"));
-        console.log(entry); */
-        var s = window.getSelection();
-        var i = s.anchorOffset;
-        // so then for the outry function, it would be s.anchorOffset + entry.length
-        //console.log(i);
-    
-        var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
-    
-        var outry = document.getElementById("outry");
-        var entry = document.getElementById("entry");
+    // while this saves a reference capable of changing display
+    var outry = document.getElementById("outry");
+    var entry = document.getElementById("entry");
+    var total = e + o;
 
-        outry.innerHTML = total.substring(entry.innerHTML.length+i, total.length);
-        entry.innerHTML = total.substring(0, entry.innerHTML.length+i);
-    
+    if (m === "1"){
 
-        console.log(entry.innerHTML.length+i-1, total.length);
-    
-        //cursorPoint = i;
-    
+        entry.innerHTML = total.substring(0, i);
+        outry.innerHTML = total.substring(i, total.length);
+
+    } else {
+
+    // so using them interchangeably can cause problems.
+    // That's why 'e' is saved separately.
+    entry.innerHTML = total.substring(0, e.length+i);
+    outry.innerHTML = total.substring(e.length+i, total.length);
+
     }
+}
 
 
 /* var moveCursor = function(e){
