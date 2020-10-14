@@ -92,20 +92,27 @@ var entry = function(){
 }
 
 var outry = function(){
+
+
+    // just fuckin spell it out before you expect to fix this.
+
     /*     var entry = range.selectNodeContents(document.getElementById("entry"));
         console.log(entry); */
         var s = window.getSelection();
         var i = s.anchorOffset;
         // so then for the outry function, it would be s.anchorOffset + entry.length
-        console.log(i);
+        //console.log(i);
     
         var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
     
+        var outry = document.getElementById("outry");
         var entry = document.getElementById("entry");
+
+        outry.innerHTML = total.substring(entry.innerHTML.length+i, total.length);
         entry.innerHTML = total.substring(0, entry.innerHTML.length+i);
     
-        var outry = document.getElementById("outry");
-        outry.innerHTML = total.substring(entry.innerHTML.length+i, total.length);
+
+        console.log(entry.innerHTML.length+i-1, total.length);
     
         //cursorPoint = i;
     
