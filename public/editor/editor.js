@@ -76,6 +76,7 @@ var entry = function(){
     console.log(entry); */
     var s = window.getSelection();
     var i = s.anchorOffset;
+    // so then for the outry function, it would be s.anchorOffset + entry.length
     console.log(i);
 
     var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
@@ -87,8 +88,6 @@ var entry = function(){
     outry.innerHTML = total.substring(i, total.length);
 
     cursorPoint = i;
-
-
 
     //document.getElementById("entry").innerHTML
 
@@ -130,13 +129,13 @@ var typing = function(e){
 
     if (e.inputType === "insertText"){
 
-        txt2 = txt2 + e.data;
-        entry.innerHTML = txt2;
+        //txt2 = txt2 + e.data;
+        entry.innerHTML = entry.innerHTML + e.data;
 
     } else if (e.inputType === "deleteContentBackward"){
 
-        txt2 = txt2.substring(0,currentText.length - 1)
-        entry.innerHTML = txt2;
+        //txt2 = txt2.substring(0, currentText.length - 1)
+        entry.innerHTML = entry.innerHTML.substring(0, currentText.length - 1);
 
     } else {
         console.log("Unknown input type: ", e.inputType);
