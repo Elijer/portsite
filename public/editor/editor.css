@@ -94,9 +94,8 @@ li {
       outline-style: none;
       z-index: -999;
   }
-  
+
   #cursor {
-    position: inline;
       font-style: 100px;
       margin: 0px;
       padding: 0px;
