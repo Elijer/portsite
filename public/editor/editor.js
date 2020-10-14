@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     txt = "";
     txt2 = "";
     txt3 = "";
-    cursorPoint = 0;
+    cursorBlink();
+    cursorOn = false;
+
+    //cursorBlink();
 
     document.querySelector('#phantom').addEventListener('keypress', exception);
 
@@ -17,11 +20,14 @@ var whereFocus = function(){
 
     if (document.activeElement === phantom){
         phantom.addEventListener('input', typing);
+        clearInterval(cursorBlinkGlobal);
+        document.getElementById("cursor").style.display = "inline";
         document.getElementById("cursor").style.visibility = "visible";
-        //cursorBlink();
+        cursorBlink()
+        cursorOn = true;
     } else {
         phantom.removeEventListener('input', typing);
-        document.getElementById("cursor").style.visibility = "hidden";
+        document.getElementById("cursor").style.display = "none";
     }
 }
 
@@ -113,25 +119,14 @@ var entryOutry = function(m){
 }
 
 
-/* var moveCursor = function(e){
-
-    if (document.getElementById("cursor")){
-        document.getElementById("cursor").remove();
-    }
-
-    // Get Selection (or just the click I guess)
-    var s = window.getSelection();
-    var i = s.anchorOffset; // This is which character is clicked
-    console.log(i);
-
-    var cursor = `<span id = "cursor" ></span>`
-
-    txt = splice(txt, cursor, i)
-    document.getElementById("entry").innerHTML = txt;
-
-} */
-
 var typing = function(e){
+
+    // typing causes cursor to remain solid. After waiting a moment,
+    // it begins to blink again.
+    cursorOn = false;
+    setTimeout(function(){
+        cursorOn = true; console.log("cursor is back on")
+    }, 500);
 
     // consider using &nbsp; or something you can control for multiple spaces
     // instead whatever default space is being used here. Cause I don't like it.
@@ -176,19 +171,29 @@ var exception = function(e){
         }
 }
 
-// This is a bit too much to handle for now.
-/* var cursorBlink = function(){
+
+var cursorBlink = function(){
+
+    // cursorOn is for keeping cursor solid while typing
+    // cursorBlinkGlobal is for restarting blink cycle at focus/refocus
+
 
     var cursor = document.getElementById("cursor");
-    cursor.style.display = "inline";
+    //cursor.style.display = "inline";
 
-    setInterval(function(){
+    cursorBlinkGlobal = setInterval(function(){
 
-        if (cursor.style.visibility == "hidden"){
-            cursor.style.visibility = "visible";
+        if (cursorOn === true){
+
+            if (cursor.style.visibility == "hidden"){
+                cursor.style.visibility = "visible";
+            } else {
+                cursor.style.visibility = "hidden";
+            }
         } else {
-            cursor.style.visibility = "hidden";
+            cursor.style.visibility = "visible";
         }
+
     }, 800);
 
-}; */
+};
