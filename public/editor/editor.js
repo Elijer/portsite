@@ -7,10 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var f = document.getElementById("cursor");
 
-/*     setInterval(function() {
-        f.style.display = (f.style.display == 'none' ? '' : 'none');
-    }, 100) */
-
     cursorBlink();
 
     document.querySelector('#phantom').addEventListener('keypress', exception);
@@ -21,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 var typeWriter = function(){
-    console.log("ding!");
 
     var entry = document.getElementById("entry");
     var phantom = document.getElementById("phantom");
@@ -43,7 +38,6 @@ var typing = function(e){
     //console.log(e);
 
     if (e.inputType === "insertText"){
-        console.log(e.target.value)
         entry.innerHTML = currentText + e.data;
 
         string = string + e.data;
@@ -70,39 +64,9 @@ var cursorBlink = function(){
     var cursor = document.getElementById("cursor");
     setInterval(function(){
         if (cursor.style.visibility == "hidden"){
-            console.log("visible")
             cursor.style.visibility = "visible";
         } else {
-            console.log("hidden")
             cursor.style.visibility = "hidden";
         }
     }, 800);
 };
-
-/* var assignHoverEvent = function(list, i){
-    output = document.getElementById("text-display");
-    let current = list[i];
-    let blurb = strings[i];
-
-    current.addEventListener("click", function( event ) { 
-
-        if (current.classList.contains("test")) {
-            current.classList.remove("test");
-            output.innerHTML = "";
-        } else {
-
-            list.forEach(function(el) {
-                //element.classList.add("test");
-                if (el.classList.contains("test")) {
-                    el.classList.remove("test");
-                }
-            });
-
-            current.classList.add("test");
-            output.innerHTML = blurb;
-
-        }
-
-
-    })
-} */
