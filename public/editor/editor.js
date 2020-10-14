@@ -1,14 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     txt = "";
 
-    var phantom = document.getElementById("phantom");
-
-    phantom.addEventListener('input', typing);
-
-    var f = document.getElementById("cursor");
-
-    cursorBlink();
-
     document.querySelector('#phantom').addEventListener('keypress', exception);
 
     state = {
@@ -16,11 +8,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 })
 
+
+var whereFocus = function(){
+    var phantom = document.getElementById('phantom');
+
+    if (document.activeElement === phantom){
+        console.log("has focus")
+        phantom.addEventListener('input', typing);
+        cursorBlink(true);
+    } else {
+        console.log("Doesn;t");
+        phantom.removeEventListener('input', typing);
+        cursorBlink(false);
+
+    }
+}
+
 var typeWriter = function(){
 
     var entry = document.getElementById("entry");
     var phantom = document.getElementById("phantom");
     phantom.focus();
+
     entry.innerHTML = txt;
 
 }
@@ -62,17 +71,31 @@ var exception = function(e){
         }
 }
 
-var cursorBlink = function(){
+var cursorBlink = function(on){
+
     var cursor = document.getElementById("cursor");
-    setInterval(function(){
-        if (cursor.style.visibility == "hidden"){
-            cursor.style.visibility = "visible";
-        } else {
-            cursor.style.visibility = "hidden";
-        }
-    }, 800);
+
+    if (on === true){
+
+        cursor.style.display = "inline";
+
+        setInterval(function(){
+
+            if (cursor.style.visibility == "hidden"){
+                cursor.style.visibility = "visible";
+            } else {
+                cursor.style.visibility = "hidden";
+            }
+        }, 800);
+        
+    } else {
+
+        cursor.style.display = "none";
+
+    }
 };
 
-var moveCursor = function(){
-    console.log("aye");
+var moveCursor = function(e){
+    s = window.getSelection();
+    console.log(s)
 }
