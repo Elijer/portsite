@@ -194,6 +194,6 @@ var cursorBlink = function(){
             cursor.style.visibility = "visible";
         }
 
-    }, 800);
+    }, 600);
 
 };

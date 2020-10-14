@@ -100,13 +100,18 @@ li {
       z-index: -999;
   }
 
+  #cursor-wrap {
+    display: inline;
+  }
+
   #cursor {
       font-style: 100px;
-      margin: 0px;
-      padding: 0px;
+      margin-left: -6px;
       visibility: hidden;
-      text-align: left;
+      position: absolute;
       color: rgb(113, 148, 201);
+      background: none;
+      z-index: 999;
   }
 
 

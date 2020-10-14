@@ -49,9 +49,13 @@
       <input id = "phantom">
 
       <div id = "page" onClick = "typeWriter()" >
-        <!-- Newlines in the text editor leave space between stuff :( it's dumb -->
-        <span id = "placeholder">Click here to write something...</span>
-        <span id = "entry" onClick = "entryOutry('1')"></span><span id = "cursor">|</span><span id = "outry" onClick = "entryOutry(2)"></span>
+        <!-- Newlines in the text editor leave space between stuff :( it's dumb
+        Also, without these funky comments, space gets between cursor and elements
+        (also dumb)
+        --><span id = "placeholder">Click here to write something...</span><!--
+        --><span id="entry" onClick="entryOutry('1')"></span><!--
+        --><div id = "cursor-wrap"><span id="cursor">|</span></div><!--
+        --><span id="outry" onClick="entryOutry(2)"></span>
       </div>
     </div>
 
