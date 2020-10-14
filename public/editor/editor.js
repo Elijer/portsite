@@ -35,7 +35,6 @@ var typing = function(e){
 
     var entry = document.getElementById("entry");
     var currentText = entry.innerHTML
-    //console.log(e);
 
     if (e.inputType === "insertText"){
         entry.innerHTML = currentText + e.data;
@@ -44,6 +43,7 @@ var typing = function(e){
 
     } else if (e.inputType === "deleteContentBackward"){
         entry.innerHTML = currentText.substring(0, currentText.length - 1);
+        txt = txt.substring(0,currentText.length - 1)
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
@@ -55,8 +55,8 @@ var exception = function(e){
             console.log("well hey");
             var entry = document.getElementById("entry");
             var currentText = entry.innerHTML;
-            entry.innerHTML = currentText + `</br>`
-
+            entry.innerHTML = currentText + `</br>`;
+            txt = currentText + `</br>`;
         }
 }
 
