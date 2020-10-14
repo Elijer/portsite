@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     txt = "";
     txt2 = "";
     txt3 = "";
+    cursorPoint = 0;
 
     document.querySelector('#phantom').addEventListener('keypress', exception);
 
@@ -30,10 +31,19 @@ var typeWriter = function(){
     var outry = document.getElementById("outry");
     var phantom = document.getElementById("phantom");
     var placeholder = document.getElementById("placeholder");
+    phantom.focus();
+    placeholder.style.display = "none";
+
+
+
+/*     var entry = document.getElementById("entry");
+    var outry = document.getElementById("outry");
+    var phantom = document.getElementById("phantom");
+    var placeholder = document.getElementById("placeholder");
     entry.innerHTML = "";
     outry.innerHTML = "";
     phantom.focus();
-    placeholder.style.display = "none";
+    placeholder.style.display = "none"; */
 
 /*     txt2 = document.getElementById("entry").innerHTML;
     txt3 = document.getElementById("outry").innerHTML;
@@ -62,13 +72,26 @@ var typeWriter = function(){
 }
 
 var entry = function(){
-    var entry = range.selectNodeContents(document.getElementById("entry"));
-    console.log(entry);
-}
+/*     var entry = range.selectNodeContents(document.getElementById("entry"));
+    console.log(entry); */
+    var s = window.getSelection();
+    var i = s.anchorOffset;
+    console.log(i);
 
-var outry = function(){
-    var outry = range.selectNodeContents(document.getElementById("outry"));
-    console.log(outry);
+    var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
+
+    var entry = document.getElementById("entry");
+    entry.innerHTML = total.substring(0, i);
+
+    var outry = document.getElementById("outry");
+    outry.innerHTML = total.substring(i, total.length);
+
+    cursorPoint = i;
+
+
+
+    //document.getElementById("entry").innerHTML
+
 }
 
 
@@ -118,10 +141,6 @@ var typing = function(e){
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
-
-    txt = entry + outry;
-    txt2 = entry;
-    txt3 = outry;
 
 }
 
