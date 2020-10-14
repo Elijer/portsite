@@ -87,11 +87,29 @@ var entry = function(){
     var outry = document.getElementById("outry");
     outry.innerHTML = total.substring(i, total.length);
 
-    cursorPoint = i;
-
-    //document.getElementById("entry").innerHTML
+    //cursorPoint = i;
 
 }
+
+var outry = function(){
+    /*     var entry = range.selectNodeContents(document.getElementById("entry"));
+        console.log(entry); */
+        var s = window.getSelection();
+        var i = s.anchorOffset;
+        // so then for the outry function, it would be s.anchorOffset + entry.length
+        console.log(i);
+    
+        var total =  document.getElementById("entry").innerHTML + document.getElementById("outry").innerHTML;
+    
+        var entry = document.getElementById("entry");
+        entry.innerHTML = total.substring(0, entry.innerHTML.length+i);
+    
+        var outry = document.getElementById("outry");
+        outry.innerHTML = total.substring(entry.innerHTML.length+i, total.length);
+    
+        //cursorPoint = i;
+    
+    }
 
 
 /* var moveCursor = function(e){
