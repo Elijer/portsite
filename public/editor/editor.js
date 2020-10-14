@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    string = ``;
+    string = "";
 
     var phantom = document.getElementById("phantom");
 
@@ -21,7 +21,7 @@ var typeWriter = function(){
     var entry = document.getElementById("entry");
     var phantom = document.getElementById("phantom");
     phantom.focus();
-    entry.innerHTML = "";
+    entry.innerHTML = string;
 
 }
 
@@ -70,3 +70,7 @@ var cursorBlink = function(){
         }
     }, 800);
 };
+
+var moveCursor = function(){
+    console.log("aye");
+}
