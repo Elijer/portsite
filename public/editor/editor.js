@@ -37,13 +37,15 @@ var typing = function(e){
     var currentText = entry.innerHTML
 
     if (e.inputType === "insertText"){
-        entry.innerHTML = currentText + e.data;
 
         txt = txt + e.data;
+        entry.innerHTML = txt;
 
     } else if (e.inputType === "deleteContentBackward"){
-        entry.innerHTML = currentText.substring(0, currentText.length - 1);
+
         txt = txt.substring(0,currentText.length - 1)
+        entry.innerHTML = txt;
+
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
@@ -52,11 +54,11 @@ var typing = function(e){
 
 var exception = function(e){
         if (e.key === 'Enter') {
-            console.log("well hey");
+
             var entry = document.getElementById("entry");
-            var currentText = entry.innerHTML;
-            entry.innerHTML = currentText + `</br>`;
-            txt = currentText + `</br>`;
+            txt = entry.innerHTML + `</br>`;
+            entry.innerHTML = txt;
+            
         }
 }
 
