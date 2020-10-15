@@ -247,8 +247,10 @@ var typing = function(e){
 var exception = function(e){
         if (e.key === 'Enter') {
 
-        // debugging tool
-        console.log(txt.length, txt);
+            document.getElementById("cursor").style.display = "none";
+
+            var entry = document.getElementById("entry");
+            var outry = document.getElementById("outry");
         
         /* Add Newline
             var entry = document.getElementById("entry");
