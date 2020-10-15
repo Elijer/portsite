@@ -98,7 +98,7 @@ li {
     spaces are recognized. */
     margin-left: -6px;
   }
-
+d
   #placeholder {
       font-weight: 500px;
       color: rgb(41, 46, 53);
@@ -117,7 +117,7 @@ li {
 
   #cursor {
       font-size: 30px;
-      margin-left: -18px;
+      margin-left: -12px;
       margin-top: -1px;
       visibility: hidden;
       display: none;
