@@ -253,13 +253,12 @@ var exception = function(e){
             var outry = document.getElementById("outry");
 
             var newBlock = document.createElement("div");
-            newBlock.innerHTML = entry.innerHTML + outry.innerHTML;
+            newBlock.innerHTML = entry.innerHTML;
             newBlock.classList.add("text-normal");
 
             var page = document.getElementById("page");
 
             entry.innerHTML = "";
-            outry.innerHTML = "";
 
             page.insertBefore(newBlock, tw)
             //page.appendChild(newBlock);
