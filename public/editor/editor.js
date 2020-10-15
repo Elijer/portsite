@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     cursorOn = false;
 
     initiateHotkeys();
+    arrowNav();
 
     //cursorBlink();
 
@@ -19,31 +20,49 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 })
 
+var arrowNav = function(){
+
+    document.onkeydown = function(e){
+
+        //console.log(e);
+        if (e.key == "ArrowLeft"){
+
+            // this saves a string
+            var e = document.getElementById("entry").innerHTML;
+            var o = document.getElementById("outry").innerHTML;
+            // while this saves a reference capable of changing display
+            var outry = document.getElementById("outry");
+            var entry = document.getElementById("entry");
+            var total = e + o;
+
+            entry.innerHTML = total.substring(0, e.length-1);
+            outry.innerHTML = total.substring(e.length-1, total.length);
+        }
+
+        if (e.key == "ArrowRight"){
+
+            // this saves a string
+            var e = document.getElementById("entry").innerHTML;
+            var o = document.getElementById("outry").innerHTML;
+            // while this saves a reference capable of changing display
+            var outry = document.getElementById("outry");
+            var entry = document.getElementById("entry");
+            var total = e + o;
+
+            entry.innerHTML = total.substring(0, e.length+1);
+            outry.innerHTML = total.substring(e.length+1, total.length);
+        }
+
+    }
+}
+
 var initiateHotkeys = function(){
     document.onkeyup = function(e) {
-
         // https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
-
-        console.log(e);
+        //console.log(e);
         if (e.key === "q" && e.ctrlKey === true){
             console.log("Yay");
         }
-        
-        
-        switch(e.key){
-
-            case "ArrowLeft":
-                //console.log("left");
-
-
-
-                break;
-
-            case "ArrowRight":
-                console.log("Right");
-                break;
-        }
-
       };
 }
 
