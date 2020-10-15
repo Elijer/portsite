@@ -57,55 +57,6 @@ var typeWriter = function(){
     var placeholder = document.getElementById("placeholder");
     phantom.focus();
     placeholder.style.display = "none";
-
-
-
-/*     var entry = document.getElementById("entry");
-    var outry = document.getElementById("outry");
-    var phantom = document.getElementById("phantom");
-    var placeholder = document.getElementById("placeholder");
-    entry.innerHTML = "";
-    outry.innerHTML = "";
-    phantom.focus();
-    placeholder.style.display = "none"; */
-
-/*     txt2 = document.getElementById("entry").innerHTML;
-    txt3 = document.getElementById("outry").innerHTML;
-
-    var entry = document.getElementById("entry");
-    
-    var phantom = document.getElementById("phantom");
-    phantom.focus();
-
-    // Get Selection (or just the click I guess)
-    var s = window.getSelection();
-    var i = s.type; // This is which character is clicked
-    console.log(i);
-
-    const range = document.createRange();
-    range.selectNodeContents(document.getElementById("page"))
-    console.log(range.toString());
-
-
-    txt = txt2 + txt3;
-    txt2 = txt.substring(0, i);
-    txt3 = txt.substring(i, txt.length);
-
-    document.getElementById("entry").innerHTML = txt2;
-    document.getElementById("outry").innerHTML = txt3; */
-}
-
-var entry = function(){
-
-    var i = window.getSelection().anchorOffset;
-
-    var entry = document.getElementById("entry");
-    var outry = document.getElementById("outry");
-    var total = entry.innerHTML + outry.innerHTML;
-
-    entry.innerHTML = total.substring(0, i);
-    outry.innerHTML = total.substring(i, total.length);
-
 }
 
 var entryOutry = function(m){
