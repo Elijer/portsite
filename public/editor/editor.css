@@ -89,7 +89,7 @@ li {
     color: white;
   }
 
-  #text-normal {
+  .text-normal {
     display: block;
   }
 
@@ -127,10 +127,6 @@ d
       color: rgb(113, 148, 201);
       background: none;
       z-index: 999;
-  }
-
-  #test {
-      display: block;
   }
 
 a {
