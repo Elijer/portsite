@@ -234,9 +234,21 @@ var typing = function(e){
 
     } else if (e.inputType === "deleteContentBackward"){
 
-        var parsed = entry.innerHTML;
-        parsed = parsed.substring(0, parsed.length - 1);
-        entry.innerHTML = parsed;
+        if (entry.innerHTML == ""){
+
+            var tw = document.getElementById("tw")
+            var prev = tw.previousElementSibling
+
+            entry.innerHTML = prev.innerHTML;
+            prev.remove();
+
+        } else {
+
+            var parsed = entry.innerHTML;
+            parsed = parsed.substring(0, parsed.length - 1);
+            entry.innerHTML = parsed;
+
+        }
 
     } else {
         console.log("Unknown input type: ", e.inputType);
@@ -253,7 +265,13 @@ var exception = function(e){
             var outry = document.getElementById("outry");
 
             var newBlock = document.createElement("div");
-            newBlock.innerHTML = entry.innerHTML;
+            if (entry.innerHTML === ""){
+                bug();
+                newBlock.innerHTML = "-";
+            } else {
+                newBlock.innerHTML = entry.innerHTML;
+            }
+
             newBlock.classList.add("text-normal");
 
             var page = document.getElementById("page");
@@ -303,3 +321,7 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 } 
+
+var bug = function(){
+    console.log("yes-----we out here-----")
+}
