@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     cursorBlink();
     cursorOn = false;
 
+    initiateHotkeys();
+
     //cursorBlink();
 
     document.querySelector('#phantom').addEventListener('keypress', exception);
@@ -12,7 +14,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     state = {
         typing: false
     }
+
+
+
 })
+
+var initiateHotkeys = function(){
+    document.onkeyup = function(e) {
+
+        // https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
+
+        //console.log(e);
+        if (e.key === "q" && e.ctrlKey === true){
+            console.log("Yay");
+        }
+
+      };
+}
 
 
 var whereFocus = function(){
