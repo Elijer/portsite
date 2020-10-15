@@ -116,7 +116,7 @@ var arrowNav = function(){
             var e = document.getElementById("entry").innerHTML;
             var entry = document.getElementById("entry");
             entry.innerHTML = e.substring(0, e.length - 1 )
-            
+
             // Add things to phantom.value so that you don't run out of room to delete things
             // var phantom = document.getElementById("phantom")
             // phantom.value = phantom.value + "///";
@@ -239,13 +239,22 @@ var typing = function(e){
 
     } else if (e.inputType === "deleteContentBackward"){
 
+            // Add things to phantom.value to prevent
+            // running out of room to delete things in input
+            var phantom = document.getElementById("phantom")
+            phantom.value = phantom.value + "/";
+
         if (entry.innerHTML == ""){
 
-            var tw = document.getElementById("tw")
-            var prev = tw.previousElementSibling
+            var tw = document.getElementById("tw");
+            var prev = tw.previousElementSibling;
 
-            entry.innerHTML = prev.innerHTML;
-            prev.remove();
+            if (prev === null){
+                console.log("you've reached the end of your rope kid!")
+            } else {
+                entry.innerHTML = prev.innerHTML;
+                prev.remove();
+            }
 
         } else {
 
