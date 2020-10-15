@@ -115,6 +115,7 @@ li {
       font-style: 100px;
       margin-left: -12px;
       visibility: hidden;
+      display: none;
       position: absolute;
       color: rgb(113, 148, 201);
       background: none;
