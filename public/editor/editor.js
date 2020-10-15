@@ -37,7 +37,7 @@ var arrowNav = function(){
 
             entry.innerHTML = total.substring(0, e.length-1);
             outry.innerHTML = total.substring(e.length-1, total.length);
-            
+
             refreshCursor();
         }
 
@@ -55,6 +55,12 @@ var arrowNav = function(){
             outry.innerHTML = total.substring(e.length+1, total.length);
 
             refreshCursor();
+        }
+
+        if (e.metaKey === true && e.key === "Backspace"){
+            var e = document.getElementById("entry").innerHTML;
+            var entry = document.getElementById("entry");
+            entry.innerHTML = e.substring(0, e.length - 3 )
         }
 
     }
