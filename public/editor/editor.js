@@ -79,7 +79,7 @@ var arrowNav = function(){
 
     document.onkeydown = function(e){
 
-        //console.log(e);
+        console.log(e);
         if (e.key == "ArrowLeft"){
 
             // this saves a string
@@ -112,10 +112,15 @@ var arrowNav = function(){
             refreshCursor();
         }
 
-        if (e.metaKey === true && e.key === "Backspace"){
+        if (e.ctrlKey === true && e.key === "Backspace"){
             var e = document.getElementById("entry").innerHTML;
             var entry = document.getElementById("entry");
-            entry.innerHTML = e.substring(0, e.length - 3 )
+            entry.innerHTML = e.substring(0, e.length - 1 )
+            
+            // Add things to phantom.value so that you don't run out of room to delete things
+            // var phantom = document.getElementById("phantom")
+            // phantom.value = phantom.value + "///";
+        
         }
 
     }

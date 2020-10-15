@@ -106,8 +106,8 @@ d
 
   #phantom {
       position: absolute;
-      outline-style: none;
-      z-index: -999;
+      outline-style: block;
+      z-index: 999;
   }
 
   #cursor-wrap {
