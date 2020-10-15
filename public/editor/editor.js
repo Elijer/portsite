@@ -37,6 +37,8 @@ var arrowNav = function(){
 
             entry.innerHTML = total.substring(0, e.length-1);
             outry.innerHTML = total.substring(e.length-1, total.length);
+            
+            refreshCursor();
         }
 
         if (e.key == "ArrowRight"){
@@ -51,6 +53,8 @@ var arrowNav = function(){
 
             entry.innerHTML = total.substring(0, e.length+1);
             outry.innerHTML = total.substring(e.length+1, total.length);
+
+            refreshCursor();
         }
 
     }
@@ -71,16 +75,26 @@ var whereFocus = function(){
     var phantom = document.getElementById('phantom');
 
     if (document.activeElement === phantom){
-        phantom.addEventListener('input', typing);
+        refreshCursor();
+/*      phantom.addEventListener('input', typing);
         clearInterval(cursorBlinkGlobal);
         document.getElementById("cursor").style.display = "inline";
         document.getElementById("cursor").style.visibility = "visible";
         cursorBlink()
-        cursorOn = true;
+        cursorOn = true; */
     } else {
         phantom.removeEventListener('input', typing);
         document.getElementById("cursor").style.display = "none";
     }
+}
+
+var refreshCursor = function(){
+    phantom.addEventListener('input', typing);
+    clearInterval(cursorBlinkGlobal);
+    document.getElementById("cursor").style.display = "inline";
+    document.getElementById("cursor").style.visibility = "visible";
+    cursorBlink()
+    cursorOn = true;
 }
 
 var typeWriter = function(){
