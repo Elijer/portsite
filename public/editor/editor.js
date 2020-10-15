@@ -125,7 +125,7 @@ var typing = function(e){
     // it begins to blink again.
     cursorOn = false;
     setTimeout(function(){
-        cursorOn = true; console.log("cursor is back on")
+        cursorOn = true
     }, 500);
 
     // consider using &nbsp; or something you can control for multiple spaces
@@ -137,19 +137,35 @@ var typing = function(e){
     
     state.typing = true;
 
+    var test = document.getElementById("test");
     var entry = document.getElementById("entry");
     var outry = document.getElementById("outry");
     var currentText = entry.innerHTML
 
     if (e.inputType === "insertText"){
 
-        //txt2 = txt2 + e.data;
-        entry.innerHTML = entry.innerHTML + e.data;
+        if (e.data == " "){
+            entry.innerHTML = entry.innerHTML + `&nbsp;`;
+            //test.innerHTML = entry.innerHTML + '&nbsp;';
+        } else {
+            entry.innerHTML = entry.innerHTML + e.data;
+        }
 
     } else if (e.inputType === "deleteContentBackward"){
 
+        console.log(entry.innerHTML);
         //txt2 = txt2.substring(0, currentText.length - 1)
-        entry.innerHTML = entry.innerHTML.substring(0, currentText.length - 1);
+        var parsed = entry.innerHTML.replace('&nbsp;', " ")
+        parsed = parsed.substring(0, parsed.length - 1);
+        parsed.replace(' ', '&nbsp;');
+        //document.getElementById("test").innerHTML = entry.innerHTML;
+        document.getElementById("entry").innerHTML = parsed;
+        //entry.innerHTML = parsed;
+        //entry.innerHTML = document.getElementById("phantom").innerHTML;
+
+        
+        //console.log(parsed);
+        //entry.innerHTML = parsed.substring(0, currentText.length - 1);
 
     } else {
         console.log("Unknown input type: ", e.inputType);

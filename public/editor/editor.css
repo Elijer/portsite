@@ -97,7 +97,7 @@ li {
   #phantom {
       position: absolute;
       outline-style: none;
-      z-index: -999;
+      z-index: 999;
   }
 
   #cursor-wrap {
@@ -114,6 +114,9 @@ li {
       z-index: 999;
   }
 
+  #test {
+      display: block;
+  }
 
 a {
     padding: 2px 8px 6px 8px;
