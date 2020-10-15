@@ -89,6 +89,10 @@ li {
     color: white;
   }
 
+  #text-normal {
+    display: block;
+  }
+
   #outry {
     /* This is the magic number that fixes the "." that is used to make sure
     spaces are recognized. */

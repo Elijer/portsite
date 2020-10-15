@@ -248,15 +248,20 @@ var exception = function(e){
         if (e.key === 'Enter') {
 
             //document.getElementById("cursor").style.display = "none";
-
+            var tw = document.getElementById("tw")
             var entry = document.getElementById("entry");
             var outry = document.getElementById("outry");
 
             var newBlock = document.createElement("div");
-            newBlock.innerHTML = "heyo!"
+            newBlock.innerHTML = entry.innerHTML + outry.innerHTML;
             newBlock.classList.add("text-normal");
 
             var page = document.getElementById("page");
+
+            entry.innerHTML = "";
+            outry.innerHTML = "";
+
+            page.insertBefore(newBlock, tw)
             //page.appendChild(newBlock);
 
         
