@@ -247,10 +247,18 @@ var typing = function(e){
 var exception = function(e){
         if (e.key === 'Enter') {
 
-            document.getElementById("cursor").style.display = "none";
+            //document.getElementById("cursor").style.display = "none";
 
             var entry = document.getElementById("entry");
             var outry = document.getElementById("outry");
+
+            var newBlock = document.createElement("div");
+            newBlock.innerHTML = "heyo!"
+            newBlock.classList.add("text-normal");
+
+            var page = document.getElementById("page");
+            //page.appendChild(newBlock);
+
         
         /* Add Newline
             var entry = document.getElementById("entry");

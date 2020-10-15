@@ -79,7 +79,7 @@ li {
     border-right: none;
 }
 
-  #entry, #outry, #cursor, #placeholder {
+  #entry, #outry, #cursor, #placeholder, .text-normal {
     padding: none;
     margin: none;
     display: inline;
@@ -113,7 +113,7 @@ li {
 
   #cursor {
       font-size: 30px;
-      margin-left: -12px;
+      margin-left: -18px;
       margin-top: -1px;
       visibility: hidden;
       display: none;
@@ -166,20 +166,3 @@ noselect {
 
 
 /* Test stuff. You can delete this */
-
-.ablock {
-    display: block
-}
-
-#en, #ex, #curse {
-    display: inline;
-    font-size: 25px;
-}
-
-#ex {
-
-}
-
-#curse {
-
-}

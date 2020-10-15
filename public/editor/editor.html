@@ -49,22 +49,13 @@
       <input id = "phantom">
 
       <div id = "page" onClick = "typeWriter()" >
-        <!-- Newlines in the text editor leave space between stuff :( it's dumb
-        Also, without these funky comments, space gets between cursor and elements
-        (also dumb)
-        --><span id = "placeholder">Click here to write something...</span><!--
-        --><span id="entry" onClick="moveCursor('1')"></span><!--
-        --><div id = "cursor-wrap">.<span id="cursor">|</span></div><!--
-        --><span id="outry" onClick="moveCursor(2)"></span>
 
-        <!-- Test div: you can delete it-->
-        <div class = "ablock">
-          <span id = "en">This is a very long sentence and it ends up going over the edge and so that's fine.</span id = "curse"><span>|</span><span id = "ex"> And if you have a problem you can take it up with HR brother.</span>
-        </div>
-
+        <span id = "placeholder">Click here to write something...</span>
+        <span id="entry" class = "text-normal" onClick="moveCursor('1')"></span>
+        <div id = "cursor-wrap">.<span id="cursor">|</span></div>
+        <span id="outry" class = "text-normal" onClick="moveCursor(2)"></span>
 
       </div>
-      <p1 id = "test"></p1>
 
     </div>
 

@@ -67,6 +67,7 @@ var exception = function(e){
             var entry = document.getElementById("entry");
             txt = entry.innerHTML + `</br>`;
             entry.innerHTML = txt;
+            entry.classList.add = "text-normal";
             
         }
 }
