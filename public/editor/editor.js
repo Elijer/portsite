@@ -152,20 +152,32 @@ var typing = function(e){
         }
 
     } else if (e.inputType === "deleteContentBackward"){
-
-        console.log(entry.innerHTML);
-        //txt2 = txt2.substring(0, currentText.length - 1)
-        var parsed = entry.innerHTML.replace('&nbsp;', " ")
+        var parsed = entry.innerHTML;
+    
+        parsed = parsed.replaceAll("&nbsp;", " ");
         parsed = parsed.substring(0, parsed.length - 1);
-        parsed.replace(' ', '&nbsp;');
+        parsed = parsed.replaceAll(" ", "&nbsp;")
+        entry.innerHTML = parsed;
+
+        console.log(parsed);
+
+/*         console.log(entry.innerHTML);
+        //txt2 = txt2.substring(0, currentText.length - 1)
+        var parsed = entry.innerHTML.replace('nbsp;', " ")
+        console.log(parsed);
+        parsed = parsed.substring(0, parsed.length - 1);
+        console.log(parsed);
+        //parsed.replace('t', '&nbsp;');
+        console.log(parsed);
         //document.getElementById("test").innerHTML = entry.innerHTML;
-        document.getElementById("entry").innerHTML = parsed;
+        entry.innerHTML = parsed;
+        console.log("----------------")
         //entry.innerHTML = parsed;
         //entry.innerHTML = document.getElementById("phantom").innerHTML;
 
         
         //console.log(parsed);
-        //entry.innerHTML = parsed.substring(0, currentText.length - 1);
+        //entry.innerHTML = parsed.substring(0, currentText.length - 1); */
 
     } else {
         console.log("Unknown input type: ", e.inputType);
@@ -213,3 +225,8 @@ var cursorBlink = function(){
     }, 600);
 
 };
+
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+} 
