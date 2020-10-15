@@ -145,39 +145,20 @@ var typing = function(e){
     if (e.inputType === "insertText"){
 
         if (e.data == " "){
-            entry.innerHTML = entry.innerHTML + `&nbsp;`;
+            entry.innerHTML = entry.innerHTML + " ";
             //test.innerHTML = entry.innerHTML + '&nbsp;';
         } else {
+/*             var parsed = entry.innerHTML;
+            parsed = parsed.replaceAll("&nbsp;", " "); */
             entry.innerHTML = entry.innerHTML + e.data;
+
         }
 
     } else if (e.inputType === "deleteContentBackward"){
+
         var parsed = entry.innerHTML;
-    
-        parsed = parsed.replaceAll("&nbsp;", " ");
         parsed = parsed.substring(0, parsed.length - 1);
-        parsed = parsed.replaceAll(" ", "&nbsp;")
         entry.innerHTML = parsed;
-
-        console.log(parsed);
-
-/*         console.log(entry.innerHTML);
-        //txt2 = txt2.substring(0, currentText.length - 1)
-        var parsed = entry.innerHTML.replace('nbsp;', " ")
-        console.log(parsed);
-        parsed = parsed.substring(0, parsed.length - 1);
-        console.log(parsed);
-        //parsed.replace('t', '&nbsp;');
-        console.log(parsed);
-        //document.getElementById("test").innerHTML = entry.innerHTML;
-        entry.innerHTML = parsed;
-        console.log("----------------")
-        //entry.innerHTML = parsed;
-        //entry.innerHTML = document.getElementById("phantom").innerHTML;
-
-        
-        //console.log(parsed);
-        //entry.innerHTML = parsed.substring(0, currentText.length - 1); */
 
     } else {
         console.log("Unknown input type: ", e.inputType);

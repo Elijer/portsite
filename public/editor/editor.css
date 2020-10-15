@@ -97,16 +97,17 @@ li {
   #phantom {
       position: absolute;
       outline-style: none;
-      z-index: 999;
+      z-index: -999;
   }
 
   #cursor-wrap {
     display: inline;
+    color: black;
   }
 
   #cursor {
       font-style: 100px;
-      margin-left: -6px;
+      margin-left: -12px;
       visibility: hidden;
       position: absolute;
       color: rgb(113, 148, 201);
