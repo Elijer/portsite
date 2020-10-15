@@ -24,9 +24,24 @@ var initiateHotkeys = function(){
 
         // https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
 
-        //console.log(e);
+        console.log(e);
         if (e.key === "q" && e.ctrlKey === true){
             console.log("Yay");
+        }
+        
+        
+        switch(e.key){
+
+            case "ArrowLeft":
+                //console.log("left");
+
+
+
+                break;
+
+            case "ArrowRight":
+                console.log("Right");
+                break;
         }
 
       };
@@ -59,7 +74,7 @@ var typeWriter = function(){
     placeholder.style.display = "none";
 }
 
-var entryOutry = function(m){
+var moveCursor = function(m){
 
     var i = window.getSelection().anchorOffset;
 
