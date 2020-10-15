@@ -89,6 +89,12 @@ li {
     color: white;
   }
 
+  #outry {
+    /* This is the magic number that fixes the "." that is used to make sure
+    spaces are recognized. */
+    margin-left: -6px;
+  }
+
   #placeholder {
       font-weight: 500px;
       color: rgb(41, 46, 53);
