@@ -1,3 +1,59 @@
+/*
+
+CURRENT TASK: 'Intelligent' New Line
+
+When enter is pressed, a new line is created, but not simply with </br>
+The existing line will be wrapped in a new type of div called class = "line"
+or something, and while it is not active, it's entry and outry will be
+removed and replaced with their combined text, and the cursor will be
+removed.
+
+Meanwhile, a new div with the "line" class will be created and an "entry"
+and "outry" span will be placed inside, as well as a cursor in between them.
+Because cursor, entry an outry are IDs, they must be kept to a single one
+at any time. This is good, because I don't WANT more than one of these things
+at any time.
+
+However, each line will need to have a unique class to be identified. It will
+probably just be something like <div class = "line" class = "line-4">.
+
+Q: What about when a line break naturally occurs? Well, I would like to definitely
+keep that. I don't want all this stuff to have to happen in response to natural
+line breaks being formed or unformed. I ONLY want this functionality to occur
+due to user-initiated-indenting. As such, they probably shouldn't be called
+class = "line". They should be called class = "block" and "block-1".
+
+I just tested that display type and I think it's pretty good. Ideally, later on,
+I could also make it so that the active block is highlighted. Or perhaps there is
+a highlight key that makes it so. And that highlight shows you what would be styled
+with the style hotkeys. Plus, if I DID create an "active block" navigation mode,
+you could navigated quickly from block to block and easily change styles that way,
+which at girst glance sounds great.
+
+So, here's some psuedo code then:
+
+1. User types some stuff
+2. User presses "enter"
+3. a global variable called "currentBlock" is consulted, which stores the name of
+    the classname, which would be "block-1" in this case.
+4. "block-1" is identified. The inner.HTML of entry and outry is combined into a 
+    string called "content". The entry, outry and cursor elements are deleted.
+    "block-1".innerHTML is replaced with "content". 
+5. At this point, ALL of the "block-n" classes after this point will have to be
+    shifted up +1 in order to make room for a new one...NOTE: this means that
+    blocks can't be identified, historically at least, by block-n alone. If
+    they NEED a unique identifiying class, I could probably generate a hash.
+    That would be the kind of thing that would get saved into a database, probably
+    into a user as a sub-collection, right next to an array of objects that
+    lists all of the included block hashes in a specific order with their contents
+    and style type. THEN these arrays oculd be saved in a HISTORY array, which would
+    allow for version control, command+z, that sort of thing.
+
+
+
+
+*/
+
 document.addEventListener("DOMContentLoaded", function(event) {
     txt = "";
     txt2 = "";
@@ -8,8 +64,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     initiateHotkeys();
     arrowNav();
 
-    //cursorBlink();
-
+    // This is one specifically for the enter key
     document.querySelector('#phantom').addEventListener('keypress', exception);
 
     state = {

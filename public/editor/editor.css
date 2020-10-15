@@ -160,3 +160,26 @@ noselect {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
+
+
+
+
+
+/* Test stuff. You can delete this */
+
+.ablock {
+    display: block
+}
+
+#en, #ex, #curse {
+    display: inline;
+    font-size: 25px;
+}
+
+#ex {
+
+}
+
+#curse {
+
+}
