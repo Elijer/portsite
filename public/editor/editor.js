@@ -147,28 +147,40 @@ var arrowNav = function(){
 
             entry.innerHTML = p;
             prev.innerHTML = e + o;
+            outry.innerHTML = "";
+        }
 
+        if (e.key == "ArrowDown"){
 
+            var e = document.getElementById("entry").innerHTML;
+            var o = document.getElementById("outry").innerHTML;
 
+            var outry = document.getElementById("outry");
+            var entry = document.getElementById("entry");
+            var page = document.getElementById("page");
 
-            //prev.innerHTML = outry.innerHTML + entry.innerHTML;
+            var tw = document.getElementById("tw");
 
-
-            //var next = tw.nextElementSibling;
-
-            
-
-/*             var tw = document.getElementById("tw");
             var prev = tw.previousElementSibling;
+            var next = tw.nextElementSibling;
 
-            if (prev === null){
-                console.log("you've reached the end of your rope kid!")
-            } else {
-                entry.innerHTML = prev.innerHTML;
-                prev.remove();
-            } */
+            var n = next.innerHTML;
+
+
+            if (!next){
+                var newBlock = document.createElement("div");
+                newBlock.innerHTML = "";
+                page.appendChild(newBlock);
+            }
+
+            entry.innerHTML = n;
+            next.innerHTML = e + o;
+            outry.innerHTML = "";
+
+            page.insertBefore(next, tw);
 
         }
+
 
         if (e.ctrlKey === true && e.key === "Backspace"){
             var e = document.getElementById("entry").innerHTML;
