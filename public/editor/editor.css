@@ -79,6 +79,10 @@ li {
     border-right: none;
 }
 
+#page {
+    color: white;
+}
+
   #entry, #outry, #cursor, #placeholder, .text-normal {
     padding: none;
     margin: none;
@@ -86,11 +90,16 @@ li {
     font-family: 'Inconsolata', monospace;
     font-size: 25px;
     line-height: 35px;
-    color: white;
   }
 
   .text-normal {
+    color: white;
     display: block;
+  }
+
+  .text-title {
+    font-size: 30px;
+    color: red;
   }
 
   #outry {
@@ -106,8 +115,8 @@ d
 
   #phantom {
       position: absolute;
-      outline-style: block;
-      z-index: 999;
+      outline-style: none;
+      z-index: -999;
   }
 
   #cursor-wrap {
@@ -143,11 +152,6 @@ a:hover {
     border: 1px solid pink;
     padding: 1px 7px 5px 7px;
     color: white;
-}
-
-.test, .test:hover {
-    background: pink;
-    color: black;
 }
 
 /* add the class period back to this to activate it. Not currently active. */

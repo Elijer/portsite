@@ -79,12 +79,13 @@ var arrowNav = function(){
 
     document.onkeydown = function(e){
 
-        console.log(e);
+        //console.log(e);
         if (e.key == "ArrowLeft"){
 
             // this saves a string
             var e = document.getElementById("entry").innerHTML;
             var o = document.getElementById("outry").innerHTML;
+
             // while this saves a reference capable of changing display
             var outry = document.getElementById("outry");
             var entry = document.getElementById("entry");
@@ -120,6 +121,21 @@ var arrowNav = function(){
             // Add things to phantom.value so that you don't run out of room to delete things
             // var phantom = document.getElementById("phantom")
             // phantom.value = phantom.value + "///";
+        
+        }
+
+        if (e.ctrlKey === true && e.key === "p"){
+            
+            console.log("Aye!")
+            var entry = document.getElementById("entry");
+            var outry = document.getElementById("outry");
+
+            entry.classList.add("text-title");
+            outry.classList.add("text-title");
+            
+            entry.classList.remove("text-normal");
+            outry.classList.remove("text-normal");
+
         
         }
 
