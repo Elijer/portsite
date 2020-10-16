@@ -170,17 +170,17 @@ var arrowNav = function(){
             var prev = tw.previousElementSibling;
             var next = tw.nextElementSibling;
 
-            var n = next.innerHTML;
-
-            if (n == "&nbsp;"){
-                n = "";
-            }
-
-
             if (!next){
                 var newBlock = document.createElement("div");
                 newBlock.innerHTML = "";
                 page.appendChild(newBlock);
+                var next = newBlock;
+            }
+
+            var n = next.innerHTML;
+
+            if (n == "&nbsp;"){
+                n = "";
             }
 
             entry.innerHTML = n;
