@@ -122,6 +122,54 @@ var arrowNav = function(){
             refreshCursor();
         }
 
+        if (e.key == "ArrowUp"){
+
+            var e = document.getElementById("entry").innerHTML;
+            var o = document.getElementById("outry").innerHTML;
+
+            var outry = document.getElementById("outry");
+            var entry = document.getElementById("entry");
+            var page = document.getElementById("page");
+
+            var tw = document.getElementById("tw");
+
+            var prev = tw.previousElementSibling;
+            //var next = tw.nextElementSibling;
+
+            var p = prev.innerHTML;
+
+            // Blocks with no innerHTML aren't displayed, so you must add something.
+            if (e+o == ""){
+                e = "&nbsp;"
+            }
+
+            page.insertBefore(tw, prev);
+
+            entry.innerHTML = p;
+            prev.innerHTML = e + o;
+
+
+
+
+            //prev.innerHTML = outry.innerHTML + entry.innerHTML;
+
+
+            //var next = tw.nextElementSibling;
+
+            
+
+/*             var tw = document.getElementById("tw");
+            var prev = tw.previousElementSibling;
+
+            if (prev === null){
+                console.log("you've reached the end of your rope kid!")
+            } else {
+                entry.innerHTML = prev.innerHTML;
+                prev.remove();
+            } */
+
+        }
+
         if (e.ctrlKey === true && e.key === "Backspace"){
             var e = document.getElementById("entry").innerHTML;
             var entry = document.getElementById("entry");
@@ -308,7 +356,8 @@ var exception = function(e){
             var newBlock = document.createElement("div");
 
             if (entry.innerHTML === ""){
-                newBlock.innerHTML = "-";
+                // blocks with no innerHTML can't be displayed as full-width blocks apparently
+                newBlock.innerHTML = "&nbsp;";
             } else {
                 newBlock.innerHTML = entry.innerHTML;
             }
@@ -322,14 +371,7 @@ var exception = function(e){
             entry.innerHTML = "";
 
             page.insertBefore(newBlock, tw)
-            //page.appendChild(newBlock);
 
-        
-        /* Add Newline
-            var entry = document.getElementById("entry");
-            txt = entry.innerHTML + "\n";
-            entry.innerHTML = txt; */
-            
         }
 }
 
