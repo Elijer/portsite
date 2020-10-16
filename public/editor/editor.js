@@ -132,7 +132,7 @@ var arrowNav = function(){
 
             entry.classList.add("text-title");
             outry.classList.add("text-title");
-            
+
             entry.classList.remove("text-normal");
             outry.classList.remove("text-normal");
 
@@ -295,6 +295,7 @@ var exception = function(e){
             var outry = document.getElementById("outry");
 
             var newBlock = document.createElement("div");
+
             if (entry.innerHTML === ""){
                 bug();
                 newBlock.innerHTML = "-";
@@ -302,7 +303,10 @@ var exception = function(e){
                 newBlock.innerHTML = entry.innerHTML;
             }
 
-            newBlock.classList.add("text-normal");
+            var oldClasses = entry.classList;
+            console.log(oldClasses); 
+            newBlock.classList = oldClasses;
+            //newBlock.classList.add("text-normal");
 
             var page = document.getElementById("page");
 

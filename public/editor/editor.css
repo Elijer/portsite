@@ -79,22 +79,25 @@ li {
     border-right: none;
 }
 
-  #entry, #outry, #cursor, #placeholder, .text-normal {
-    padding: none;
-    margin: none;
+  #entry, #outry, #cursor, #placeholder {
     display: inline;
-    font-family: 'Inconsolata', monospace;
-    font-size: 25px;
-    line-height: 35px;
   }
 
-  .text-normal {
+  .text-normal, #cursor, #placeholder {
+    padding: none;
+    margin: none;
+    line-height: 35px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 25px;
     color: white;
     display: block;
   }
 
   .text-title {
-    font-size: 30px;
+    font-size: 80px;
+    font-family: 'VT323', monospace;
+    line-height: 80px;
+    background: none;
     color: red;
   }
 
@@ -105,6 +108,7 @@ li {
   }
 
   #placeholder {
+      font-size: 25px;
       font-weight: 500px;
       color: rgb(41, 46, 53);
   }
