@@ -96,8 +96,8 @@ var arrowNav = function(){
             var o = gg("outry").innerHTML;
 
             // while this saves a reference capable of changing display
-            var outry = document.getElementById("outry");
-            var entry = document.getElementById("entry");
+            var outry = gg("outry");
+            var entry = gg("entry");
             var total = e + o;
 
             entry.innerHTML = total.substring(0, e.length-1);
@@ -109,11 +109,11 @@ var arrowNav = function(){
         if (e.key == "ArrowRight"){
 
             // this saves a string
-            var e = document.getElementById("entry").innerHTML;
-            var o = document.getElementById("outry").innerHTML;
+            var e = gg("entry").innerHTML;
+            var o = gg("outry").innerHTML;
             // while this saves a reference capable of changing display
-            var outry = document.getElementById("outry");
-            var entry = document.getElementById("entry");
+            var outry = gg("outry");
+            var entry = gg("entry");
             var total = e + o;
 
             entry.innerHTML = total.substring(0, e.length+1);
@@ -126,14 +126,14 @@ var arrowNav = function(){
             //https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i
             // ^ Good place to start for the issue of not being able to traverse lines easily.
 
-            var e = document.getElementById("entry").innerHTML;
-            var o = document.getElementById("outry").innerHTML;
+            var e = gg("entry").innerHTML;
+            var o = gg("outry").innerHTML;
 
-            var outry = document.getElementById("outry");
-            var entry = document.getElementById("entry");
-            var page = document.getElementById("page");
+            var outry = gg("outry");
+            var entry = gg("entry");
+            var page = gg("page");
 
-            var tw = document.getElementById("tw");
+            var tw = gg("tw");
 
             var prev = tw.previousElementSibling;
             //var next = tw.nextElementSibling;
@@ -154,14 +154,14 @@ var arrowNav = function(){
 
         if (e.key == "ArrowDown"){
 
-            var e = document.getElementById("entry").innerHTML;
-            var o = document.getElementById("outry").innerHTML;
+            var e = gg("entry").innerHTML;
+            var o = gg("outry").innerHTML;
 
-            var outry = document.getElementById("outry");
-            var entry = document.getElementById("entry");
-            var page = document.getElementById("page");
+            var outry = gg("outry");
+            var entry = gg("entry");
+            var page = gg("page");
 
-            var tw = document.getElementById("tw");
+            var tw = gg("tw");
 
             var prev = tw.previousElementSibling;
             var next = tw.nextElementSibling;
@@ -185,12 +185,12 @@ var arrowNav = function(){
 
 
         if (e.ctrlKey === true && e.key === "Backspace"){
-            var e = document.getElementById("entry").innerHTML;
-            var entry = document.getElementById("entry");
+            var e = gg("entry").innerHTML;
+            var entry = gg("entry");
             entry.innerHTML = e.substring(0, e.length - 1 )
 
             // Add things to phantom.value so that you don't run out of room to delete things
-            // var phantom = document.getElementById("phantom")
+            // var phantom = gg("phantom")
             // phantom.value = phantom.value + "///";
         
         }
@@ -198,8 +198,8 @@ var arrowNav = function(){
         if (e.ctrlKey === true && e.key === "p"){
             
             console.log("Aye!")
-            var entry = document.getElementById("entry");
-            var outry = document.getElementById("outry");
+            var entry = gg("entry");
+            var outry = gg("outry");
 
             entry.classList.add("text-title");
             outry.classList.add("text-title");
@@ -227,37 +227,37 @@ var initiateHotkeys = function(){
 
 
 var whereFocus = function(){
-    var phantom = document.getElementById('phantom');
+    var phantom = gg('phantom');
 
     if (document.activeElement === phantom){
         refreshCursor();
 /*      phantom.addEventListener('input', typing);
         clearInterval(cursorBlinkGlobal);
-        document.getElementById("cursor").style.display = "inline";
-        document.getElementById("cursor").style.visibility = "visible";
+        gg("cursor").style.display = "inline";
+        gg("cursor").style.visibility = "visible";
         cursorBlink()
         cursorOn = true; */
     } else {
         phantom.removeEventListener('input', typing);
-        document.getElementById("cursor").style.display = "none";
+        gg("cursor").style.display = "none";
     }
 }
 
 var refreshCursor = function(){
     phantom.addEventListener('input', typing);
     clearInterval(cursorBlinkGlobal);
-    document.getElementById("cursor").style.display = "inline";
-    document.getElementById("cursor").style.visibility = "visible";
+    gg("cursor").style.display = "inline";
+    gg("cursor").style.visibility = "visible";
     cursorBlink()
     cursorOn = true;
 }
 
 var typeWriter = function(){
 
-    var entry = document.getElementById("entry");
-    var outry = document.getElementById("outry");
-    var phantom = document.getElementById("phantom");
-    var placeholder = document.getElementById("placeholder");
+    var entry = gg("entry");
+    var outry = gg("outry");
+    var phantom = gg("phantom");
+    var placeholder = gg("placeholder");
     phantom.focus();
     placeholder.style.display = "none";
 }
@@ -267,12 +267,12 @@ var moveCursor = function(m){
     var i = window.getSelection().anchorOffset;
 
     // this saves a string
-    var e = document.getElementById("entry").innerHTML;
-    var o = document.getElementById("outry").innerHTML;
+    var e = gg("entry").innerHTML;
+    var o = gg("outry").innerHTML;
 
     // while this saves a reference capable of changing display
-    var outry = document.getElementById("outry");
-    var entry = document.getElementById("entry");
+    var outry = gg("outry");
+    var entry = gg("entry");
     var total = e + o;
 
     if (m === "1"){
@@ -305,13 +305,13 @@ var typing = function(e){
 
     cursor.style.visibility = "visible";
 
-    document.getElementById("cursor").style.display = "inline";
+    gg("cursor").style.display = "inline";
     
     state.typing = true;
 
-    var test = document.getElementById("test");
-    var entry = document.getElementById("entry");
-    var outry = document.getElementById("outry");
+    var test = gg("test");
+    var entry = gg("entry");
+    var outry = gg("outry");
     var currentText = entry.innerHTML
 
     if (e.inputType === "insertText"){
@@ -330,12 +330,12 @@ var typing = function(e){
 
             // Add things to phantom.value to prevent
             // running out of room to delete things in input
-            var phantom = document.getElementById("phantom")
+            var phantom = gg("phantom")
             phantom.value = phantom.value + "/";
 
         if (entry.innerHTML == ""){
 
-            var tw = document.getElementById("tw");
+            var tw = gg("tw");
             var prev = tw.previousElementSibling;
 
             if (prev === null){
@@ -362,10 +362,10 @@ var typing = function(e){
 var exception = function(e){
         if (e.key === 'Enter') {
 
-            //document.getElementById("cursor").style.display = "none";
-            var tw = document.getElementById("tw")
-            var entry = document.getElementById("entry");
-            var outry = document.getElementById("outry");
+            //gg("cursor").style.display = "none";
+            var tw = gg("tw")
+            var entry = gg("entry");
+            var outry = gg("outry");
 
             var newBlock = document.createElement("div");
 
@@ -380,7 +380,7 @@ var exception = function(e){
             newBlock.classList = oldClasses;
             //newBlock.classList.add("text-normal");
 
-            var page = document.getElementById("page");
+            var page = gg("page");
 
             entry.innerHTML = "";
 
@@ -396,7 +396,7 @@ var cursorBlink = function(){
     // cursorBlinkGlobal is for restarting blink cycle at focus/refocus
 
 
-    var cursor = document.getElementById("cursor");
+    var cursor = gg("cursor");
     //cursor.style.display = "inline";
 
     cursorBlinkGlobal = setInterval(function(){
