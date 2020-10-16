@@ -171,24 +171,23 @@ var arrowNav = function(){
             var next = tw.nextElementSibling;
 
             if (!next){
-                var newBlock = document.createElement("div");
-                newBlock.innerHTML = "";
-                page.appendChild(newBlock);
-                var next = newBlock;
+                // this is also used when enter is pressed
+                createNewBlock();
+            } else {
+
+                var n = next.innerHTML;
+
+                if (n == "&nbsp;"){
+                    n = "";
+                }
+    
+                entry.innerHTML = n;
+                next.innerHTML = e + o;
+                outry.innerHTML = "";
+    
+                page.insertBefore(next, tw);
+
             }
-
-            var n = next.innerHTML;
-
-            if (n == "&nbsp;"){
-                n = "";
-            }
-
-            entry.innerHTML = n;
-            next.innerHTML = e + o;
-            outry.innerHTML = "";
-
-            page.insertBefore(next, tw);
-
         }
 
 
@@ -369,6 +368,11 @@ var typing = function(e){
 
 var exception = function(e){
         if (e.key === 'Enter') {
+            createNewBlock();
+        }
+}
+
+var createNewBlock = function(){
 
             //gg("cursor").style.display = "none";
             var tw = gg("tw")
@@ -393,8 +397,6 @@ var exception = function(e){
             entry.innerHTML = "";
 
             page.insertBefore(newBlock, tw)
-
-        }
 }
 
 
