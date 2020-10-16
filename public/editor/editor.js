@@ -321,14 +321,15 @@ var typing = function(e){
     var outry = gg("outry");
     var currentText = entry.innerHTML
 
+    var ent = entry.innerHTML;
+    ent = ent.replace("&nbsp;", " ");
+
     if (e.inputType === "insertText"){
 
         if (e.data == " "){
-            entry.innerHTML = entry.innerHTML + " ";
-            //test.innerHTML = entry.innerHTML + '&nbsp;';
+            entry.innerHTML = ent + "&nbsp;";
         } else {
-/*             var parsed = entry.innerHTML;
-            parsed = parsed.replaceAll("&nbsp;", " "); */
+
             entry.innerHTML = entry.innerHTML + e.data;
 
         }
@@ -354,8 +355,11 @@ var typing = function(e){
 
         } else {
 
-            var parsed = entry.innerHTML;
-            parsed = parsed.substring(0, parsed.length - 1);
+            console.log(ent);
+
+            ent = ent.replace(" ", "&nbsp;");
+
+            var parsed = ent.substring(0, ent.length - 1);
             entry.innerHTML = parsed;
 
         }
