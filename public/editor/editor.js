@@ -140,6 +140,10 @@ var arrowNav = function(){
 
             var p = prev.innerHTML;
 
+            if (p == "&nbsp;"){
+                p = "";
+            }
+
             // Blocks with no innerHTML aren't displayed, so you must add something.
             if (e+o == ""){
                 e = "&nbsp;"
@@ -167,6 +171,10 @@ var arrowNav = function(){
             var next = tw.nextElementSibling;
 
             var n = next.innerHTML;
+
+            if (n == "&nbsp;"){
+                n = "";
+            }
 
 
             if (!next){
