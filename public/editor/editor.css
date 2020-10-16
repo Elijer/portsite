@@ -79,10 +79,6 @@ li {
     border-right: none;
 }
 
-#page {
-    color: white;
-}
-
   #entry, #outry, #cursor, #placeholder, .text-normal {
     padding: none;
     margin: none;
@@ -107,7 +103,7 @@ li {
     spaces are recognized. */
     margin-left: -6px;
   }
-d
+
   #placeholder {
       font-weight: 500px;
       color: rgb(41, 46, 53);
