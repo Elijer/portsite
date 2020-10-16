@@ -1,6 +1,18 @@
 /*
 
-CURRENT TASK: 'Intelligent' New Line
+CURRENT TASK: Fix the css specificity.
+
+I now see why styling should be done with class instead of id. I need
+to understand how the style cascades a little better in order to address
+how I am going to change the cursor style without using !important.
+The way the style gets inherited and stuff in general, is going to cause
+problems for defining these classes that I want to add on to the cursor
+and the innerHTML of each block. ALSO. I need to allow people to navigate
+using the up and down arrow keys as well. But that will be another thing
+to really scrutinize. Perhaps? Idk I guess I could try.
+
+" Well that was, at least for now, simpler than expected"
+PAST TASK: 'Intelligent' New Line
 
 When enter is pressed, a new line is created, but not simply with </br>
 The existing line will be wrapped in a new type of div called class = "line"
@@ -48,9 +60,6 @@ So, here's some psuedo code then:
     lists all of the included block hashes in a specific order with their contents
     and style type. THEN these arrays oculd be saved in a HISTORY array, which would
     allow for version control, command+z, that sort of thing.
-
-
-
 
 */
 
@@ -132,8 +141,10 @@ var arrowNav = function(){
 
             entry.classList.add("text-title");
             outry.classList.add("text-title");
+            cursor.classList.add("cursor-title");
 
             entry.classList.remove("text-normal");
+            cursor.classList.remove("cursor-normal");
             outry.classList.remove("text-normal");
 
         
@@ -297,14 +308,12 @@ var exception = function(e){
             var newBlock = document.createElement("div");
 
             if (entry.innerHTML === ""){
-                bug();
                 newBlock.innerHTML = "-";
             } else {
                 newBlock.innerHTML = entry.innerHTML;
             }
 
             var oldClasses = entry.classList;
-            console.log(oldClasses); 
             newBlock.classList = oldClasses;
             //newBlock.classList.add("text-normal");
 
