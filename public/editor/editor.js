@@ -92,8 +92,8 @@ var arrowNav = function(){
         if (e.key == "ArrowLeft"){
 
             // this saves a string
-            var e = document.getElementById("entry").innerHTML;
-            var o = document.getElementById("outry").innerHTML;
+            var e = gg("entry").innerHTML;
+            var o = gg("outry").innerHTML;
 
             // while this saves a reference capable of changing display
             var outry = document.getElementById("outry");
@@ -123,6 +123,8 @@ var arrowNav = function(){
         }
 
         if (e.key == "ArrowUp"){
+            //https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i
+            // ^ Good place to start for the issue of not being able to traverse lines easily.
 
             var e = document.getElementById("entry").innerHTML;
             var o = document.getElementById("outry").innerHTML;
@@ -419,6 +421,14 @@ String.prototype.replaceAll = function(str1, str2, ignore)
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 } 
 
+
+
+// ***** Some quick and dirty utilities **********
+
 var bug = function(){
     console.log("yes-----we out here-----")
+}
+
+var gg = function(id){
+    return document.getElementById(id);
 }
