@@ -113,9 +113,9 @@ li {
 
   #phantom {
       position: absolute;
-      outline-style: none;
-      z-index: -999;
-      margin-left: -1000
+      outline-style: block;
+      z-index: 999;
+/*       margin-left: -1000 */
   }
 
   #cursor-wrap {

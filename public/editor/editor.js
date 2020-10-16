@@ -100,8 +100,21 @@ var arrowNav = function(){
             var entry = gg("entry");
             var total = e + o;
 
-            entry.innerHTML = total.substring(0, e.length-1);
-            outry.innerHTML = total.substring(e.length-1, total.length);
+            var temp = e.substring(e.length-6, e.length);
+            if (temp === "&nbsp;"){
+                e.substring(0, e.length-6);
+                entry.innerHTML = e;
+                outry = " " + outry;
+            } else {
+                entry.innerHTML = total.substring(0, e.length-1);
+                outry.innerHTML = total.substring(e.length-1, total.length);
+            }
+
+/*             var tist = ent.substring(ent.length - 2, ent.length-1);
+            if (tist === " "){
+                ent = ent.substring(0, ent.length - 2);
+                ent = ent + "&nbsp;"
+            } */
 
             refreshCursor();
         }
@@ -355,9 +368,13 @@ var typing = function(e){
 
         } else {
 
-            console.log(ent);
+            console.log(ent.substring(ent.length - 1, ent.length));
 
-            ent = ent.replace(" ", "&nbsp;");
+            var tist = ent.substring(ent.length - 2, ent.length-1);
+            if (tist === " "){
+                ent = ent.substring(0, ent.length - 2);
+                ent = ent + "&nbsp;"
+            }
 
             var parsed = ent.substring(0, ent.length - 1);
             entry.innerHTML = parsed;
