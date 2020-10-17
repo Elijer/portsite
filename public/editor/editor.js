@@ -140,11 +140,20 @@ var arrowNav = function(){
             var lines = tw.getClientRects().length;
             console.log(tw.getClientRects());
 
-            if (lines > 1){
+            if (lines){
 
                 var characters = entry.innerHTML.split('');
                 console.log(characters);
-                var words = text.split(' ');
+                entry.innerHTML = characters[0];
+                var height = entry.offsetHeight
+                var words = e.split(' ');
+                for(var i = 1; i < words.length; i++){
+                    entry.innerHTML = entry.innerHTML + ' ' + characters[i];
+                    if(entry.offsetHeight > height){
+                        height = entry.offsetHeight;
+                        console.log(characters[i]);
+                    }
+                }
                 /* 
                 current.innerHTML = words[0];
                 var height = current.offsetHeight;
