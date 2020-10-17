@@ -85,6 +85,7 @@ li {
     padding: none;
     margin: none;
     font-family: 'Inconsolata', monospace;
+    line-height: 35px;
     font-size: 25px;
     color: white;
     display: block;
@@ -133,14 +134,13 @@ li {
 
 #cursor {
     display: none;
-    color: rgb(113, 148, 201);
-    background: none;
-    font-size: 20px;
+    font-size: 24px;
     padding: 0px;
     margin: 0px;
-    margin-left: -5px;
-    padding-left: 5px;
-    background: blue;
+    margin-left: -2px;
+    height: 20px;
+    padding-left: 4px;
+    background:rgb(113, 148, 201);
     position: inline;
     z-index: 999;
 }
