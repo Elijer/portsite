@@ -86,27 +86,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var arrowNav = function(){
 
-    document.onkeydown = function(e){
+    document.onkeydown = function(event){
 
         //console.log(e);
-        if (e.key == "ArrowLeft"){
+        if (event.key == "ArrowLeft"){
 
-            // this saves a string
+            // this saves a STRING
             var e = gg("entry").innerHTML;
             var o = gg("outry").innerHTML;
 
-            // while this saves a reference capable of changing display
+            // while this saves a REFERENCE capable of changing display
             var outry = gg("outry");
             var entry = gg("entry");
             var total = e + o;
 
-            entry.innerHTML = total.substring(0, e.length-1);
-            outry.innerHTML = total.substring(e.length-1, total.length);
+            var mid = e.length - 1;
+
+            entry.innerHTML = total.substring(0, mid);
+            outry.innerHTML = total.substring(mid, total.length);
 
             refreshCursor();
         }
 
-        if (e.key == "ArrowRight"){
+        if (event.key == "ArrowRight"){
 
             // this saves a string
             var e = gg("entry").innerHTML;
@@ -122,7 +124,7 @@ var arrowNav = function(){
             refreshCursor();
         }
 
-        if (e.key == "ArrowUp"){
+        if (event.key == "ArrowUp"){
             //https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i
             // ^ Good place to start for the issue of not being able to traverse lines easily.
 
@@ -135,28 +137,37 @@ var arrowNav = function(){
 
             var tw = gg("tw");
 
+            var lines = tw.getClientRects();
+            console.log(lines);
+
+
             var prev = tw.previousElementSibling;
             //var next = tw.nextElementSibling;
 
-            var p = prev.innerHTML;
+            if (prev){
+                var p = prev.innerHTML;
 
-            if (p == "&nbsp;"){
-                p = "";
+                if (p == "&nbsp;"){
+                    p = "";
+                }
+
+                if (e+o == ""){
+                    e = "&nbsp;"
+                }
+    
+                page.insertBefore(tw, prev);
+    
+                entry.innerHTML = p;
+                prev.innerHTML = e + o;
+                outry.innerHTML = "";
             }
 
             // Blocks with no innerHTML aren't displayed, so you must add something.
-            if (e+o == ""){
-                e = "&nbsp;"
-            }
 
-            page.insertBefore(tw, prev);
 
-            entry.innerHTML = p;
-            prev.innerHTML = e + o;
-            outry.innerHTML = "";
         }
 
-        if (e.key == "ArrowDown"){
+        if (event.key == "ArrowDown"){
 
             var e = gg("entry").innerHTML;
             var o = gg("outry").innerHTML;
@@ -170,28 +181,22 @@ var arrowNav = function(){
             var prev = tw.previousElementSibling;
             var next = tw.nextElementSibling;
 
-            if (!next){
-                // this is also used when enter is pressed
-                createNewBlock();
-            } else {
+            var n = next.innerHTML;
 
-                var n = next.innerHTML;
-
-                if (n == "&nbsp;"){
-                    n = "";
-                }
-    
-                entry.innerHTML = n;
-                next.innerHTML = e + o;
-                outry.innerHTML = "";
-    
-                page.insertBefore(next, tw);
-
+            if (n == "&nbsp;"){
+                n = "";
             }
+
+            entry.innerHTML = n;
+            next.innerHTML = e + o;
+            outry.innerHTML = "";
+
+            page.insertBefore(next, tw);
+
         }
 
 
-        if (e.ctrlKey === true && e.key === "Backspace"){
+        if (event.ctrlKey === true && e.key === "Backspace"){
             var e = gg("entry").innerHTML;
             var entry = gg("entry");
             entry.innerHTML = e.substring(0, e.length - 1 )
@@ -202,7 +207,7 @@ var arrowNav = function(){
         
         }
 
-        if (e.ctrlKey === true && e.key === "p"){
+        if (event.ctrlKey === true && e.key === "p"){
             
             console.log("Aye!")
             var entry = gg("entry");
