@@ -142,6 +142,33 @@ var arrowNav = function(){
 
             if (lines > 1){
 
+                /* 
+                
+                So I need to find out the index for all line break, i.e., the last
+                character on a line OR the first character on a line. This script
+                in the URL below is funny, it iterates through each word (although
+                in my case I would use character) and checks to see if the height is
+                different than the last word. If it is, then it logs that word.
+                
+                So once I got an array of indexes that had a different height than
+                their neighbors, I could calculate the difference between the current
+                index (where the cursor is) and first line-break character closest behind
+                it. I think this would only work with the "entry" element for ArrowUp,
+                and with the "outry" element for ArrowDown.
+
+                Once I calculated that difference, THEN I could ADD that number to the
+                line-break-index TWO lines back. Because think about it, if I add that
+                number to the line-break-index from ONE line back, we would just end up
+                were we started. If I add it to the one two lines back, we will be in roughly
+                the same position in the previous line. Or at least, we will have the index
+                for what that position would be.
+
+                Then the only thing left to do is to take all #outry text from that position to
+                entry.length and transfer it to #outry.
+
+                */
+
+                //http://jsfiddle.net/tV29m/ this is interesting
 
             } else {
 
