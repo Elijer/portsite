@@ -102,7 +102,11 @@ li {
   #outry {
     /* This is the magic number that fixes the "." that is used to make sure
     spaces are recognized. */
-    margin-left: -6px;
+
+  }
+
+  #micro {
+      font-size: 0px;
   }
 
   #placeholder {
@@ -136,6 +140,8 @@ li {
       background: none;
       z-index: 999;
   }
+
+
 
 /*   .cursor-normal {
     font-size: 30px;
