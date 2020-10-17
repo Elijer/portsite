@@ -137,30 +137,36 @@ var arrowNav = function(){
 
             var tw = gg("tw");
 
-            console.log(tw.getClientRects().length);
+            var lines = tw.getClientRects().length;
+            console.log(tw.getClientRects());
 
-            var prev = tw.previousElementSibling;
-            //var next = tw.nextElementSibling;
+            if (lines > 1){
 
-            if (prev){
-                var p = prev.innerHTML;
 
-                if (p == "&nbsp;"){
-                    p = "";
-                }
+            } else {
 
-                if (e+o == ""){
-                    e = "&nbsp;"
-                }
+                var prev = tw.previousElementSibling;
+                //var next = tw.nextElementSibling;
     
-                page.insertBefore(tw, prev);
+                if (prev){
+                    var p = prev.innerHTML;
     
-                entry.innerHTML = p;
-                prev.innerHTML = e + o;
-                outry.innerHTML = "";
+                    if (p == "&nbsp;"){
+                        p = "";
+                    }
+    
+                    if (e+o == ""){
+                        e = "&nbsp;"
+                    }
+        
+                    page.insertBefore(tw, prev);
+        
+                    entry.innerHTML = p;
+                    prev.innerHTML = e + o;
+                    outry.innerHTML = "";
+                }
+                // Blocks with no innerHTML aren't displayed, so you must add something.
             }
-
-            // Blocks with no innerHTML aren't displayed, so you must add something.
 
 
         }
