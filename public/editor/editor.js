@@ -102,8 +102,8 @@ var arrowNav = function(){
 
             var temp = e.substring(e.length-6, e.length);
             if (temp === "&nbsp;"){
-                e.substring(0, e.length-6);
-                entry.innerHTML = e;
+                temp = e.substring(0, e.length-6);
+                entry.innerHTML = temp;
                 outry = " " + outry;
             } else {
                 entry.innerHTML = total.substring(0, e.length-1);
