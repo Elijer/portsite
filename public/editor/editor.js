@@ -142,6 +142,20 @@ var arrowNav = function(){
 
             if (lines > 1){
 
+                var characters = entry.innerHTML.split('');
+                console.log(characters);
+                var words = text.split(' ');
+                /* 
+                current.innerHTML = words[0];
+                var height = current.offsetHeight;
+                for(var i = 1; i < words.length; i++){
+                    current.innerHTML = current.innerHTML + ' ' + words[i];
+                    if(current.offsetHeight > height){
+                        height = current.offsetHeight;
+                        console.log(words[i-1]);
+                    }
+}
+ */
                 /* 
                 
                 So I need to find out the index for all line break, i.e., the last
