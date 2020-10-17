@@ -132,6 +132,11 @@ li {
       z-index: 999;
   } */
 
+#tw {
+    /* This is necessary for getClientRects() to work*/
+    display: inline;
+}
+
 #cursor {
     display: none;
     font-size: 24px;

@@ -137,9 +137,7 @@ var arrowNav = function(){
 
             var tw = gg("tw");
 
-            var lines = tw.getClientRects();
-            console.log(lines);
-
+            console.log(tw.getClientRects().length);
 
             var prev = tw.previousElementSibling;
             //var next = tw.nextElementSibling;
@@ -271,7 +269,7 @@ var typeWriter = function(){
     var phantom = gg("phantom");
     var placeholder = gg("placeholder");
     phantom.focus();
-    placeholder.style.display = "none";
+    //placeholder.style.display = "none";
 }
 
 var moveCursor = function(m){
@@ -447,3 +445,22 @@ var bug = function(){
 var gg = function(id){
     return document.getElementById(id);
 }
+
+function countLines(id) { 
+  
+    // Get element with 'content' as id                             
+    var el =  
+        document.getElementById(id);
+
+    // Get total height of the content     
+    var divHeight = el.offsetHeight 
+
+    // object.style.lineHeight, returns  
+    // the lineHeight property 
+    // height of one line  
+    var lineHeight =  
+        parseInt(el.style.lineHeight); 
+
+    var lines = divHeight / lineHeight; 
+    return lines;
+} 
