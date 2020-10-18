@@ -138,21 +138,21 @@ var arrowNav = function(){
             var tw = gg("tw");
 
             var lines = tw.getClientRects().length;
-            console.log(tw.getClientRects());
 
             if (lines > 1){
 
-                var chars = entry.innerHTML.split('');
-                entry.innerHTML = chars[0];
+                var words = entry.innerHTML.split(' ');
+                entry.innerHTML = words[0];
                 var height = entry.offsetHeight
 
-                for(var i = 0; i < chars.length; i++){
-                    entry.innerHTML = entry.innerHTML + chars[i];
-                    console.log(chars[i]);
+                for(var i = 0; i < words.length; i++){
+                    console.log(entry.getClientRects().length);
+                    entry.innerHTML = entry.innerHTML + " " + words[i];
                     if (entry.offsetHeight > height){
                         height = entry.offsetHeight;
-                        //console.log(i);
+                        console.log("-------------");
                     }
+                    //console.log(words[i]);
                 }
 
                 // set entry back
