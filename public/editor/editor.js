@@ -156,7 +156,7 @@ var arrowNav = function(){
                 outry.innerHTML = e.substring(1, e.length) + o;
                 var height = entry.offsetHeight;
                 var capacity = 0;
-                var secondTo;
+                var secondTo = 0;
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
@@ -190,6 +190,7 @@ var arrowNav = function(){
                 var index = secondTo + remainder;
                 entry.innerHTML = total.substring(0, index);
                 outry.innerHTML = total.substring(index, total.length);
+                refreshCursor();
 
 
 
