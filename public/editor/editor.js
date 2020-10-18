@@ -257,6 +257,20 @@ var arrowNav = function(){
                 } // end of character iterator
 
                 console.log(lines);
+                console.log(line)
+
+                var totalLines = line;
+
+                // this one specifically checks if there are more lines AFTER
+                // the cursor not just if there are more than one lines
+                if (line > 0){
+                    bug();;
+                }
+/*                 var currentLine = lines[line];
+                var lastLine = lines[line - 1];
+                var total = e + o;
+                var newIndex;
+                var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length; */
 
             } else {
                                 /* ********** */
