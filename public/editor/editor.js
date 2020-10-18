@@ -137,27 +137,24 @@ var arrowNav = function(){
 
             var tw = gg("tw");
 
+            // get the number of lines in current document
             var lines = tw.getClientRects().length;
+            // refactor idea: might be way easier to simply create an array with
+            // each line saved into it.
 
             if (lines > 1){
-/* 
-                var words = entry.innerHTML.split(' ');
-                var chars = entry.innerHTML.split('');
-                entry.innerHTML = words[0];
-                var height = entry.offsetHeight
-                var line = 0;
-                var lastLine = 0;
 
-                var words = e.split(' ');
-                entry.innerHTML = words[0];
-                var height = entry.offsetHeight; */
+                // these could be useful
+                // var words = e.split(' ');
+                // var chars = e.split('');
 
                 entry.innerHTML = entry.innerHTML.substring(0, 1);
                 outry.innerHTML = e.substring(1, e.length) + o;
-                var height = entry.offsetHeight;
-                var capacity = 0;
-                var secondTo = 0;
-                var lastLine = 0;
+                var height = entry.offsetHeight,
+                    capacity = 0,
+                    secondTo = 0,
+                    lastLine = 0;
+
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
@@ -168,111 +165,35 @@ var arrowNav = function(){
                     outry.innerHTML = outry.innerHTML.substring(1);
 
                     if(entry.offsetHeight > height){
-                        //console.log("Bazinga...");
-                        //console.log(entry.innerHTML.substring(0, entry.innerHTML.length-1));
                         height = entry.offsetHeight;
-                        //console.log(entry.innerHTML.length - capacity);
                         secondTo = capacity;
                         capacity = entry.innerHTML.length;
-/*                         height = entry.offsetHeight;
-                        console.log(words[i-1]);
-                        console.log("line" + line + " character number " + (entry.innerHTML.length - lastLine))
-                        lastLine = entry.innerHTML.length;
-                        line = line + 1; */
                     }
                 }
 
                 var remainder = e.length - capacity;
-                //console.log(remainder+1);
-
-
-                /*
-                
-                gotta do something like this: if all characters in the last line were
-                LESS than the remainder, you should go to the index of the end of that
-                last line instead of back however many characters. But I'm tired and
-                have not thought about it too hard.
-                
-                */
 
                 var total = e + o;
 
                 lastLine = total.substring(secondTo, capacity-1);
                 console.log(lastLine.length - 1);
                 var index;
+                
+                // there's a bug where if the last line is super short, and the next line
+                // is longer, it won't make it all the way back to the end of last line.
 
                 if (lastLine.length - 1 < remainder){
                     index = lastLine.length - 1;
                 } else {
                     index = secondTo + remainder;
-                }
-/*                 console.log(secondTo);
-                console.log(capacity); */
+                }  
+
+                // set cursor at new index
                 entry.innerHTML = total.substring(0, index);
                 outry.innerHTML = total.substring(index, total.length);
-
-                // calculate total length of the last line
-
-/*                 if (lastLine < remainder){
-                    bug();
-                } */
-
-
                 refreshCursor();
 
-
-
-/*                 for (var i = 0; i < words.length; i++) {
-                    //console.log(entry.getClientRects().length);
-                    entry.innerHTML = entry.innerHTML + " " + words[i];
-                    console.log(entry.getClientRects().length)
-                    //console.log(words[i]);
-                    if (entry.getClientRects().length > lines){ ////or: entry.offsetHeight > height, but this is less accurate
-                        height = entry.offsetHeight;
-                        //console.log("-------------");
-                    }
-                    //console.log(words[i]);
-                } */
-
-                // set entry back
-                //entry.innerHTML = e;
-                /* 
-                current.innerHTML = words[0];
-                var height = current.offsetHeight;
-                for(var i = 1; i < words.length; i++){
-                    current.innerHTML = current.innerHTML + ' ' + words[i];
-                    if(current.offsetHeight > height){
-                        height = current.offsetHeight;
-                        console.log(words[i-1]);
-                    }
-}
- */
-                /* 
-                
-                So I need to find out the index for all line break, i.e., the last
-                character on a line OR the first character on a line. This script
-                in the URL below is funny, it iterates through each word (although
-                in my case I would use character) and checks to see if the height is
-                different than the last word. If it is, then it logs that word.
-                
-                So once I got an array of indexes that had a different height than
-                their neighbors, I could calculate the difference between the current
-                index (where the cursor is) and first line-break character closest behind
-                it. I think this would only work with the "entry" element for ArrowUp,
-                and with the "outry" element for ArrowDown.
-
-                Once I calculated that difference, THEN I could ADD that number to the
-                line-break-index TWO lines back. Because think about it, if I add that
-                number to the line-break-index from ONE line back, we would just end up
-                were we started. If I add it to the one two lines back, we will be in roughly
-                the same position in the previous line. Or at least, we will have the index
-                for what that position would be.
-
-                Then the only thing left to do is to take all #outry text from that position to
-                entry.length and transfer it to #outry.
-
-                */
-
+                // drew inspiration from here
                 //http://jsfiddle.net/tV29m/ this is interesting
 
             } else {
