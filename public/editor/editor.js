@@ -143,17 +143,19 @@ var arrowNav = function(){
             if (lines){
 
                 var characters = entry.innerHTML.split('');
-                console.log(characters);
                 entry.innerHTML = characters[0];
                 var height = entry.offsetHeight
-                var words = e.split(' ');
-                for(var i = 1; i < words.length; i++){
-                    entry.innerHTML = entry.innerHTML + ' ' + characters[i];
-                    if(entry.offsetHeight > height){
+                for(var i = 1; i < characters.length; i++){
+                    entry.innerHTML = entry.innerHTML + characters[i];
+                    if (entry.offsetHeight > height){
                         height = entry.offsetHeight;
-                        console.log(characters[i]);
+                        console.log(i);
+                        // if you put in the number of characters i exactl
+                        // you will end up on the next line, just
                     }
                 }
+
+                entry.innerHTML = e;
                 /* 
                 current.innerHTML = words[0];
                 var height = current.offsetHeight;
