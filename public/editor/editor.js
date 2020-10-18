@@ -156,6 +156,7 @@ var arrowNav = function(){
 
                     // copy first character of outry
                     var take = outry.innerHTML.substring(0, 1)
+                    console.log(typeof take);
                     // add it to the end of entry
                     entry.innerHTML = entry.innerHTML + take;
                     // remove first character of outry from outry
@@ -166,6 +167,10 @@ var arrowNav = function(){
                         line = line + 1;
                     }
 
+                    if (!lines[line]){
+                        lines[line] = '';
+                    }
+                    
                     lines[line] = lines[line] + take;
                 }
 
