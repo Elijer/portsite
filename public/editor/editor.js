@@ -116,7 +116,6 @@ var arrowNav = function(){
             // while this saves a reference capable of changing display
             var outry = gg("outry");
             var entry = gg("entry");
-            var total = e + o;
 
             entry.innerHTML = total.substring(0, e.length+1);
             outry.innerHTML = total.substring(e.length+1, total.length);
@@ -125,8 +124,6 @@ var arrowNav = function(){
         }
 
         if (event.key == "ArrowUp"){
-            //https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i
-            // ^ Good place to start for the issue of not being able to traverse lines easily.
 
             var e = gg("entry").innerHTML;
             var o = gg("outry").innerHTML;
@@ -135,16 +132,13 @@ var arrowNav = function(){
             var entry = gg("entry");
             var page = gg("page");
 
-            var tw = gg("tw");
-
             // get the number of lines in current document
+            var tw = gg("tw");
             var lines = tw.getClientRects().length;
-            // refactor idea: might be way easier to simply create an array with
-            // each line saved into it.
 
             if (lines > 1){
                 
-                // put one char in entry, the rest in outry.
+                // leave one char in entry, put the rest in outry.
                 entry.innerHTML = entry.innerHTML.substring(0, 1);
                 outry.innerHTML = e.substring(1, e.length) + o;
                 var line = 0;
@@ -152,11 +146,11 @@ var arrowNav = function(){
                 lines[0] = entry.innerHTML;
                 var height = entry.offsetHeight;
 
+                // add all characters to #entry one-by-one to map linebreaks locations
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
                     var take = outry.innerHTML.substring(0, 1)
-                    console.log(typeof take);
                     // add it to the end of entry
                     entry.innerHTML = entry.innerHTML + take;
                     // remove first character of outry from outry
@@ -167,60 +161,31 @@ var arrowNav = function(){
                         line = line + 1;
                     }
 
-                    // can't add to array[index] if it doesn't exist yet
+                    // create array[index] if it doesn't exist yet
                     if (!lines[line]) lines[line] = '';
 
                     lines[line] = lines[line] + take;
                 }
 
-                console.log(lines);
+                // set useful waypoints
                 var currentLine = lines[line];
                 var lastLine = lines[line - 1];
+                var total = e + o;
                 var newIndex;
-                var total = e + o;
-
                 var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
-                console.log(lastLineBegin);
 
+                // address edge case for when lastline is shorter than current one.
                 if (lastLine.length < currentLine.length){
-                    index = lastLineBegin + lastLine.length - 1;
+                    newIndex = lastLineBegin + lastLine.length - 1;
                 } else {
-                    index = lastLineBegin + currentLine.length
+                    newIndex = lastLineBegin + currentLine.length
                 }  
 
-                // set cursor
-                entry.innerHTML = total.substring(0, index);
-                outry.innerHTML = total.substring(index, total.length);
+                // set cursor at new index!
+                entry.innerHTML = total.substring(0, newIndex);
+                outry.innerHTML = total.substring(newIndex, total.length);
                 refreshCursor();
-
-/* 
-                console.log(lines);
-
-                var remainder = e.length - capacity;
-
-                var total = e + o;
-
-                lastLine = total.substring(secondTo, capacity-1);
-                console.log(lastLine.length - 1);
-                var index;
                 
-                // there's a bug where if the last line is super short, and the next line
-                // is longer, it won't make it all the way back to the end of last line.
-
-                if (lastLine.length - 1 < remainder){
-                    index = lastLine.length - 1;
-                } else {
-                    index = secondTo + remainder;
-                }  
-
-                // set cursor at new index
-                entry.innerHTML = total.substring(0, index);
-                outry.innerHTML = total.substring(index, total.length);
-                refreshCursor(); */
-
-                // drew inspiration from here
-                //http://jsfiddle.net/tV29m/ this is interesting
-
             } else {
 
                 var prev = tw.previousElementSibling;
