@@ -156,6 +156,7 @@ var arrowNav = function(){
                 outry.innerHTML = e.substring(1, e.length) + o;
                 var height = entry.offsetHeight;
                 var capacity = 0;
+                var secondTo;
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
@@ -170,6 +171,7 @@ var arrowNav = function(){
                         //console.log(entry.innerHTML.substring(0, entry.innerHTML.length-1));
                         height = entry.offsetHeight;
                         //console.log(entry.innerHTML.length - capacity);
+                        secondTo = capacity;
                         capacity = entry.innerHTML.length;
 /*                         height = entry.offsetHeight;
                         console.log(words[i-1]);
@@ -181,6 +183,13 @@ var arrowNav = function(){
 
                 var remainder = e.length - capacity;
                 console.log(remainder+1);
+
+                var total = e + o;
+                console.log(secondTo);
+                console.log(capacity);
+                var index = secondTo + remainder;
+                entry.innerHTML = total.substring(0, index);
+                outry.innerHTML = total.substring(index, total.length);
 
 
 
@@ -197,7 +206,7 @@ var arrowNav = function(){
                 } */
 
                 // set entry back
-                entry.innerHTML = e;
+                //entry.innerHTML = e;
                 /* 
                 current.innerHTML = words[0];
                 var height = current.offsetHeight;
