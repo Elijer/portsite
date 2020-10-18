@@ -169,7 +169,7 @@ var arrowNav = function(){
                         //console.log("Bazinga...");
                         //console.log(entry.innerHTML.substring(0, entry.innerHTML.length-1));
                         height = entry.offsetHeight;
-                        console.log(entry.innerHTML.length - capacity);
+                        //console.log(entry.innerHTML.length - capacity);
                         capacity = entry.innerHTML.length;
 /*                         height = entry.offsetHeight;
                         console.log(words[i-1]);
@@ -178,6 +178,9 @@ var arrowNav = function(){
                         line = line + 1; */
                     }
                 }
+
+                var remainder = e.length - capacity;
+                console.log(remainder+1);
 
 
 
