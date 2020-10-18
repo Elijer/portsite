@@ -167,14 +167,32 @@ var arrowNav = function(){
                         line = line + 1;
                     }
 
-                    if (!lines[line]){
-                        lines[line] = '';
-                    }
-                    
+                    // can't add to array[index] if it doesn't exist yet
+                    if (!lines[line]) lines[line] = '';
+
                     lines[line] = lines[line] + take;
                 }
 
                 console.log(lines);
+                var currentLine = lines[line];
+                var lastLine = lines[line - 1];
+                var newIndex;
+                var total = e + o;
+
+                var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
+                console.log(lastLineBegin);
+
+                if (lastLine.length < currentLine.length){
+                    index = lastLineBegin + lastLine.length - 1;
+                } else {
+                    index = lastLineBegin + currentLine.length
+                }  
+
+                // set cursor
+                entry.innerHTML = total.substring(0, index);
+                outry.innerHTML = total.substring(index, total.length);
+                refreshCursor();
+
 /* 
                 console.log(lines);
 
