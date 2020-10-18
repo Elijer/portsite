@@ -140,21 +140,38 @@ var arrowNav = function(){
             var lines = tw.getClientRects().length;
 
             if (lines > 1){
-
+/* 
                 var words = entry.innerHTML.split(' ');
                 var chars = entry.innerHTML.split('');
                 entry.innerHTML = words[0];
                 var height = entry.offsetHeight
-                var lines = 1;
+                var line = 0;
+                var lastLine = 0;
 
                 var words = e.split(' ');
                 entry.innerHTML = words[0];
+                var height = entry.offsetHeight; */
+
+                entry.innerHTML = entry.innerHTML.substring(0, 1);
+                outry.innerHTML = e.substring(1, e.length) + o;
                 var height = entry.offsetHeight;
-                for (var i = 1; i < words.length; i++){
-                    entry.innerHTML = entry.innerHTML + ' ' + words[i];
+                for (var i = 1; i < e.length; i++){
+
+                    // copy first character of outry
+                    var take = outry.innerHTML.substring(0, 1)
+                    // add it to the end of entry
+                    entry.innerHTML = entry.innerHTML + take;
+                    // remove first character of outry from outry
+                    outry.innerHTML = outry.innerHTML.substring(1);
+
                     if(entry.offsetHeight > height){
+                        console.log("Bazinga...");
                         height = entry.offsetHeight;
+/*                         height = entry.offsetHeight;
                         console.log(words[i-1]);
+                        console.log("line" + line + " character number " + (entry.innerHTML.length - lastLine))
+                        lastLine = entry.innerHTML.length;
+                        line = line + 1; */
                     }
                 }
 
