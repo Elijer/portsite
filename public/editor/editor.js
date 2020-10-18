@@ -142,18 +142,35 @@ var arrowNav = function(){
             if (lines > 1){
 
                 var words = entry.innerHTML.split(' ');
+                var chars = entry.innerHTML.split('');
                 entry.innerHTML = words[0];
                 var height = entry.offsetHeight
+                var lines = 1;
 
-                for(var i = 0; i < words.length; i++){
-                    console.log(entry.getClientRects().length);
-                    entry.innerHTML = entry.innerHTML + " " + words[i];
-                    if (entry.offsetHeight > height){
+                var words = e.split(' ');
+                entry.innerHTML = words[0];
+                var height = entry.offsetHeight;
+                for (var i = 1; i < words.length; i++){
+                    entry.innerHTML = entry.innerHTML + ' ' + words[i];
+                    if(entry.offsetHeight > height){
                         height = entry.offsetHeight;
-                        console.log("-------------");
+                        console.log(words[i-1]);
+                    }
+                }
+
+
+
+/*                 for (var i = 0; i < words.length; i++) {
+                    //console.log(entry.getClientRects().length);
+                    entry.innerHTML = entry.innerHTML + " " + words[i];
+                    console.log(entry.getClientRects().length)
+                    //console.log(words[i]);
+                    if (entry.getClientRects().length > lines){ ////or: entry.offsetHeight > height, but this is less accurate
+                        height = entry.offsetHeight;
+                        //console.log("-------------");
                     }
                     //console.log(words[i]);
-                }
+                } */
 
                 // set entry back
                 entry.innerHTML = e;
