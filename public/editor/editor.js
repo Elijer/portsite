@@ -185,7 +185,7 @@ var arrowNav = function(){
                 entry.innerHTML = total.substring(0, newIndex);
                 outry.innerHTML = total.substring(newIndex, total.length);
                 refreshCursor();
-                
+
             } else {
 
                 var prev = tw.previousElementSibling;
@@ -211,7 +211,6 @@ var arrowNav = function(){
                 // Blocks with no innerHTML aren't displayed, so you must add something.
             }
 
-
         }
 
         if (event.key == "ArrowDown"){
@@ -222,25 +221,66 @@ var arrowNav = function(){
             var outry = gg("outry");
             var entry = gg("entry");
             var page = gg("page");
-
             var tw = gg("tw");
 
-            var prev = tw.previousElementSibling;
-            var next = tw.nextElementSibling;
+            // get the number of lines in current document
+            var lines = tw.getClientRects().length;
 
-            var n = next.innerHTML;
+            if (lines > 1){
 
-            if (n == "&nbsp;"){
-                n = "";
-            }
+                var line = 0;
+                lines = [];
+                var height = entry.offsetHeight;
 
-            entry.innerHTML = n;
-            next.innerHTML = e + o;
-            outry.innerHTML = "";
+                for (var i = 1; i < e.length; i++){
 
-            page.insertBefore(next, tw);
+                    // copy first character of outry
+                    var take = outry.innerHTML.substring(0, 1);
+                    // add it to the end of entry
+                    entry.innerHTML = entry.innerHTML + take;
+                    // remove it from outry
+                    outry.innerHTML = outry.innerHTML.substring(1);
+                    
+                    // check to see if this changed the height,
+                    // indicating it was a line break.
+                    if(entry.offsetHeight > height){
+                        bug();
+                        height = entry.offsetHeight;
+                        line = line + 1;
+                    }
 
-        }
+                    // create array[index] if it doesn't exist yet
+                    if (!lines[line]) lines[line] = ''
+
+                    lines[line] = lines[line] + take;
+                    
+                } // end of character iterator
+
+                console.log(lines);
+
+            } else {
+                                /* ********** */
+                var prev = tw.previousElementSibling;
+                
+                var next = tw.nextElementSibling;
+
+                if (next){
+                    var n = next.innerHTML;
+
+                    if (n == "&nbsp;"){
+                        n = "";
+                    }
+
+                    entry.innerHTML = n;
+                    next.innerHTML = e + o;
+                    outry.innerHTML = "";
+
+                    page.insertBefore(next, tw);
+                }
+
+            } // END OF ELSE
+
+        } // END OF ArrowDown
 
 
         if (event.ctrlKey === true && e.key === "Backspace"){
@@ -271,8 +311,8 @@ var arrowNav = function(){
         
         }
 
-    }
-}
+    } // END OF OnKeyDown
+} // END OF ArrowNav
 
 var initiateHotkeys = function(){
     document.onkeyup = function(e) {
