@@ -140,21 +140,22 @@ var arrowNav = function(){
             var lines = tw.getClientRects().length;
             console.log(tw.getClientRects());
 
-            if (lines){
+            if (lines > 1){
 
-                var characters = entry.innerHTML.split('');
-                entry.innerHTML = characters[0];
+                var chars = entry.innerHTML.split('');
+                entry.innerHTML = chars[0];
                 var height = entry.offsetHeight
-                for(var i = 1; i < characters.length; i++){
-                    entry.innerHTML = entry.innerHTML + characters[i];
+
+                for(var i = 0; i < chars.length; i++){
+                    entry.innerHTML = entry.innerHTML + chars[i];
+                    console.log(chars[i]);
                     if (entry.offsetHeight > height){
                         height = entry.offsetHeight;
-                        console.log(i);
-                        // if you put in the number of characters i exactl
-                        // you will end up on the next line, just
+                        //console.log(i);
                     }
                 }
 
+                // set entry back
                 entry.innerHTML = e;
                 /* 
                 current.innerHTML = words[0];
