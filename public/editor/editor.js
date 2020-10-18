@@ -113,12 +113,13 @@ var arrowNav = function(){
             // this saves a string
             var e = gg("entry").innerHTML;
             var o = gg("outry").innerHTML;
+            var total = e + o;
             // while this saves a reference capable of changing display
             var outry = gg("outry");
             var entry = gg("entry");
 
-            entry.innerHTML = total.substring(0, e.length+1);
-            outry.innerHTML = total.substring(e.length+1, total.length);
+            entry.innerHTML = total.substring(0, e.length + 1);
+            outry.innerHTML = total.substring(e.length + 1, total.length);
 
             refreshCursor();
         }
