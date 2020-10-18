@@ -155,6 +155,7 @@ var arrowNav = function(){
                 entry.innerHTML = entry.innerHTML.substring(0, 1);
                 outry.innerHTML = e.substring(1, e.length) + o;
                 var height = entry.offsetHeight;
+                var capacity = 0;
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
@@ -165,8 +166,11 @@ var arrowNav = function(){
                     outry.innerHTML = outry.innerHTML.substring(1);
 
                     if(entry.offsetHeight > height){
-                        console.log("Bazinga...");
+                        //console.log("Bazinga...");
+                        //console.log(entry.innerHTML.substring(0, entry.innerHTML.length-1));
                         height = entry.offsetHeight;
+                        console.log(entry.innerHTML.length - capacity);
+                        capacity = entry.innerHTML.length;
 /*                         height = entry.offsetHeight;
                         console.log(words[i-1]);
                         console.log("line" + line + " character number " + (entry.innerHTML.length - lastLine))
