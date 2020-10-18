@@ -232,7 +232,7 @@ var arrowNav = function(){
                 lines = [];
                 var height = entry.offsetHeight;
 
-                for (var i = 1; i < o.length; i++){
+                for (var i = 1; i < o.length+1; i++){
 
                     // copy first character of outry
                     var take = outry.innerHTML.substring(0, 1);
