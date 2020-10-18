@@ -244,7 +244,6 @@ var arrowNav = function(){
                     // check to see if this changed the height,
                     // indicating it was a line break.
                     if(entry.offsetHeight > height){
-                        bug();
                         height = entry.offsetHeight;
                         line = line + 1;
                     }
@@ -254,22 +253,50 @@ var arrowNav = function(){
 
                     lines[line] = lines[line] + take;
                     
-                } // end of character iterator
+                } // end of character iterator 1
 
                 var totalLines = line;
 
                 // this one specifically checks if there are more lines AFTER
                 // the cursor not just if there are more than one lines
                 if (totalLines > 0){
-                    var negativePosition = lines[0].length;
-                    var oldIndex = e.length;
-                    var newIndex = oldIndex + lines[1].length;
                     var total = e + o;
+
+                    // backwards iterator to discover how many backsteps to beginning of line
+                    var count = 0;
                     entry.innerHTML = total.substring(0, newIndex)
                     outry.innerHTML = total.substring(newIndex, total.length)
                     refreshCursor();
                     
-                    console.log(negativePosition)
+                    entry.innerHTML = e;
+                    var height = entry.offsetHeight;
+
+                    entry.innerHTML = e;
+                    outry.innerHTML = o;
+
+                    // determine backsteps
+                    for (var i = e.length; i > 0; i--){
+                        entry.innerHTML = total.substring(0, entry.innerHTML.length-1);
+                        outry.innerHTML = total.substring(entry.innerHTML.length-1, total.length);
+                        //console.log(entry.innerHTML);
+                        count++;
+
+                        //console.log("new height is ", entry.offsetHeight)
+                        if (entry.offsetHeight < height){
+                            if (!backsteps){
+                                var backsteps = count;
+                            }
+                        }
+                    }
+
+                    var negativePosition = lines[0].length;
+                    var newIndex = e.length + negativePosition + backsteps;
+
+                    entry.innerHTML = total.substring(0, newIndex)
+                    outry.innerHTML = total.substring(newIndex, total.length)
+                    refreshCursor();
+                    
+                    //console.log(negativePosition)
                 } else {
                     // reset
                     entry.innerHTML = e;
