@@ -157,6 +157,7 @@ var arrowNav = function(){
                 var height = entry.offsetHeight;
                 var capacity = 0;
                 var secondTo = 0;
+                var lastLine = 0;
                 for (var i = 1; i < e.length; i++){
 
                     // copy first character of outry
@@ -182,14 +183,41 @@ var arrowNav = function(){
                 }
 
                 var remainder = e.length - capacity;
-                console.log(remainder+1);
+                //console.log(remainder+1);
+
+
+                /*
+                
+                gotta do something like this: if all characters in the last line were
+                LESS than the remainder, you should go to the index of the end of that
+                last line instead of back however many characters. But I'm tired and
+                have not thought about it too hard.
+                
+                */
 
                 var total = e + o;
-                console.log(secondTo);
-                console.log(capacity);
-                var index = secondTo + remainder;
+
+                lastLine = total.substring(secondTo, capacity-1);
+                console.log(lastLine.length - 1);
+                var index;
+
+                if (lastLine.length - 1 < remainder){
+                    index = lastLine.length - 1;
+                } else {
+                    index = secondTo + remainder;
+                }
+/*                 console.log(secondTo);
+                console.log(capacity); */
                 entry.innerHTML = total.substring(0, index);
                 outry.innerHTML = total.substring(index, total.length);
+
+                // calculate total length of the last line
+
+/*                 if (lastLine < remainder){
+                    bug();
+                } */
+
+
                 refreshCursor();
 
 
