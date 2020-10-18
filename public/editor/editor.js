@@ -257,13 +257,24 @@ var arrowNav = function(){
                 } // end of character iterator
 
                 var totalLines = line;
-                var negativePosition = lines[0].length;
-                console.log(negativePosition)
 
                 // this one specifically checks if there are more lines AFTER
                 // the cursor not just if there are more than one lines
-                if (line > 0){
+                if (totalLines > 0){
+                    var negativePosition = lines[0].length;
+                    var oldIndex = e.length;
+                    var newIndex = oldIndex + lines[1].length;
+                    var total = e + o;
+                    entry.innerHTML = total.substring(0, newIndex)
+                    outry.innerHTML = total.substring(newIndex, total.length)
+                    refreshCursor();
                     
+                    console.log(negativePosition)
+                } else {
+                    // reset
+                    entry.innerHTML = e;
+                    outry.innerHTML = o;
+                    refreshCursor();
                 }
 /*                 var currentLine = lines[line];
                 var lastLine = lines[line - 1];
