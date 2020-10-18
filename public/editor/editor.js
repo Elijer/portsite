@@ -143,17 +143,14 @@ var arrowNav = function(){
             // each line saved into it.
 
             if (lines > 1){
-
-                // these could be useful
-                // var words = e.split(' ');
-                // var chars = e.split('');
-
+                
+                // put one char in entry, the rest in outry.
                 entry.innerHTML = entry.innerHTML.substring(0, 1);
                 outry.innerHTML = e.substring(1, e.length) + o;
-                var height = entry.offsetHeight,
-                    capacity = 0,
-                    secondTo = 0,
-                    lastLine = 0;
+                var line = 0;
+                var lines = [];
+                lines[0] = entry.innerHTML;
+                var height = entry.offsetHeight;
 
                 for (var i = 1; i < e.length; i++){
 
@@ -166,10 +163,15 @@ var arrowNav = function(){
 
                     if(entry.offsetHeight > height){
                         height = entry.offsetHeight;
-                        secondTo = capacity;
-                        capacity = entry.innerHTML.length;
+                        line = line + 1;
                     }
+
+                    lines[line] = lines[line] + take;
                 }
+
+                console.log(lines);
+/* 
+                console.log(lines);
 
                 var remainder = e.length - capacity;
 
@@ -191,7 +193,7 @@ var arrowNav = function(){
                 // set cursor at new index
                 entry.innerHTML = total.substring(0, index);
                 outry.innerHTML = total.substring(index, total.length);
-                refreshCursor();
+                refreshCursor(); */
 
                 // drew inspiration from here
                 //http://jsfiddle.net/tV29m/ this is interesting
