@@ -256,7 +256,7 @@ var arrowNav = function(){
                         line = line + 1;
                     }
 
-                    if (entry.innerHTML.length === e.length){
+                    if (entry.innerHTML.length === e.length + 1){
                         currentLine = line;
                     }
 
@@ -265,6 +265,11 @@ var arrowNav = function(){
 
                     lines[line] = lines[line] + take;
                     
+                }
+
+                // edge case
+                if (e.length === 0){
+                    currentLine = 0;
                 }
 
                 var lineBegin;
@@ -289,12 +294,15 @@ var arrowNav = function(){
                 var nextLine = lines[currentLine + 1];
                 var newIndex;
                 var positive = lineEnd - e.length;
-                console.log(lines);
                 var negative = e.length - lineBegin;
                 console.log(negative);
+                //console.log(negative);
                 
                 if (negative > nextLine.length){
                     newIndex = e.length + nextLine.length;
+                } else if (negative === 0){
+                    // this is if they are at the very beginning
+                    newIndex = e.length + positive;
                 } else {
                     newIndex = e.length + positive + negative;
                 }
