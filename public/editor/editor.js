@@ -235,15 +235,18 @@ var arrowNav = function(){
 
                 var line = 0;
                 lines = [];
+                var total = e + o;
+                entry.innerHTML = total.substring(0, 1);
+                lines[0] = total.substring(0, 1);
+                outry.innerHTML = total.substring(1, total.length);
                 var height = entry.offsetHeight;
+                var currentLine;
 
-                for (var i = 1; i < o.length+1; i++){
+                for (var i = 1; i < total.length-1; i++){
 
                     // copy first character of outry
-                    var take = outry.innerHTML.substring(0, 1);
-                    // add it to the end of entry
+                    var take = total.substring(i, i + 1);
                     entry.innerHTML = entry.innerHTML + take;
-                    // remove it from outry
                     outry.innerHTML = outry.innerHTML.substring(1);
                     
                     // check to see if this changed the height,
@@ -253,74 +256,37 @@ var arrowNav = function(){
                         line = line + 1;
                     }
 
+                    if (entry.innerHTML.length === e.length){
+                        currentLine = line;
+                    }
+
                     // create array[index] if it doesn't exist yet
                     if (!lines[line]) lines[line] = ''
 
                     lines[line] = lines[line] + take;
                     
-                } // end of character iterator 1
-
-                var totalLines = line;
-
-                // this one specifically checks if there are more lines AFTER
-                // the cursor not just if there are more than one lines
-                if (totalLines > 0){
-                    var total = e + o;
-
-                    // backwards iterator to discover how many backsteps to beginning of line
-                    var count = 0;
-                    entry.innerHTML = total.substring(0, newIndex)
-                    outry.innerHTML = total.substring(newIndex, total.length)
-                    refreshCursor();
-                    
-                    entry.innerHTML = e;
-                    var height = entry.offsetHeight;
-
-                    entry.innerHTML = e;
-                    outry.innerHTML = o;
-
-                    // 2nd forloop: determine backsteps
-                    for (var i = e.length; i > 0; i--){
-
-                        // problem: backsteps are undefined when you're on the toppest line
-
-                        entry.innerHTML = total.substring(0, entry.innerHTML.length-1);
-                        outry.innerHTML = total.substring(entry.innerHTML.length-1, total.length);
-                        //console.log(entry.innerHTML);
-                        count++;
-
-                        //console.log("new height is ", entry.offsetHeight)
-                        if (entry.offsetHeight < height){
-                            if (!backsteps){
-                                var backsteps = count;
-                            }
-                        }
-                    }
-
-                    if (!backsteps){
-                        var backsteps = count;
-                    }
-
-                    var negativePosition = lines[0].length;
-
-                    var newIndex = e.length + negativePosition + backsteps;
-
-                    entry.innerHTML = total.substring(0, newIndex)
-                    outry.innerHTML = total.substring(newIndex, total.length)
-                    refreshCursor();
-                    
-                    //console.log(negativePosition)
-                } else {
-                    // reset
-                    entry.innerHTML = e;
-                    outry.innerHTML = o;
-                    refreshCursor();
                 }
-/*                 var currentLine = lines[line];
-                var lastLine = lines[line - 1];
-                var total = e + o;
-                var newIndex;
-                var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length; */
+
+                var lineBegin;
+                var lineEnd;
+                var lineSize = 0;
+                for (var i = 0; i < lines.length; i++){
+
+                    if (i === currentLine){
+                        lineBegin = lineSize;
+                    } else if (i === currentLine + 1){
+                        lineEnd = lineSize;
+                    }
+
+                    lineSize = lineSize + lines[i].length;
+
+                };
+
+                console.log(lineBegin);
+                console.log(lineEnd);
+
+                // set useful waypoints
+                
 
             } else {
                                 /* ********** */
