@@ -269,6 +269,7 @@ var arrowNav = function(){
 
                 var lineBegin;
                 var lineEnd;
+                var nextLineEnd;
                 var lineSize = 0;
                 for (var i = 0; i < lines.length; i++){
 
@@ -276,14 +277,31 @@ var arrowNav = function(){
                         lineBegin = lineSize;
                     } else if (i === currentLine + 1){
                         lineEnd = lineSize;
+                    } else if (i === currentLine + 2){
+                        nextLineEnd = lineSize;
                     }
 
                     lineSize = lineSize + lines[i].length;
 
                 };
 
-                console.log(lineBegin);
-                console.log(lineEnd);
+                var topLine = lines[currentLine];
+                var nextLine = lines[currentLine + 1];
+                var newIndex;
+                var positive = lineEnd - e.length;
+                console.log(lines);
+                var negative = e.length - lineBegin;
+                console.log(negative);
+                
+                if (negative > nextLine.length){
+                    newIndex = e.length + nextLine.length;
+                } else {
+                    newIndex = e.length + positive + negative;
+                }
+
+                entry.innerHTML = total.substring(0, newIndex);
+                outry.innerHTML = total.substring(newIndex, total.length);
+                refreshCursor();
 
                 // set useful waypoints
                 
