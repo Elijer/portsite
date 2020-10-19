@@ -301,10 +301,6 @@ var arrowNav = function(){
                         var backsteps = count;
                     }
 
-                    if (!backsteps){
-                        backsteps = count;
-                    }
-
                     var negativePosition = lines[0].length;
 
                     var newIndex = e.length + negativePosition + backsteps;
