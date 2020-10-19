@@ -168,24 +168,28 @@ var arrowNav = function(){
                     lines[line] = lines[line] + take;
                 }
 
-                // set useful waypoints
-                var currentLine = lines[line];
-                var lastLine = lines[line - 1];
-                var total = e + o;
-                var newIndex;
-                var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
+                if (lines.length > 1){
+                    console.log(lines.length);
 
-                // address edge case for when lastline is shorter than current one.
-                if (lastLine.length < currentLine.length){
-                    newIndex = lastLineBegin + lastLine.length - 1;
-                } else {
-                    newIndex = lastLineBegin + currentLine.length
-                }  
+                    // set useful waypoints
+                    var currentLine = lines[line];
+                    var lastLine = lines[line - 1];
+                    var total = e + o;
+                    var newIndex;
+                    var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
 
-                // set cursor at new index!
-                entry.innerHTML = total.substring(0, newIndex);
-                outry.innerHTML = total.substring(newIndex, total.length);
-                refreshCursor();
+                    // address edge case for when lastline is shorter than current one.
+                    if (lastLine.length < currentLine.length){
+                        newIndex = lastLineBegin + lastLine.length - 1;
+                    } else {
+                        newIndex = lastLineBegin + currentLine.length
+                    }  
+
+                    // set cursor at new index!
+                    entry.innerHTML = total.substring(0, newIndex);
+                    outry.innerHTML = total.substring(newIndex, total.length);
+                    refreshCursor();
+                }
 
             } else {
 
@@ -275,8 +279,11 @@ var arrowNav = function(){
                     entry.innerHTML = e;
                     outry.innerHTML = o;
 
-                    // determine backsteps
+                    // 2nd forloop: determine backsteps
                     for (var i = e.length; i > 0; i--){
+
+                        // problem: backsteps are undefined when you're on the toppest line
+
                         entry.innerHTML = total.substring(0, entry.innerHTML.length-1);
                         outry.innerHTML = total.substring(entry.innerHTML.length-1, total.length);
                         //console.log(entry.innerHTML);
@@ -290,7 +297,16 @@ var arrowNav = function(){
                         }
                     }
 
+                    if (!backsteps){
+                        var backsteps = count;
+                    }
+
+                    if (!backsteps){
+                        backsteps = count;
+                    }
+
                     var negativePosition = lines[0].length;
+
                     var newIndex = e.length + negativePosition + backsteps;
 
                     entry.innerHTML = total.substring(0, newIndex)
