@@ -225,64 +225,9 @@ var arrowNav = function(){
                         newIndex = lastLineBeginning + indexFromLineBeginning;
                         setIndex(total, newIndex);
                     }
-    
                 }
-
-
-                
-
-/*                 if (lines.length > 1){
-
-                    // set useful waypoints
-                    var currentLine = lines[line];
-                    var lastLine = lines[line - 1];
-                    var total = e + o;
-                    var newIndex;
-                    var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
-                    var backsteps = currentLine.length;
-                    console.log(backsteps);
-
-                    // address edge case for when lastline is shorter than current one.
-                    if (lastLine.length < currentLine.length){
-                        newIndex = lastLineBegin + lastLine.length - 1;
-                    } else if (backSteps === 0){
-                        newIndex = lastLineBegin + currentLine.length + 1;
-                    } else {
-                        newIndex = lastLineBegin + currentLine.length
-                    }  
-
-                    // set cursor at new index!
-                    entry.innerHTML = total.substring(0, newIndex);
-                    outry.innerHTML = total.substring(newIndex, total.length);
-                    refreshCursor();
-
-            } else {
-
-                var prev = tw.previousElementSibling;
-                //var next = tw.nextElementSibling;
-    
-                if (prev){
-                    var p = prev.innerHTML;
-    
-                    if (p == "&nbsp;"){
-                        p = "";
-                    }
-    
-                    if (e+o == ""){
-                        e = "&nbsp;"
-                    }
-                    
-                    var page = gg("page");
-                    page.insertBefore(tw, prev);
-        
-                    entry.innerHTML = p;
-                    prev.innerHTML = e + o;
-                    outry.innerHTML = "";
-                } */
-                // Blocks with no innerHTML aren't displayed, so you must add something.
             }
-
-        }
+        } // End of ArrowUp
 
         if (event.key == "ArrowDown"){
 
