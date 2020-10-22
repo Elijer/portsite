@@ -145,6 +145,10 @@ var arrowNav = function(){
                 outry.innerHTML = total.substring(0, total.length);
 
                 var line = 0;
+                var lastBegin;
+                var currentLineBeginIndex;
+                var currentLineEndIndex;
+                var currentLineLastChar;
                 var lines = [];
                 // height is saved to check for linebreaks.
                 // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
@@ -169,10 +173,12 @@ var arrowNav = function(){
                         // if so, we raise the bar.
                         height = entry.offsetHeight;
                         line++;
+                        lastBegin = i;
                     }
 
                     if (i === e.length){
                         currentLine = line;
+                        currentLineBeginIndex = lastBegin;
                     }
 
                     // create array[index] if it doesn't exist yet
@@ -185,12 +191,18 @@ var arrowNav = function(){
 
                 }
 
+                console.log(lines);
                 console.log(currentLine);
+
+                currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
+                var l = lines[currentLine]
+                currentLineLastChar = l.substring(l.length - 1, l.length);
+                console.log(currentLineLastChar);
 
                 if (currentLine === 0){
                     setIndex(total, 0);
                 } else {
-
+                    console.log(currentLineEndIndex);
                 }
 
 
