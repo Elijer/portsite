@@ -335,7 +335,6 @@ var arrowNav = function(){
 
                 // Edge case: at the very last position, the array doesn't set the currentLine for an unknown reason. This fixes that.
                 if (e.length === total.length){
-                    bug();
                     currentLine = lines.length - 1;
                 }
 
