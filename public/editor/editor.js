@@ -334,15 +334,17 @@ var arrowNav = function(){
 
                 }
 
+                // Edge case: at the very last position, the array doesn't set the currentLine for an unknown reason. This fixes that.
+                if (e.length === total.length){
+                    currentLine = lines.length - 1;
+                }
+
                 currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
                 
                 var l = lines[currentLine]
                 currentLineLastChar = l.substring(l.length - 1, l.length);
 
-                // BUT if the last character of the current line is a space, then there's really one less position than there ought
-                // because spaces at the end of lines seem to be ignored.
-                // so we have to adjust our currenLineEndIndex variable.
-                // however, I think they all have spaces, to be honest. But if for some reason they don't, this should cover
+                // BUT if the last character of the current line is a space, then there's really one less position than there ought because spaces at the end of lines seem to be ignored. so we have to adjust our currenLineEndIndex variable. however, I think they all have spaces, to be honest. But if for some reason they don't, this should cover
                 if (currentLineLastChar = ' '){
                     currentLineEndIndex--;
                 }
@@ -351,8 +353,22 @@ var arrowNav = function(){
                 // but otherwise, you can set the index to the end like this:
                 console.log(currentLine);
                 if (currentLine === lines.length - 1){
-                    bug();
                     setIndex(total, e.length);
+                    var next = tw.nextElementSibling;
+                    if (next){
+
+                        var nextText = next.innerHTML;
+                        if (nextText === "&nbsp;") nextText = '';
+                        var page = gg("page");
+                        page.insertBefore(next, tw);
+                        next.innerHTML = total;
+
+                        var indexFromLineBeginning = e.length - currentLineBeginIndex;
+
+                        entry.innerHTML = nextText.substring(0, indexFromLineBeginning);
+                        outry.innerHTML = nextText.substring(indexFromLineBeginning, nextText.length);
+
+                    }
 
                 } else {
 
