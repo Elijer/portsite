@@ -212,6 +212,7 @@ var arrowNav = function(){
                         
                         var prevText = prev.innerHTML;
                         if (prevText === "&nbsp;") prevText = '';
+                        var page = gg("page");
                         page.insertBefore(tw, prev);
 
                         entry.innerHTML = prevText;
