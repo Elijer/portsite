@@ -234,7 +234,6 @@ var arrowNav = function(){
                                 lastLineIndex = entry.innerHTML.length + 2;
                                 break;
                             }
-                            
                         }
                         
                         var newIndex = lastLineIndex + e.length;
@@ -242,27 +241,6 @@ var arrowNav = function(){
                         entry.innerHTML = prevText.substring(0, newIndex);
                         outry.innerHTML = prevText.substring(newIndex, prevText.length);
                         refreshCursor();
-/*                         entry.innerHTML = entry.innerHTML.substring(0, newIndex)
-                        outry.innerHTML = outry.innerHTML.substring(newIndex, total.length);  */
-                        
-                        
-                        // the new index is 
-/*                         var newIndex = e.length + currentLineBeginIndex;
-                        entry.innerHTML = entry.innerHTML.substring(0, newIndex)
-                        outry.innerHTML = outry.innerHTML.substring(newIndex, o.length); */
-
-
-/* 
-                        var setIndex = function(total, index){
-                            var entry = gg("entry");
-                            var outry = gg("outry");
-                        
-                            entry.innerHTML = total.substring(0, index);
-                            outry.innerHTML = total.substring(index, total.length);
-                        
-                            refreshCursor();
-                            
-                        } */
 
                     } else {
                         // if no previous block, just reset index
@@ -371,12 +349,12 @@ var arrowNav = function(){
 
                 // if currentLine is the last line, you're going to have to check to see if there's another block
                 // but otherwise, you can set the index to the end like this:
-                if (currentLine === line){
-                    setIndex(total, total.length)
+                console.log(currentLine);
+                if (currentLine === lines.length - 1){
+                    bug();
+                    setIndex(total, e.length);
 
                 } else {
-
-                    console.log(currentLineBeginIndex);
 
                     nextLineBeginningIndex = currentLineBeginIndex + lines[currentLine].length;
                     indexFromLineBeginning = e.length - currentLineBeginIndex;
@@ -393,8 +371,7 @@ var arrowNav = function(){
                     }
                 }
 
-            } else {
-                                /* ********** */
+            }/*  else {
                 var prev = tw.previousElementSibling;
                 
                 var next = tw.nextElementSibling;
@@ -413,7 +390,7 @@ var arrowNav = function(){
                     page.insertBefore(next, tw);
                 }
 
-            } // END OF ELSE
+            } */
 
         } // END OF ArrowDown
 
