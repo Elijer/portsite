@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     cursorBlink();
     cursorOn = false;
 
-    initiateHotkeys();
     arrowNav();
 
     // This is one specifically for the enter key
@@ -35,8 +34,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         nextLine: {
             start: null,
-            end: null,
-            // length not necessary: same as end
+            end: null // length not necessary: same as end
         }
     }
 
@@ -137,18 +135,22 @@ var arrowNav = function(){
 } // END OF ArrowNav
 
 
+
+
 var whereFocus = function(){
     var phantom = gg('phantom');
 
     if (document.activeElement === phantom){
-
         refreshCursor();
-
+/*      phantom.addEventListener('input', typing);
+        clearInterval(cursorBlinkGlobal);
+        gg("cursor").style.display = "inline";
+        gg("cursor").style.visibility = "visible";
+        cursorBlink()
+        cursorOn = true; */
     } else {
-
         phantom.removeEventListener('input', typing);
         gg("cursor").style.display = "none";
-
     }
 }
 
@@ -210,6 +212,9 @@ var typing = function(e){
         cursorOn = true
     }, 500);
 
+    // consider using &nbsp; or something you can control for multiple spaces
+    // instead whatever default space is being used here. Cause I don't like it.
+
     cursor.style.visibility = "visible";
 
     gg("cursor").style.display = "inline";
@@ -225,7 +230,10 @@ var typing = function(e){
 
         if (e.data == " "){
             entry.innerHTML = entry.innerHTML + " ";
+            //test.innerHTML = entry.innerHTML + '&nbsp;';
         } else {
+/*             var parsed = entry.innerHTML;
+            parsed = parsed.replaceAll("&nbsp;", " "); */
             entry.innerHTML = entry.innerHTML + e.data;
 
         }
@@ -301,6 +309,8 @@ var cursorBlink = function(){
 
     // cursorOn is for keeping cursor solid while typing
     // cursorBlinkGlobal is for restarting blink cycle at focus/refocus
+
+
     var cursor = gg("cursor");
     //cursor.style.display = "inline";
 
@@ -325,6 +335,7 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 } 
+
 
 
 // ***** Some quick and dirty utilities **********
