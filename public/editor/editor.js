@@ -155,7 +155,7 @@ var arrowNav = function(){
                 // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
                 // another tricky part: if entry start with nothing, will the offsetHeight be different when first character is added?
                 var height = entry.offsetHeight;
-                var currentLine;
+                var currentLine = 0;
                 
                 // Now we iterate through outry.innerHTML and move characters one by one to entry to observe which ones trigger line breaks
                 // and therefore which characters are on which line;
@@ -277,8 +277,6 @@ var arrowNav = function(){
             // get the number of lines in current document
             var tw = gg("tw");
             var lines = tw.getClientRects().length;
-
-            if (lines > 1){
                 
                 // entry gets nothing
                 entry.innerHTML = '';
@@ -407,27 +405,6 @@ var arrowNav = function(){
                         setIndex(total, newIndex);
                     }
                 }
-
-            }/*  else {
-                var prev = tw.previousElementSibling;
-                
-                var next = tw.nextElementSibling;
-
-                if (next){
-                    var n = next.innerHTML;
-
-                    if (n == "&nbsp;"){
-                        n = "";
-                    }
-
-                    entry.innerHTML = n;
-                    next.innerHTML = e + o;
-                    outry.innerHTML = "";
-
-                    page.insertBefore(next, tw);
-                }
-
-            } */
 
         } // END OF ArrowDown
 
