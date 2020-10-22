@@ -435,6 +435,7 @@ var typeWriter = function(){
     var outry = gg("outry");
     var phantom = gg("phantom");
     var placeholder = gg("placeholder");
+    phantom.value = phantom.value + "/";
     phantom.focus();
     //placeholder.style.display = "none";
 }
