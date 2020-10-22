@@ -15,6 +15,53 @@ document.addEventListener("DOMContentLoaded", function(event) {
         typing: false
     }
 
+    currentBlock = {
+
+        end: 0,
+
+        currentLine: {
+            index: 0,
+            suspense: 0,
+            start: 0,
+            end: 0,
+            length: 0
+        },
+
+        prevLine: {
+            start: null,
+            end: null,
+            length: null
+        },
+
+        nextLine: {
+            start: null,
+            end: null,
+            // length not necessary: same as end
+        }
+    }
+
+    nextBlock = {
+        exists: false,
+        isEmpty: true,
+        multipleLines: false,
+        firstLineLength: 0
+    }
+
+    lastBlock = {
+
+        exists: false,
+        isEmpty: true,
+        length: 0,
+
+        lastLine: {
+            
+            start: 0,
+            length: 0
+
+        }
+
+    }
+
 
 })
 
@@ -254,8 +301,6 @@ var cursorBlink = function(){
 
     // cursorOn is for keeping cursor solid while typing
     // cursorBlinkGlobal is for restarting blink cycle at focus/refocus
-
-
     var cursor = gg("cursor");
     //cursor.style.display = "inline";
 
@@ -280,7 +325,6 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 } 
-
 
 
 // ***** Some quick and dirty utilities **********
