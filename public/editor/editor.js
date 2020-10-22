@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     currentBlock = {
 
         end: 0,
+        lastHeight: 0,
+        lines: [],
 
         currentLine: {
             index: 0,
+            which: 0,
             suspense: 0,
             start: 0,
             end: 0,
@@ -222,12 +225,11 @@ var typing = function(e){
 
     if (e.inputType === "insertText"){
 
-        if (e.data == " "){
-            entry.innerHTML = entry.innerHTML + " ";
-        } else {
-            entry.innerHTML = entry.innerHTML + e.data;
 
-        }
+        entry.innerHTML = entry.innerHTML + e.data;
+        if (entry.offsetHeight > currentBlock.lastHeight)
+
+            
 
     } else if (e.inputType === "deleteContentBackward"){
 
