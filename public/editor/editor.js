@@ -150,6 +150,8 @@ var arrowNav = function(){
                 var currentLineEndIndex;
                 var currentLineLastChar;
                 var indexFromLineBeginning;
+                var lastLineBeginning;
+                var newIndex;
                 var lines = [];
                 // height is saved to check for linebreaks.
                 // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
@@ -192,8 +194,6 @@ var arrowNav = function(){
 
                 }
 
-                console.log(lines);
-
                 currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
                 
                 var l = lines[currentLine]
@@ -207,13 +207,26 @@ var arrowNav = function(){
                     currentLineEndIndex--;
                 }
 
+                // check to see if there is a line above at all.
                 if (currentLine === 0){
-                    // setIndex(total, 0); // optional behavior.
-                } else {
-                    indexFromLineBeginning = e.length - currentLineBeginIndex;
-                    console.log(indexFromLineBeginning)
-                }
+                    setIndex(total, e.length)
 
+                } else {
+
+                    lastLineBeginning = currentLineBeginIndex - lines[currentLine - 1].length;
+                    indexFromLineBeginning = e.length - currentLineBeginIndex;
+
+                    // Check to see if line above is shorter, in which case just go to the end
+                    if (indexFromLineBeginning > lines[(currentLine - 1)].length){
+                        setIndex(total, currentLineBeginIndex - 1)
+
+                    // and then this is the normal case
+                    } else {
+                        newIndex = lastLineBeginning + indexFromLineBeginning;
+                        setIndex(total, newIndex);
+                    }
+    
+                }
 
 
                 
