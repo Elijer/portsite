@@ -149,6 +149,7 @@ var arrowNav = function(){
                 var currentLineBeginIndex;
                 var currentLineEndIndex;
                 var currentLineLastChar;
+                var indexFromLineBeginning;
                 var lines = [];
                 // height is saved to check for linebreaks.
                 // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
@@ -192,17 +193,25 @@ var arrowNav = function(){
                 }
 
                 console.log(lines);
-                console.log(currentLine);
 
                 currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
+                
                 var l = lines[currentLine]
                 currentLineLastChar = l.substring(l.length - 1, l.length);
-                console.log(currentLineLastChar);
+
+                // BUT if the last character of the current line is a space, then there's really one less position than there ought
+                // because spaces at the end of lines seem to be ignored.
+                // so we have to adjust our currenLineEndIndex variable.
+                // however, I think they all have spaces, to be honest. But if for some reason they don't, this should cover
+                if (currentLineLastChar = ' '){
+                    currentLineEndIndex--;
+                }
 
                 if (currentLine === 0){
-                    setIndex(total, 0);
+                    // setIndex(total, 0); // optional behavior.
                 } else {
-                    console.log(currentLineEndIndex);
+                    indexFromLineBeginning = e.length - currentLineBeginIndex;
+                    console.log(indexFromLineBeginning)
                 }
 
 
