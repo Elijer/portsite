@@ -136,8 +136,6 @@ var arrowNav = function(){
             // get the number of lines in current document
             var tw = gg("tw");
             var lines = tw.getClientRects().length;
-
-            if (lines > 1){
                 
                 // entry gets nothing
                 entry.innerHTML = '';
@@ -209,7 +207,67 @@ var arrowNav = function(){
 
                 // check to see if there is a line above at all.
                 if (currentLine === 0){
-                    setIndex(total, e.length)
+                    var prev = tw.previousElementSibling;
+                    if (prev){
+                        
+                        var prevText = prev.innerHTML;
+                        if (prevText === "&nbsp;") prevText = '';
+                        page.insertBefore(tw, prev);
+
+                        entry.innerHTML = prevText;
+                        outry.innerHTML = "";
+                        prev.innerHTML = total;
+
+                        // shit, I've got to know what index the last
+                        // line of the previous block starts on.
+                        var lineBeginning = 0;
+                        var i = prevText.length;
+                        let height = outry.offsetHeight;
+                        var lastLineIndex = 0;
+
+                        for (var i = total.length; i > 0; i--){
+                            var take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
+                            //console.log(outry.offsetHeight);
+                            outry.innerHTML = take + outry.innerHTML;
+                            entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1)
+                            if (outry.offsetHeight > height){
+                                lastLineIndex = entry.innerHTML.length + 2;
+                                break;
+                            }
+                            
+                        }
+                        
+                        var newIndex = lastLineIndex + e.length;
+                        console.log(newIndex);
+                        entry.innerHTML = prevText.substring(0, newIndex);
+                        outry.innerHTML = prevText.substring(newIndex, prevText.length);
+                        refreshCursor();
+/*                         entry.innerHTML = entry.innerHTML.substring(0, newIndex)
+                        outry.innerHTML = outry.innerHTML.substring(newIndex, total.length);  */
+                        
+                        
+                        // the new index is 
+/*                         var newIndex = e.length + currentLineBeginIndex;
+                        entry.innerHTML = entry.innerHTML.substring(0, newIndex)
+                        outry.innerHTML = outry.innerHTML.substring(newIndex, o.length); */
+
+
+/* 
+                        var setIndex = function(total, index){
+                            var entry = gg("entry");
+                            var outry = gg("outry");
+                        
+                            entry.innerHTML = total.substring(0, index);
+                            outry.innerHTML = total.substring(index, total.length);
+                        
+                            refreshCursor();
+                            
+                        } */
+
+                    } else {
+                        // if no previous block, just reset index
+                        setIndex(total, e.length)
+                    }
 
                 } else {
 
@@ -226,7 +284,6 @@ var arrowNav = function(){
                         setIndex(total, newIndex);
                     }
                 }
-            }
         } // End of ArrowUp
 
         if (event.key == "ArrowDown"){
