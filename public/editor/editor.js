@@ -187,6 +187,14 @@ var arrowNav = function(){
 
                 console.log(currentLine);
 
+                if (currentLine === 0){
+                    setIndex(total, 0);
+                } else {
+
+                }
+
+
+
                 
 
 /*                 if (lines.length > 1){
@@ -615,21 +623,13 @@ var gg = function(id){
     return document.getElementById(id);
 }
 
-function countLines(id) { 
-  
-    // Get element with 'content' as id                             
-    var el =  
-        document.getElementById(id);
+var setIndex = function(total, index){
+    var entry = gg("entry");
+    var outry = gg("outry");
 
-    // Get total height of the content     
-    var divHeight = el.offsetHeight 
+    entry.innerHTML = total.substring(0, index);
+    outry.innerHTML = total.substring(index, total.length);
 
-    // object.style.lineHeight, returns  
-    // the lineHeight property 
-    // height of one line  
-    var lineHeight =  
-        parseInt(el.style.lineHeight); 
-
-    var lines = divHeight / lineHeight; 
-    return lines;
-} 
+    refreshCursor();
+    
+}
