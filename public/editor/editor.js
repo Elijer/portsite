@@ -142,12 +142,6 @@ var whereFocus = function(){
 
     if (document.activeElement === phantom){
         refreshCursor();
-/*      phantom.addEventListener('input', typing);
-        clearInterval(cursorBlinkGlobal);
-        gg("cursor").style.display = "inline";
-        gg("cursor").style.visibility = "visible";
-        cursorBlink()
-        cursorOn = true; */
     } else {
         phantom.removeEventListener('input', typing);
         gg("cursor").style.display = "none";
@@ -230,10 +224,7 @@ var typing = function(e){
 
         if (e.data == " "){
             entry.innerHTML = entry.innerHTML + " ";
-            //test.innerHTML = entry.innerHTML + '&nbsp;';
         } else {
-/*             var parsed = entry.innerHTML;
-            parsed = parsed.replaceAll("&nbsp;", " "); */
             entry.innerHTML = entry.innerHTML + e.data;
 
         }
