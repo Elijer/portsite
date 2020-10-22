@@ -128,10 +128,10 @@ var arrowNav = function(){
 
             var e = gg("entry").innerHTML;
             var o = gg("outry").innerHTML;
+            var total = e + o;
 
             var outry = gg("outry");
             var entry = gg("entry");
-            var page = gg("page");
 
             // get the number of lines in current document
             var tw = gg("tw");
@@ -139,37 +139,57 @@ var arrowNav = function(){
 
             if (lines > 1){
                 
-                // leave one char in entry, put the rest in outry.
-                entry.innerHTML = entry.innerHTML.substring(0, 1);
-                outry.innerHTML = e.substring(1, e.length) + o;
+                // entry gets nothing
+                entry.innerHTML = '';
+                // and start with everything in outry
+                outry.innerHTML = total.substring(0, total.length);
+
                 var line = 0;
                 var lines = [];
-                lines[0] = entry.innerHTML;
+                // height is saved to check for linebreaks.
+                // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
+                // another tricky part: if entry start with nothing, will the offsetHeight be different when first character is added?
                 var height = entry.offsetHeight;
+                var currentLine;
+                
+                // Now we iterate through outry.innerHTML and move characters one by one to entry to observe which ones trigger line breaks
+                // and therefore which characters are on which line;
 
-                // add all characters to #entry one-by-one to map linebreaks locations
-                for (var i = 1; i < e.length; i++){
+                for (var i = 0; i < total.length; i++){
 
-                    // copy first character of outry
+                    // take will be the character we are transfering in this iteration
                     var take = outry.innerHTML.substring(0, 1)
                     // add it to the end of entry
                     entry.innerHTML = entry.innerHTML + take;
                     // remove first character of outry from outry
                     outry.innerHTML = outry.innerHTML.substring(1);
 
+                    // check to see if this character changes the height
                     if(entry.offsetHeight > height){
+                        // if so, we raise the bar.
                         height = entry.offsetHeight;
-                        line = line + 1;
+                        line++;
+                    }
+
+                    if (i === e.length){
+                        currentLine = line;
                     }
 
                     // create array[index] if it doesn't exist yet
+                    // this means we don't need to define how many lines the array is up front, which is good
+                    // since we don't know.
                     if (!lines[line]) lines[line] = '';
 
+                    
                     lines[line] = lines[line] + take;
+
                 }
 
-                if (lines.length > 1){
-                    console.log(lines.length);
+                console.log(currentLine);
+
+                
+
+/*                 if (lines.length > 1){
 
                     // set useful waypoints
                     var currentLine = lines[line];
@@ -177,10 +197,14 @@ var arrowNav = function(){
                     var total = e + o;
                     var newIndex;
                     var lastLineBegin = entry.innerHTML.length - currentLine.length - lastLine.length;
+                    var backsteps = currentLine.length;
+                    console.log(backsteps);
 
                     // address edge case for when lastline is shorter than current one.
                     if (lastLine.length < currentLine.length){
                         newIndex = lastLineBegin + lastLine.length - 1;
+                    } else if (backSteps === 0){
+                        newIndex = lastLineBegin + currentLine.length + 1;
                     } else {
                         newIndex = lastLineBegin + currentLine.length
                     }  
@@ -189,7 +213,6 @@ var arrowNav = function(){
                     entry.innerHTML = total.substring(0, newIndex);
                     outry.innerHTML = total.substring(newIndex, total.length);
                     refreshCursor();
-                }
 
             } else {
 
@@ -206,13 +229,14 @@ var arrowNav = function(){
                     if (e+o == ""){
                         e = "&nbsp;"
                     }
-        
+                    
+                    var page = gg("page");
                     page.insertBefore(tw, prev);
         
                     entry.innerHTML = p;
                     prev.innerHTML = e + o;
                     outry.innerHTML = "";
-                }
+                } */
                 // Blocks with no innerHTML aren't displayed, so you must add something.
             }
 
