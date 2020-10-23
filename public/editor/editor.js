@@ -435,8 +435,15 @@ var typing = function(e){
             if (prev === null){
                 console.log("you've reached the end of your rope kid!")
             } else {
-                entry.innerHTML = prev.innerHTML;
+
+                if (prev.classList.contains("double-indent")){
+                    entry.innerHTML = "";
+                } else {
+                    entry.innerHTML = prev.innerHTML
+                }
+
                 prev.remove();
+
             }
 
         } else {
@@ -471,7 +478,7 @@ var createNewBlock = function(){
         var newBlock = document.createElement("div");
         var oldClasses = entry.classList;
         newBlock.classList = oldClasses;
-        newBlock.classList.add("full-index");
+        newBlock.classList.add("double-indent");
         newBlock.innerHTML = `<span class = "empty">///</span>`
         var page = gg("page");
         page.insertBefore(newBlock, tw);
@@ -495,7 +502,7 @@ var createNewBlock = function(){
     // leaves the entry in the last block
     // sets entry to ""
 
-    // okay so I cursor down, cursor up, click another block, cursor right, OR cursor left to another block
+    // okay so I cursor delete, down, cursor up, click another block, cursor right, OR cursor left to another block
     // that has an "empty" class. What now?
     // Once you've checked each of this situations of the "empty" class and confirmed it,
     // Remove the "empty" class and the innerHTML. You should be good to go.
