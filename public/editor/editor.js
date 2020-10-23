@@ -176,32 +176,56 @@ var arrowNav = function(){
                 var tw = gg("tw");
                 var prev = tw.previousElementSibling;
                 if (prev){
-                    var prevText = prev.innerHTML;
-                    var page = gg("page");
-                    page.insertBefore(tw, prev)
-                    prev.innerHTML = total;
 
-                    outry.innerHTML = "";
-                    entry.innerHTML = prevText;
-                    height = outry.offsetHeight;
+                    // check to see if previous block is 'empty', meaning it holds non-displayed, placeholder text ('///')
+                    if (prev.classList.contains("double-indent")){
 
-                    var i = prevText.length;
-                    var breakPoint = prevText.length;
-                    var take;
+                        entry.innerHTML = "";
+                        outry.innerHTML = "";
+                        var page = gg("page");
+                        page.insertBefore(tw, prev)
+                        prev.innerHTML = total;
+                        prev.classList.remove('double-indent');
 
-                    // This loop finds the last breakpoint in the block, which is used to calculate the new index
-                    while (i > 0 && height >= outry.offsetHeight){
-                        breakPoint = i;
-                        i--;
-                        take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
-                        entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
-                        outry.innerHTML = take + outry.innerHTML;
+                    } else {
+
+                        var prevText = prev.innerHTML;
+                        var page = gg("page");
+                        page.insertBefore(tw, prev)
+                        
+                        // if line is empty
+                        if (e === ""){
+                            console.log("Sloop")
+                            prev.classList.add("double-indent");
+                            prev.innerHTML = `<span class = "empty">///</span>`
+                        } else {
+                            prev.innerHTML = total;
+                        }
+    
+                        outry.innerHTML = "";
+                        entry.innerHTML = prevText;
+                        height = outry.offsetHeight;
+    
+                        var i = prevText.length;
+                        var breakPoint = prevText.length;
+                        var take;
+    
+                        // This loop finds the last breakpoint in the block, which is used to calculate the new index
+                        while (i > 0 && height >= outry.offsetHeight){
+                            breakPoint = i;
+                            i--;
+                            take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
+                            entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
+                            outry.innerHTML = take + outry.innerHTML;
+                        }
+                        
+                        var newIndex = breakPoint + 1 + currentLineIndex;
+
+                        entry.innerHTML = prevText.substring(0, newIndex);
+                        outry.innerHTML = prevText.substring(newIndex, prevText.length);
+                        refreshCursor();
                     }
 
-                    var newIndex = breakPoint + 1 + currentLineIndex;
-                    entry.innerHTML = prevText.substring(0, newIndex);
-                    outry.innerHTML = prevText.substring(newIndex, prevText.length);
-                    refreshCursor();
                 }
             } else {
                 
@@ -416,9 +440,8 @@ var typing = function(e){
     var currentText = entry.innerHTML
 
     if (e.inputType === "insertText"){
-
-            entry.innerHTML = entry.innerHTML + e.data;
-
+            
+        entry.innerHTML = entry.innerHTML + e.data;
 
     } else if (e.inputType === "deleteContentBackward"){
 
