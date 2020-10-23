@@ -126,71 +126,134 @@ var arrowNav = function(){
 
         if (event.key == "ArrowUp"){
 
-            var e = gg("entry").innerHTML;
-            var o = gg("outry").innerHTML;
-            var total = e + o;
+            let e = gg("entry").innerHTML,
+                o = gg("outry").innerHTML,
+                total = e + o;
 
             var outry = gg("outry");
             var entry = gg("entry");
-
-            // get the number of lines in current document
-            var tw = gg("tw");
-            var lines = tw.getClientRects().length;
                 
-                // entry gets nothing
-                entry.innerHTML = '';
-                // and start with everything in outry
-                outry.innerHTML = total.substring(0, total.length);
+            entry.innerHTML = '';
+            outry.innerHTML = total.substring(0, total.length);
 
-                var line = 0;
-                var lastBegin;
-                var currentLineBeginIndex;
-                var currentLineEndIndex;
-                var currentLineLastChar;
-                var indexFromLineBeginning;
-                var lastLineBeginning;
-                var newIndex;
-                var lines = [];
-                // height is saved to check for linebreaks.
-                // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
-                // another tricky part: if entry start with nothing, will the offsetHeight be different when first character is added?
-                var height = entry.offsetHeight;
-                var currentLine = 0;
-                
-                // Now we iterate through outry.innerHTML and move characters one by one to entry to observe which ones trigger line breaks
-                // and therefore which characters are on which line;
+            var height = entry.offsetHeight;
 
-                for (var i = 0; i < total.length; i++){
+            // mechanics
+            var line = 0;
+            var lastLine = 0;
+            var lines = [];
 
-                    // take will be the character we are transfering in this iteration
-                    var take = outry.innerHTML.substring(0, 1)
-                    // add it to the end of entry
-                    entry.innerHTML = entry.innerHTML + take;
-                    // remove first character of outry from outry
-                    outry.innerHTML = outry.innerHTML.substring(1);
+            //observations
+            var currentLine = 0;
+            var currentLineBeginIndex = 0;
 
-                    // check to see if this character changes the height
-                    if(entry.offsetHeight > height){
-                        // if so, we raise the bar.
-                        height = entry.offsetHeight;
-                        line++;
-                        lastBegin = i;
-                    }
+            for (var i = 0; i < total.length; i++){
 
-                    if (i === e.length){
-                        currentLine = line;
-                        currentLineBeginIndex = lastBegin;
-                    }
+                var take = outry.innerHTML.substring(0, 1)
+                entry.innerHTML = entry.innerHTML + take;
+                outry.innerHTML = outry.innerHTML.substring(1);
 
-                    // create array[index] if it doesn't exist yet
-                    // this means we don't need to define how many lines the array is up front, which is good
-                    // since we don't know.
-                    if (!lines[line]) lines[line] = '';
-
-                    
-                    lines[line] = lines[line] + take;
-
+                if(entry.offsetHeight > height){
+                    height = entry.offsetHeight;
+                    line++;
+                    lastLine = i;
                 }
+
+                if (i === e.length){
+                    currentLine = line;
+                    currentLineBeginIndex = lastLine;
+                }
+
+                if (!lines[line]) lines[line] = '';
+                lines[line] = lines[line] + take;
+            }
+
+            var currentLineIndex = e.length - currentLineBeginIndex;
+
+            // check to see if it's the top line
+            if (currentLine === 0){
+                var tw = gg("tw");
+                var prev = tw.previousElementSibling;
+                if (prev){
+                    var prevText = prev.innerHTML;
+                    var page = gg("page");
+                    page.insertBefore(tw, prev)
+                    prev.innerHTML = total;
+
+                    outry.innerHTML = "";
+                    entry.innerHTML = prevText;
+                    height = outry.offsetHeight;
+
+                    var i = prevText.length;
+                    var breakPoint = prevText.length;
+                    var take;
+
+                    // This loop, whatever it is, HAS to find the lineBeginning for the last line in tw at this moment.
+                    while (i > 0 && height >= outry.offsetHeight){
+                        breakPoint = i;
+                        i--;
+                        take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
+                        entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
+                        outry.innerHTML = take + outry.innerHTML;
+                    }
+
+                    var newIndex = breakPoint + 1 + currentLineIndex;
+                    entry.innerHTML = prevText.substring(0, newIndex);
+                    outry.innerHTML = prevText.substring(newIndex, prevText.length);
+                    refreshCursor();
+                    //setIndex(total, breakPoint + 1 + currentLineBeginIndex);
+
+                    //console.log(i);
+/*                     while (height >= outry.offsetHeight || i > -1){
+                        i--;
+                        take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
+                        entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
+                        outry.innerHTML = take + outry.innerHTML;
+                        breakPoint = i;
+                    } */
+
+                    console.log(breakPoint);
+                    
+                }
+            }
+
+
+
+
+              /*       
+
+
+            for (var i = 0; i < total.length; i++){
+
+                // take will be the character we are transfering in this iteration
+                var take = outry.innerHTML.substring(0, 1)
+                // add it to the end of entry
+                entry.innerHTML = entry.innerHTML + take;
+                // remove first character of outry from outry
+                outry.innerHTML = outry.innerHTML.substring(1);
+
+                // check to see if this character changes the height
+                if(entry.offsetHeight > height){
+                    // if so, we raise the bar.
+                    height = entry.offsetHeight;
+                    line++;
+                    lastBegin = i;
+                }
+
+                if (i === e.length){
+                    currentLine = line;
+                    currentLineBeginIndex = lastBegin;
+                }
+
+                // create array[index] if it doesn't exist yet
+                // this means we don't need to define how many lines the array is up front, which is good
+                // since we don't know.
+                if (!lines[line]) lines[line] = '';
+
+                
+                lines[line] = lines[line] + take;
+
+            }
 
                 currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
                 
@@ -262,7 +325,7 @@ var arrowNav = function(){
                         newIndex = lastLineBeginning + indexFromLineBeginning;
                         setIndex(total, newIndex);
                     }
-                }
+                } */
         } // End of ArrowUp
 
         if (event.key == "ArrowDown"){
