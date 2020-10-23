@@ -147,7 +147,7 @@ var arrowNav = function(){
             var currentLine = 0;
             var currentLineBeginIndex = 0;
 
-            for (var i = 0; i < total.length; i++){
+            for (var i = 0; i <= total.length; i++){
 
                 var take = outry.innerHTML.substring(0, 1)
                 entry.innerHTML = entry.innerHTML + take;
@@ -167,6 +167,7 @@ var arrowNav = function(){
                 if (!lines[line]) lines[line] = '';
                 lines[line] = lines[line] + take;
             }
+            //console.log(currentLineBeginIndex);
 
             var currentLineIndex = e.length - currentLineBeginIndex;
 
@@ -188,7 +189,7 @@ var arrowNav = function(){
                     var breakPoint = prevText.length;
                     var take;
 
-                    // This loop, whatever it is, HAS to find the lineBeginning for the last line in tw at this moment.
+                    // This loop finds the last breakpoint in the block, which is used to calculate the new index
                     while (i > 0 && height >= outry.offsetHeight){
                         breakPoint = i;
                         i--;
@@ -201,131 +202,12 @@ var arrowNav = function(){
                     entry.innerHTML = prevText.substring(0, newIndex);
                     outry.innerHTML = prevText.substring(newIndex, prevText.length);
                     refreshCursor();
-                    //setIndex(total, breakPoint + 1 + currentLineBeginIndex);
-
-                    //console.log(i);
-/*                     while (height >= outry.offsetHeight || i > -1){
-                        i--;
-                        take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
-                        entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
-                        outry.innerHTML = take + outry.innerHTML;
-                        breakPoint = i;
-                    } */
-
-                    console.log(breakPoint);
-                    
                 }
-            }
-
-
-
-
-              /*       
-
-
-            for (var i = 0; i < total.length; i++){
-
-                // take will be the character we are transfering in this iteration
-                var take = outry.innerHTML.substring(0, 1)
-                // add it to the end of entry
-                entry.innerHTML = entry.innerHTML + take;
-                // remove first character of outry from outry
-                outry.innerHTML = outry.innerHTML.substring(1);
-
-                // check to see if this character changes the height
-                if(entry.offsetHeight > height){
-                    // if so, we raise the bar.
-                    height = entry.offsetHeight;
-                    line++;
-                    lastBegin = i;
-                }
-
-                if (i === e.length){
-                    currentLine = line;
-                    currentLineBeginIndex = lastBegin;
-                }
-
-                // create array[index] if it doesn't exist yet
-                // this means we don't need to define how many lines the array is up front, which is good
-                // since we don't know.
-                if (!lines[line]) lines[line] = '';
-
+            } else {
                 
-                lines[line] = lines[line] + take;
+                setIndex(total, currentLineBeginIndex - lines[currentLine - 1].length + currentLineIndex )
 
             }
-
-                currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
-                
-                var l = lines[currentLine]
-                currentLineLastChar = l.substring(l.length - 1, l.length);
-
-                // BUT if the last character of the current line is a space, then there's really one less position than there ought
-                // because spaces at the end of lines seem to be ignored.
-                // so we have to adjust our currenLineEndIndex variable.
-                // however, I think they all have spaces, to be honest. But if for some reason they don't, this should cover
-                if (currentLineLastChar = ' '){
-                    currentLineEndIndex--;
-                }
-
-                // check to see if there is a line above at all.
-                if (currentLine === 0){
-                    var prev = tw.previousElementSibling;
-                    if (prev){
-                        
-                        var prevText = prev.innerHTML;
-                        if (prevText === "&nbsp;") prevText = '';
-                        var page = gg("page");
-                        page.insertBefore(tw, prev);
-
-                        entry.innerHTML = prevText;
-                        outry.innerHTML = "";
-                        prev.innerHTML = total;
-
-                        // shit, I've got to know what index the last
-                        // line of the previous block starts on.
-                        var lineBeginning = 0;
-                        var i = prevText.length;
-                        let height = outry.offsetHeight;
-                        var lastLineIndex = 0;
-
-                        for (var i = total.length; i > 0; i--){
-                            var take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
-                            //console.log(outry.offsetHeight);
-                            outry.innerHTML = take + outry.innerHTML;
-                            entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1)
-                            if (outry.offsetHeight > height){
-                                lastLineIndex = entry.innerHTML.length + 2;
-                                break;
-                            }
-                        }
-                        
-                        var newIndex = lastLineIndex + e.length;
-                        console.log(newIndex);
-                        entry.innerHTML = prevText.substring(0, newIndex);
-                        outry.innerHTML = prevText.substring(newIndex, prevText.length);
-                        refreshCursor();
-
-                    } else {
-                        // if no previous block, just reset index
-                        setIndex(total, e.length)
-                    }
-
-                } else {
-
-                    lastLineBeginning = currentLineBeginIndex - lines[currentLine - 1].length;
-                    indexFromLineBeginning = e.length - currentLineBeginIndex;
-
-                    // Check to see if line above is shorter, in which case just go to the end
-                    if (indexFromLineBeginning > lines[(currentLine - 1)].length){
-                        setIndex(total, currentLineBeginIndex - 1)
-
-                    // and then this is the normal case
-                    } else {
-                        newIndex = lastLineBeginning + indexFromLineBeginning;
-                        setIndex(total, newIndex);
-                    }
-                } */
         } // End of ArrowUp
 
         if (event.key == "ArrowDown"){
@@ -535,15 +417,8 @@ var typing = function(e){
 
     if (e.inputType === "insertText"){
 
-        if (e.data == " "){
-            entry.innerHTML = entry.innerHTML + " ";
-            //test.innerHTML = entry.innerHTML + '&nbsp;';
-        } else {
-/*             var parsed = entry.innerHTML;
-            parsed = parsed.replaceAll("&nbsp;", " "); */
             entry.innerHTML = entry.innerHTML + e.data;
 
-        }
 
     } else if (e.inputType === "deleteContentBackward"){
 

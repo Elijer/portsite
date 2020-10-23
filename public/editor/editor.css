@@ -99,10 +99,8 @@ li {
     color: red;
   }
 
-  #outry {
-    /* This is the magic number that fixes the "." that is used to make sure
-    spaces are recognized. */
-
+  .full-indent {
+    color: grey;
   }
 
   #placeholder {
@@ -114,7 +112,7 @@ li {
   #phantom {
       position: absolute;
       outline-style: none;
-      z-index: -999;
+      z-index: 999;
       margin-left: -1000
   }
 
