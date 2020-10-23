@@ -1,102 +1,35 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-    txt = "";
+var next = tw.nextElementSibling;
+if (next){
 
-    document.querySelector('#phantom').addEventListener('keypress', exception);
+    var nextText = next.innerHTML;
+    if (nextText === "&nbsp;") nextText = '';
+    var page = gg("page");
+    page.insertBefore(next, tw);
+    next.innerHTML = total;
 
-    state = {
-        typing: false
-    }
-})
+    // Edge case: when at the very last position
+    if (!currentLineBeginIndex){
 
+        entry.innerHTML = "";
+        outry.innerHTML = nextText;
+        var height = entry.offsetHeight;
 
-var whereFocus = function(){
-    var phantom = document.getElementById('phantom');
+        for (var i = 0; i < nextText.length; i++){
+            var take = outry.innerHTML.substring(0, 1);
+            entry.innerHTML = entry.innerHTML + take;
+            outry.innerHTML = outry.innerHTML.substring(1);
 
-    if (document.activeElement === phantom){
-        console.log("has focus")
-        phantom.addEventListener('input', typing);
-        cursorBlink(true);
-    } else {
-        console.log("Doesn;t");
-        phantom.removeEventListener('input', typing);
-        cursorBlink(false);
-
-    }
-}
-
-var typeWriter = function(){
-
-    var entry = document.getElementById("entry");
-    var phantom = document.getElementById("phantom");
-    phantom.focus();
-
-    entry.innerHTML = txt;
-
-}
-
-var typing = function(e){
-
-    cursor.style.visibility = "visible";
-
-    document.getElementById("cursor").style.display = "inline";
-    
-    state.typing = true;
-
-    var entry = document.getElementById("entry");
-    var currentText = entry.innerHTML
-
-    if (e.inputType === "insertText"){
-
-        txt = txt + e.data;
-        entry.innerHTML = txt;
-
-    } else if (e.inputType === "deleteContentBackward"){
-
-        txt = txt.substring(0,currentText.length - 1)
-        entry.innerHTML = txt;
-
-    } else {
-        console.log("Unknown input type: ", e.inputType);
-    }
-
-}
-
-var exception = function(e){
-        if (e.key === 'Enter') {
-
-            var entry = document.getElementById("entry");
-            txt = entry.innerHTML + `</br>`;
-            entry.innerHTML = txt;
-            entry.classList.add = "text-normal";
-            
-        }
-}
-
-var cursorBlink = function(on){
-
-    var cursor = document.getElementById("cursor");
-
-    if (on === true){
-
-        cursor.style.display = "inline";
-
-        setInterval(function(){
-
-            if (cursor.style.visibility == "hidden"){
-                cursor.style.visibility = "visible";
-            } else {
-                cursor.style.visibility = "hidden";
+            if (entry.offsetHeight > height){
+                entry.innerHTML = nextText.substring(0, i-1);
+                outry.innerHTML = nextText.substring(i-1, nextText.length);
+                break;
             }
-        }, 800);
+        }
         
     } else {
+        var indexFromLineBeginning = e.length - currentLineBeginIndex;
 
-        cursor.style.display = "none";
-
+        entry.innerHTML = nextText.substring(0, indexFromLineBeginning);
+        outry.innerHTML = nextText.substring(indexFromLineBeginning, nextText.length);
     }
-};
-
-var moveCursor = function(e){
-    s = window.getSelection();
-    console.log(s)
 }

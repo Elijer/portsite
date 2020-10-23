@@ -267,146 +267,75 @@ var arrowNav = function(){
 
         if (event.key == "ArrowDown"){
 
-            var e = gg("entry").innerHTML;
-            var o = gg("outry").innerHTML;
-            var total = e + o;
+            let e = gg("entry").innerHTML,
+                o = gg("outry").innerHTML,
+                total = e + o;
 
-            var outry = gg("outry");
-            var entry = gg("entry");
+            var entry = gg("entry"),
+                outry = gg("outry");
+            // set up for loop
+            entry.innerHTML = '';
+            outry.innerHTML = total;
+            // height must come after
+            var height = entry.offsetHeight;
 
-            // get the number of lines in current document
-            var tw = gg("tw");
-            var lines = tw.getClientRects().length;
-                
-                // entry gets nothing
-                entry.innerHTML = '';
-                // and start with everything in outry
-                outry.innerHTML = total.substring(0, total.length);
-
+                // mechanics
                 var line = 0;
-                var lastBegin = 0;
-                var currentLineBeginIndex;
-                var currentLineEndIndex;
-                var currentLineLastChar;
-                var indexFromLineBeginning;
-                var nextLineBeginningIndex;
-                var newIndex;
                 var lines = [];
-                // height is saved to check for linebreaks.
-                // One tricky part here is that I'm not sure if spaces can trigger a linebreak.
-                // another tricky part: if entry start with nothing, will the offsetHeight be different when first character is added?
-                var height = entry.offsetHeight;
-                var currentLine;
-                
-                // Now we iterate through outry.innerHTML and move characters one by one to entry to observe which ones trigger line breaks
-                // and therefore which characters are on which line;
 
-                for (var i = 0; i < total.length; i++){
+                // discoveries
+                var lastBegin = 0;
+                var currentLine = 0;
 
-                    // take will be the character we are transfering in this iteration
-                    var take = outry.innerHTML.substring(0, 1)
-                    // add it to the end of entry
-                    entry.innerHTML = entry.innerHTML + take;
-                    // remove first character of outry from outry
-                    outry.innerHTML = outry.innerHTML.substring(1);
+                // okay wait hear me out, I could write a function that worked for both tw and a random div
+                // and I could just feed both the random
+            
 
-                    // check to see if this character changes the height
-                    if(entry.offsetHeight > height){
-                        // if so, we raise the bar.
-                        height = entry.offsetHeight;
-                        line++;
-                        lastBegin = i;
-                    }
+            for (var i = 0; i <= total.length; i++){
 
-                    if (i === e.length){
-                        currentLine = line;
-                        currentLineBeginIndex = lastBegin;
-                    }
+                var take = outry.innerHTML.substring(0, 1)
+                entry.innerHTML = entry.innerHTML + take;
+                outry.innerHTML = outry.innerHTML.substring(1);
 
-                    // create array[index] if it doesn't exist yet
-                    // this means we don't need to define how many lines the array is up front, which is good
-                    // since we don't know.
-                    if (!lines[line]) lines[line] = '';
-
-                    
-                    lines[line] = lines[line] + take;
-
+                if(entry.offsetHeight > height){
+                    height = entry.offsetHeight;
+                    line++;
+                    lastBegin = i;
                 }
 
-                // Edge case: at the very last position, the array doesn't set the currentLine for an unknown reason. This fixes that.
-                if (e.length === total.length){
-                    bug();
-                    currentLine = lines.length - 1;
+                if (i === e.length){
+                    currentLine = line;
+                    currentLineBeginIndex = lastBegin;
                 }
 
-                currentLineEndIndex = currentLineBeginIndex + lines[currentLine].length;
-                
-                var l = lines[currentLine]
-                currentLineLastChar = l.substring(l.length - 1, l.length);
+                if (!lines[line]) lines[line] = '';
+                // save to array
+                lines[line] = lines[line] + take;
+            }
 
-                // BUT if the last character of the current line is a space, then there's really one less position than there ought because spaces at the end of lines seem to be ignored. so we have to adjust our currenLineEndIndex variable. however, I think they all have spaces, to be honest. But if for some reason they don't, this should cover
-                if (currentLineLastChar = ' '){
-                    currentLineEndIndex--;
-                }
+            var lineIndex = e.length - currentLineBeginIndex;
 
-                // if currentLine is the last line, you're going to have to check to see if there's another block
-                // but otherwise, you can set the index to the end like this:
-                console.log(currentLine);
-                if (currentLine === lines.length - 1){
-                    setIndex(total, e.length);
-                    var next = tw.nextElementSibling;
-                    if (next){
-
-                        var nextText = next.innerHTML;
-                        if (nextText === "&nbsp;") nextText = '';
-                        var page = gg("page");
-                        page.insertBefore(next, tw);
-                        next.innerHTML = total;
-
-                        // Edge case: happens when at very last position;
-                        if (!currentLineBeginIndex){
-
-                            entry.innerHTML = "";
-                            outry.innerHTML = nextText;
-                            var height = entry.offsetHeight;
-
-                            for (var i = 0; i < nextText.length; i++){
-                                var take = outry.innerHTML.substring(0, 1);
-                                entry.innerHTML = entry.innerHTML + take;
-                                outry.innerHTML = outry.innerHTML.substring(1);
-
-                                if (entry.offsetHeight > height){
-                                    entry.innerHTML = nextText.substring(0, i-1);
-                                    outry.innerHTML = nextText.substring(i-1, nextText.length);
-                                    break;
-                                }
-                            }
-                            
-                        } else {
-                            var indexFromLineBeginning = e.length - currentLineBeginIndex;
-
-                            entry.innerHTML = nextText.substring(0, indexFromLineBeginning);
-                            outry.innerHTML = nextText.substring(indexFromLineBeginning, nextText.length);
-                        }
-                    }
-
+            // on last line
+            if (currentLine === lines.length - 1){
+                let tw = gg("tw");
+                let next = tw.nextElementSibling;
+                if (next){
+                    console.log("Last Line & Next exists")
+                    var nextText = next.innerHTML;
+                    var page = gg("page");
+                    page.insertBefore(next, tw);
+                    next.innerHTML = total;
+                    entry.innerHTML = nextText.substring(0, lineIndex)
+                    outry.innerHTML = nextText.substring(lineIndex, nextText.length)
+                    refreshCursor();
                 } else {
-
-                    nextLineBeginningIndex = currentLineBeginIndex + lines[currentLine].length;
-                    indexFromLineBeginning = e.length - currentLineBeginIndex;
-                    var nextLineLength = lines[(currentLine + 1)].length - 1;
-
-                    // Check to see if line below is shorter, in which case just go to the end of it
-                    if (indexFromLineBeginning > nextLineLength){
-                        setIndex(total, nextLineBeginningIndex + nextLineLength)
-
-                    // and then this is the normal case
-                    } else {
-                        newIndex = nextLineBeginningIndex + indexFromLineBeginning;
-                        setIndex(total, newIndex);
-                    }
+                    console.log("last line but next doesn't exist")
+                    setIndex(total, e.length);
                 }
-
+            } else {
+                // set at same position but next line
+                setIndex(total, currentLineBeginIndex + lines[currentLine].length + lineIndex);
+            }
         } // END OF ArrowDown
 
 
