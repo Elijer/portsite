@@ -461,29 +461,41 @@ var exception = function(e){
 
 var createNewBlock = function(){
 
-            //gg("cursor").style.display = "none";
-            var tw = gg("tw")
-            var entry = gg("entry");
-            var outry = gg("outry");
+    var next = gg("tw").nextElementSibling;
+    console.log(next);
 
-            var newBlock = document.createElement("div");
+    // IN ALL CASES
+    // create a new block that has the outry (if the outry is "", so much the better.)
+    // leaves the entry in the last block
+    // sets entry to ""
+    // UNLESS
+    // entry is blank. in that case, create a new block with "empty" class.
 
-            if (entry.innerHTML === ""){
-                // blocks with no innerHTML can't be displayed as full-width blocks apparently
-                newBlock.innerHTML = "&nbsp;";
-            } else {
-                newBlock.innerHTML = entry.innerHTML;
-            }
+    // And what happens when the entry is blank and there IS no next block?
+    // In this case, create new block with "empty" class to leave behind. Then just set entry and outry to "".
 
-            var oldClasses = entry.classList;
-            newBlock.classList = oldClasses;
-            //newBlock.classList.add("text-normal");
+    // So what happens if the entry is blank and the next block is also blank?
+    // same thing as above.
 
-            var page = gg("page");
 
-            entry.innerHTML = "";
 
-            page.insertBefore(newBlock, tw)
+
+
+    //gg("cursor").style.display = "none";
+/*             var tw = gg("tw")
+    var entry = gg("entry");
+
+    var newBlock = document.createElement("div");
+
+    newBlock.innerHTML = entry.innerHTML;
+
+    var oldClasses = entry.classList;
+    newBlock.classList = oldClasses;
+    newBlock.classList.add("empty");
+
+    var page = gg("page");
+
+    page.insertBefore(newBlock, tw) */
 }
 
 

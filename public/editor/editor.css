@@ -103,6 +103,10 @@ li {
     color: grey;
   }
 
+  .empty {
+    color: darkslategrey !important;
+  }
+
   #placeholder {
       font-size: 25px;
       font-weight: 500px;
