@@ -464,18 +464,41 @@ var createNewBlock = function(){
     var next = gg("tw").nextElementSibling;
     console.log(next);
 
-    // IN ALL CASES
+    var entry = gg("entry");
+    var outry = gg("outry");
+
+    if (entry.innerHTML === ""){
+        var newBlock = document.createElement("div");
+        var oldClasses = entry.classList;
+        newBlock.classList = oldClasses;
+        newBlock.classList.add("full-index");
+        newBlock.innerHTML = `<span class = "empty">///</span>`
+        var page = gg("page");
+        page.insertBefore(newBlock, tw);
+        entry.innerHTML = "";
+    } else {
+        // construct a new block to leave behind with tw's content
+        var newBlock = document.createElement("div");
+        newBlock.innerHTML = entry.innerHTML;
+        // give newBlock all class that tw had ("normal-text" by default)
+        var oldClasses = entry.classList;
+        newBlock.classList = oldClasses;
+        // NOTE: make sure that tw retains the class it had
+        var page = gg("page");
+        page.insertBefore(newBlock, tw)
+        entry.innerHTML = "";
+    }
+    // IF
+    // entry is blank. in that case, create a new block with "empty" class.
+    // ELSE
     // create a new block that has the outry (if the outry is "", so much the better.)
     // leaves the entry in the last block
     // sets entry to ""
-    // UNLESS
-    // entry is blank. in that case, create a new block with "empty" class.
 
-    // And what happens when the entry is blank and there IS no next block?
-    // In this case, create new block with "empty" class to leave behind. Then just set entry and outry to "".
-
-    // So what happens if the entry is blank and the next block is also blank?
-    // same thing as above.
+    // okay so I cursor down, cursor up, click another block, cursor right, OR cursor left to another block
+    // that has an "empty" class. What now?
+    // Once you've checked each of this situations of the "empty" class and confirmed it,
+    // Remove the "empty" class and the innerHTML. You should be good to go.
 
 
 

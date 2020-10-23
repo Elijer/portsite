@@ -99,12 +99,8 @@ li {
     color: red;
   }
 
-  .full-indent {
-    color: grey;
-  }
-
   .empty {
-    color: darkslategrey !important;
+    color: darkslategrey;
   }
 
   #placeholder {
