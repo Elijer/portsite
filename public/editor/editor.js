@@ -188,14 +188,6 @@ var arrowNav = function(){
                         prev.innerHTML = total;
                         prev.classList.remove("empty");
 
-
-/*                         entry.innerHTML = "";
-                        outry.innerHTML = "";
-                        var page = gg("page");
-                        page.insertBefore(tw, prev)
-                        prev.innerHTML = total;
-                        prev.classList.remove('double-indent'); */
-
                     } else {
 
                         var prevText = prev.innerHTML;
@@ -216,6 +208,11 @@ var arrowNav = function(){
                             take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
                             entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
                             outry.innerHTML = take + outry.innerHTML;
+                        }
+
+                        if (total === ""){
+                            prev.classList.add("empty");
+                            prev.innerHTML = "///";
                         }
                         
                         var newIndex = breakPoint + 1 + currentLineIndex;
