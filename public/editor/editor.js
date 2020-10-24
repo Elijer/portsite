@@ -210,16 +210,20 @@ var arrowNav = function(){
                             outry.innerHTML = take + outry.innerHTML;
                         }
 
-                        if (total === ""){
-                            prev.classList.add("empty");
-                            prev.innerHTML = "///";
-                        }
+                        // if block you are leaving behind is empty,
+                        // make sure to style it and leave the filler material
                         
                         var newIndex = breakPoint + 1 + currentLineIndex;
 
                         entry.innerHTML = prevText.substring(0, newIndex);
                         outry.innerHTML = prevText.substring(newIndex, prevText.length);
                         refreshCursor();
+                    }
+
+                    if (total === ""){
+                        prev.classList.add("empty");
+                        prev.innerHTML = "///";
+                        console.log("yahhzz")
                     }
 
                 }
@@ -292,6 +296,9 @@ var arrowNav = function(){
                     next.innerHTML = total;
                     entry.innerHTML = nextText.substring(0, lineIndex)
                     outry.innerHTML = nextText.substring(lineIndex, nextText.length)
+
+                    if (next.classList.contains("empty")) console.log("shrazaw!");
+
                     refreshCursor();
                 } else {
                     console.log("last line but next doesn't exist")
