@@ -307,6 +307,13 @@ var arrowNav = function(){
                     console.log("last line but next doesn't exist")
                     setIndex(total, e.length);
                 }
+
+                // if next is empty, style it that way
+                if (next.innerHTML === ""){
+                    next.classList.add("empty");
+                    next.innerHTML = "///";
+                }
+
             } else {
                 // set at same position but next line
                 setIndex(total, currentLineBeginIndex + lines[currentLine].length + lineIndex);
