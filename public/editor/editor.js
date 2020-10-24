@@ -186,6 +186,7 @@ var arrowNav = function(){
                         entry.innerHTML = "";
                         outry.innerHTML = "";
                         prev.innerHTML = total;
+                        prev.classList.remove("empty");
 
 
 /*                         entry.innerHTML = "";
