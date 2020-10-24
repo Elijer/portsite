@@ -461,7 +461,7 @@ var typing = function(e){
             // Add things to phantom.value to prevent
             // running out of room to delete things in input
             var phantom = gg("phantom")
-            phantom.value = phantom.value + "/";
+            phantom.value = phantom.value + "///";
 
         if (entry.innerHTML == ""){
 
