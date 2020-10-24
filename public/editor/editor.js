@@ -177,9 +177,16 @@ var arrowNav = function(){
                 var prev = tw.previousElementSibling;
                 if (prev){
 
+                    var page = gg("page");
+                    page.insertBefore(tw, prev)
+
                     // check to see if previous block is 'empty', meaning it holds non-displayed, placeholder text ('///')
                     if (prev.classList.contains("empty")){
                         console.log("Boop");
+                        entry.innerHTML = "";
+                        outry.innerHTML = "";
+                        prev.innerHTML = total;
+
 
 /*                         entry.innerHTML = "";
                         outry.innerHTML = "";
@@ -191,8 +198,6 @@ var arrowNav = function(){
                     } else {
 
                         var prevText = prev.innerHTML;
-                        var page = gg("page");
-                        page.insertBefore(tw, prev)
                         prev.innerHTML = total;
     
                         outry.innerHTML = "";
