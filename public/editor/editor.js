@@ -519,16 +519,12 @@ var createNewBlock = function(){
         entry.innerHTML = "";
     } else {
         
-/*         // This loop finds the last breakpoint in the block, which is used to calculate the new index
-        while (i > 0 && height >= outry.offsetHeight){
-            breakPoint = i;
-            i--;
-            take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
-            entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
-            outry.innerHTML = take + outry.innerHTML;
-        } */
-        
-
+        // NOTE: As is, if the user happens to be at the very beginning of a line (but not the first line of a block)
+        // and they press enter, they will break it off into a new block but the 'cut' is so perfect that there is no
+        // indication that they did anything. One fix is simply a UX one, where something visual happens to indicate the split.
+        // The other fix is functional: I could make it so that in this situation, a full line of space is automatically added.
+        // This might be annoying if you wanted to style each line separately for some reason, which I haven't ruled out as something
+        // people might want to do, or even for myself.
 
         // construct a new block to leave behind with tw's content
         var newBlock = document.createElement("div");
