@@ -182,7 +182,6 @@ var arrowNav = function(){
 
                     // check to see if previous block is 'empty', meaning it holds non-displayed, placeholder text ('///')
                     if (prev.classList.contains("empty")){
-                        console.log("Boop");
                         entry.innerHTML = "";
                         outry.innerHTML = "";
                         prev.innerHTML = total;
@@ -220,10 +219,10 @@ var arrowNav = function(){
                         refreshCursor();
                     }
 
+                    // if you are leaving behind an empty block, style it correctly
                     if (total === ""){
                         prev.classList.add("empty");
                         prev.innerHTML = "///";
-                        console.log("yahhzz")
                     }
 
                 }
@@ -289,6 +288,12 @@ var arrowNav = function(){
                 let tw = gg("tw");
                 let next = tw.nextElementSibling;
                 if (next){
+
+                    if (next.classList.contains("empty")){
+                        next.classList.remove("empty");
+                        next.innerHTML = "";
+                    }
+
                     console.log("Last Line & Next exists")
                     var nextText = next.innerHTML;
                     var page = gg("page");
@@ -296,8 +301,6 @@ var arrowNav = function(){
                     next.innerHTML = total;
                     entry.innerHTML = nextText.substring(0, lineIndex)
                     outry.innerHTML = nextText.substring(lineIndex, nextText.length)
-
-                    if (next.classList.contains("empty")) console.log("shrazaw!");
 
                     refreshCursor();
                 } else {
