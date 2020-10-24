@@ -178,29 +178,22 @@ var arrowNav = function(){
                 if (prev){
 
                     // check to see if previous block is 'empty', meaning it holds non-displayed, placeholder text ('///')
-                    if (prev.classList.contains("double-indent")){
+                    if (prev.classList.contains("empty")){
+                        console.log("Boop");
 
-                        entry.innerHTML = "";
+/*                         entry.innerHTML = "";
                         outry.innerHTML = "";
                         var page = gg("page");
                         page.insertBefore(tw, prev)
                         prev.innerHTML = total;
-                        prev.classList.remove('double-indent');
+                        prev.classList.remove('double-indent'); */
 
                     } else {
 
                         var prevText = prev.innerHTML;
                         var page = gg("page");
                         page.insertBefore(tw, prev)
-                        
-                        // if line is empty
-                        if (e === ""){
-                            console.log("Sloop")
-                            prev.classList.add("double-indent");
-                            prev.innerHTML = `<span class = "empty">///</span>`
-                        } else {
-                            prev.innerHTML = total;
-                        }
+                        prev.innerHTML = total;
     
                         outry.innerHTML = "";
                         entry.innerHTML = prevText;
