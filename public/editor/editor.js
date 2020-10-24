@@ -459,7 +459,7 @@ var typing = function(e){
                 console.log("you've reached the end of your rope kid!")
             } else {
 
-                if (prev.classList.contains("double-indent")){
+                if (prev.classList.contains("empty")){
                     entry.innerHTML = "";
                 } else {
                     entry.innerHTML = prev.innerHTML
@@ -501,8 +501,8 @@ var createNewBlock = function(){
         var newBlock = document.createElement("div");
         var oldClasses = entry.classList;
         newBlock.classList = oldClasses;
-        newBlock.classList.add("double-indent");
-        newBlock.innerHTML = `<span class = "empty">///</span>`
+        newBlock.classList.add("empty");
+        newBlock.innerHTML = "///"
         var page = gg("page");
         page.insertBefore(newBlock, tw);
         entry.innerHTML = "";
