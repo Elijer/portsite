@@ -129,6 +129,7 @@ var arrowNav = function(){
             let e = gg("entry").innerHTML,
                 o = gg("outry").innerHTML,
                 total = e + o;
+                console.log("Arrow Up: " + total.length);
 
             var outry = gg("outry");
             var entry = gg("entry");
@@ -212,7 +213,6 @@ var arrowNav = function(){
                         // make sure to style it and leave the filler material
                         
                         var newIndex = breakPoint + 1 + currentLineIndex;
-                        console.log(newIndex);
 
                         entry.innerHTML = prevText.substring(0, newIndex);
                         outry.innerHTML = prevText.substring(newIndex, prevText.length);
@@ -238,6 +238,7 @@ var arrowNav = function(){
             let e = gg("entry").innerHTML,
                 o = gg("outry").innerHTML,
                 total = e + o;
+                console.log("Arrow Down: " + total.length);
 
             var entry = gg("entry"),
                 outry = gg("outry");
@@ -504,7 +505,6 @@ var exception = function(e){
 
 var createNewBlock = function(){
 
-    var next = gg("tw").nextElementSibling;
     var entry = gg("entry");
     var outry = gg("outry");
 
@@ -528,7 +528,7 @@ var createNewBlock = function(){
 
         // construct a new block to leave behind with tw's content
         var newBlock = document.createElement("div");
-        newBlock.innerHTML = entry.innerHTML;
+        newBlock.innerHTML = entry.innerHTML.trim();
         // give newBlock all class that tw had ("normal-text" by default)
         var oldClasses = entry.classList;
         newBlock.classList = oldClasses;
@@ -536,6 +536,7 @@ var createNewBlock = function(){
         var page = gg("page");
         page.insertBefore(newBlock, tw)
         entry.innerHTML = "";
+        outry.innerHTML = outry.innerHTML.trim();
     }
     // IF
     // entry is blank. in that case, create a new block with "empty" class.
