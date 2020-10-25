@@ -129,7 +129,6 @@ var arrowNav = function(){
             let e = gg("entry").innerHTML,
                 o = gg("outry").innerHTML,
                 total = e + o;
-                console.log("Arrow Up: " + total.length);
 
             var outry = gg("outry");
             var entry = gg("entry");
@@ -168,7 +167,6 @@ var arrowNav = function(){
                 if (!lines[line]) lines[line] = '';
                 lines[line] = lines[line] + take;
             }
-            //console.log(currentLineBeginIndex);
 
             var currentLineIndex = e.length - currentLineBeginIndex;
 
@@ -189,34 +187,91 @@ var arrowNav = function(){
                         prev.classList.remove("empty");
 
                     } else {
-                        
-                        var prevText = prev.innerHTML;
+
+                        console.log("oh man")
+                        let prevText = prev.innerHTML;
+                        outry.innerHTML = prevText;
+                        entry.innerHTML = ""
                         prev.innerHTML = total;
-                        outry.innerHTML = "";
-                        entry.innerHTML = prevText;
-                        height = outry.offsetHeight;
-    
-                        var i = prevText.length;
-                        var breakPoint = prevText.length;
+
+                        // loop mechanics
+                        var height = entry.offsetHeight;
                         var take;
-    
-                        // This loop finds the last breakpoint in the block, which is used to calculate the new index
-                        while (i > 0 && height >= outry.offsetHeight){
-                            breakPoint = i;
-                            i--;
-                            take = entry.innerHTML.substring(entry.innerHTML.length - 1, entry.innerHTML.length)
-                            entry.innerHTML = entry.innerHTML.substring(0, entry.innerHTML.length - 1);
-                            outry.innerHTML = take + outry.innerHTML;
+                        var line = 0;
+                        var lines = [];
+
+                        // loop observables
+                        var lastLine = 0;
+                        var currentLine = 0;
+                        var currentLineBeginIndex = 0;
+
+                        for (var i = 0; i <= prevText.length; i++){
+                            take = outry.innerHTML.substring(0, 1);
+                            entry.innerHTML = entry.innerHTML + take;
+                            outry.innerHTML = outry.innerHTML.substring(1);
+
+                            if (entry.offsetHeight > height){
+                                height = entry.offsetHeight;
+                                line++;
+                                lastLine = i
+                            }
+
+/*                             if (i === e.length){
+                                currentLine = line;
+                                currentLineBeginIndex = lastLine;
+                            } */
+
+                            if (!lines[line]) lines[line] = '';
+                            lines[line] = lines[line] + take;
                         }
 
-                        // if block you are leaving behind is empty,
-                        // make sure to style it and leave the filler material
+                        if (lines.length === 1){
+                            entry.innerHTML = prevText.substring(0, currentLineIndex);
+                            outry.innerHTML = prevText.substring(currentLineIndex, prevText.length);
+                        } else {
+                            var newIndex = lastLine + currentLineIndex;
+                            setIndex(prevText, newIndex);
+                        }
                         
-                        var newIndex = breakPoint + 1 + currentLineIndex;
+
+
+/*                         
+                        var prevText = prev.innerHTML;
+                        prev.innerHTML = total;
+                        entry.innerHTML = "";
+                        outry.innerHTML = prevText;
+                        height = entry.offsetHeight;
+                        var take;
+                        var line = 0;
+                        var lines = [];
+    
+                        for (var i = 0; i <= total.length; i++){
+                            take = outry.innerHTML.substring(0, 1);
+                            entry.innerHTML = entry.innerHTML + take;
+                            outry.innerHTML = outry.innerHTML.substring(1);
+
+                            if (entry.offsetHeight > height){
+                                height = entry.offsetHeight;
+                                line++;
+                                lastLine = i
+                            }
+
+                            if (i === e.length){
+                                currentLine = line;
+                                currentLineBeginIndex = lastLine;
+                            }
+            
+                            if (!lines[line]) lines[line] = '';
+                            lines[line] = lines[line] + take;
+                        }
+
+                        console.log(currentLineBeginIndex);
+                        
+/*                         var newIndex = breakPoint + 1 + currentLineIndex;
 
                         entry.innerHTML = prevText.substring(0, newIndex);
                         outry.innerHTML = prevText.substring(newIndex, prevText.length);
-                        refreshCursor();
+                        refreshCursor(); */
                     }
 
                     // if you are leaving behind an empty block, style it correctly
@@ -238,7 +293,6 @@ var arrowNav = function(){
             let e = gg("entry").innerHTML,
                 o = gg("outry").innerHTML,
                 total = e + o;
-                console.log("Arrow Down: " + total.length);
 
             var entry = gg("entry"),
                 outry = gg("outry");
@@ -295,7 +349,6 @@ var arrowNav = function(){
                         next.innerHTML = "";
                     }
 
-                    console.log("Last Line & Next exists")
                     var nextText = next.innerHTML;
                     var page = gg("page");
                     page.insertBefore(next, tw);
@@ -305,7 +358,6 @@ var arrowNav = function(){
 
                     refreshCursor();
                 } else {
-                    console.log("last line but next doesn't exist")
                     setIndex(total, e.length);
                 }
 
@@ -335,7 +387,6 @@ var arrowNav = function(){
 
         if (event.ctrlKey === true && e.key === "p"){
             
-            console.log("Aye!")
             var entry = gg("entry");
             var outry = gg("outry");
 
@@ -358,7 +409,7 @@ var initiateHotkeys = function(){
         // https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
         //console.log(e);
         if (e.key === "q" && e.ctrlKey === true){
-            console.log("Yay");
+            //console.log("Yay");
         }
       };
 }
@@ -606,10 +657,6 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 
 
 // ***** Some quick and dirty utilities **********
-
-var bug = function(){
-    console.log("yes-----we out here-----")
-}
 
 var gg = function(id){
     return document.getElementById(id);
