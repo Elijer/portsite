@@ -216,11 +216,6 @@ var arrowNav = function(){
                                 lastLine = i
                             }
 
-/*                             if (i === e.length){
-                                currentLine = line;
-                                currentLineBeginIndex = lastLine;
-                            } */
-
                             if (!lines[line]) lines[line] = '';
                             lines[line] = lines[line] + take;
                         }
@@ -272,10 +267,6 @@ var arrowNav = function(){
                 // discoveries
                 var lastBegin = 0;
                 var currentLine = 0;
-
-                // okay wait hear me out, I could write a function that worked for both tw and a random div
-                // and I could just feed both the random
-            
 
             for (var i = 0; i <= total.length; i++){
 
