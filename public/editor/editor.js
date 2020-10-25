@@ -476,37 +476,7 @@ var createNewBlock = function(){
         entry.innerHTML = "";
         outry.innerHTML = outry.innerHTML.trim();
     }
-    // IF
-    // entry is blank. in that case, create a new block with "empty" class.
-    // ELSE
-    // create a new block that has the outry (if the outry is "", so much the better.)
-    // leaves the entry in the last block
-    // sets entry to ""
 
-    // okay so I cursor delete, down, cursor up, click another block, cursor right, OR cursor left to another block
-    // that has an "empty" class. What now?
-    // Once you've checked each of this situations of the "empty" class and confirmed it,
-    // Remove the "empty" class and the innerHTML. You should be good to go.
-
-
-
-
-
-    //gg("cursor").style.display = "none";
-/*             var tw = gg("tw")
-    var entry = gg("entry");
-
-    var newBlock = document.createElement("div");
-
-    newBlock.innerHTML = entry.innerHTML;
-
-    var oldClasses = entry.classList;
-    newBlock.classList = oldClasses;
-    newBlock.classList.add("empty");
-
-    var page = gg("page");
-
-    page.insertBefore(newBlock, tw) */
 }
 
 
@@ -514,7 +484,6 @@ var cursorBlink = function(){
 
     // cursorOn is for keeping cursor solid while typing
     // cursorBlinkGlobal is for restarting blink cycle at focus/refocus
-
 
     var cursor = gg("cursor");
     //cursor.style.display = "inline";
