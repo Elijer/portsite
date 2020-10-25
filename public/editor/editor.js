@@ -308,6 +308,7 @@ var initiateHotkeys = function(){
 
 var whereFocus = function(){
     var phantom = gg('phantom');
+    console.log(document.activeElement);
 
     if (document.activeElement === phantom){
         refreshCursor();
@@ -401,7 +402,14 @@ var typing = function(e){
 
     } else if (e.inputType === "deleteContentBackward"){
         console.log("heyyy yshhh");
-        /// So this doesn't work sometimes!!! My theory is that the phantom is going out of focus.
+
+        // Okay so the problem I am working on right now is that, when used with the phantom input,
+        // the delete functionality sometimes has problems.
+        // for example, if all the text is deleted in the input, it won't delete anymore even if there is some left in the block!
+        // it also turns out that the up arrow key is a hotkey for going to the beginning of the input, which also prevents deleting,
+        // so that's a problem to. What I should do is eventually transiton as much away from the phantom input as I can
+        // maybe I can do away with it entirely. It will certainly improve the coherence of the codebase.
+        // for now, move the delete functionality to a hotkey and out of here. Too many issues.
 
             // Add things to phantom.value to prevent
             // running out of room to delete things in input
