@@ -396,6 +396,8 @@ var typing = function(e){
         entry.innerHTML = entry.innerHTML + e.data;
 
     } else if (e.inputType === "deleteContentBackward"){
+        console.log("heyyy yshhh");
+        /// So this doesn't work sometimes!!! My theory is that the phantom is going out of focus.
 
             // Add things to phantom.value to prevent
             // running out of room to delete things in input

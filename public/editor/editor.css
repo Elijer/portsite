@@ -112,7 +112,7 @@ li {
   #phantom {
       position: absolute;
       outline-style: none;
-      z-index: 999;
+      z-index: -999;
       margin-left: -1000
   }
 
@@ -135,13 +135,13 @@ li {
     display: inline;
 }
 
-#entry {
+/* #entry {
   background: rgb(24, 0, 145);
 }
 
 #outry {
   background: rgb(1, 35, 1);
-}
+} */
 
 #cursor {
     display: none;
