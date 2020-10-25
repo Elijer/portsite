@@ -170,6 +170,10 @@ var arrowNav = function(){
                         prev.classList.add("empty");
                         prev.innerHTML = "///";
                     }
+                } else {
+                    entry.innerHTML = e;
+                    outry.innerHTML = o;
+                    refreshCursor();
                 }
 
             } else {
