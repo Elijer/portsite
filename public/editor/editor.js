@@ -179,6 +179,8 @@ var arrowNav = function(){
                 setIndex(total, currentLineBeginIndex - lines[currentLine - 1].length + currentLineIndex )
 
             }
+
+            refreshCursor();
         } // End of ArrowUp
 
         if (event.key == "ArrowDown"){
@@ -189,6 +191,7 @@ var arrowNav = function(){
 
             var entry = gg("entry"),
                 outry = gg("outry");
+
             // set up for loop
             entry.innerHTML = '';
             outry.innerHTML = total;
@@ -246,14 +249,15 @@ var arrowNav = function(){
                     outry.innerHTML = nextText.substring(lineIndex, nextText.length)
 
                     refreshCursor();
+
+                                    // if next is empty, style it that way
+                    if (next.innerHTML === ""){
+                        next.classList.add("empty");
+                        next.innerHTML = "///";
+                    }
+
                 } else {
                     setIndex(total, e.length);
-                }
-
-                // if next is empty, style it that way
-                if (next.innerHTML === ""){
-                    next.classList.add("empty");
-                    next.innerHTML = "///";
                 }
 
             } else {
@@ -298,19 +302,37 @@ var arrowNav = function(){
         // if (event.ctrlKey === true && e.key === "Backspace"){
 
         if (event.ctrlKey === true && event.key === "p"){
-            
-            var entry = gg("entry");
-            var outry = gg("outry");
 
-            entry.classList.add("text-title");
-            outry.classList.add("text-title");
-            cursor.classList.add("cursor-title");
+            var entry = gg("entry")
+            var classList = entry.classList
+            var current;
 
-            entry.classList.remove("text-normal");
-            cursor.classList.remove("cursor-normal");
-            outry.classList.remove("text-normal");
+            for (var i = 0; i < classList.length; i++){
+                current = classList[i];
+                if (current.includes("text")){
+                    classList.remove(classList[i]);
+                }
+            }
 
-        
+            classList.add("text-title");
+
+        }
+
+        if (event.ctrlKey === true && event.key === "o"){
+
+            var entry = gg("entry")
+            var classList = entry.classList
+            var current;
+
+            for (var i = 0; i < classList.length; i++){
+                current = classList[i];
+                if (current.includes("text")){
+                    classList.remove(classList[i]);
+                }
+            }
+
+            classList.add("text-normal");
+
         }
 
     } // END OF OnKeyDown
