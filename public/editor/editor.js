@@ -294,20 +294,10 @@ var arrowNav = function(){
             }
         }
 
+        
+        // if (event.ctrlKey === true && e.key === "Backspace"){
 
-
-
-/*         if (event.ctrlKey === true && e.key === "Backspace"){
-            var e = gg("entry").innerHTML;
-            var entry = gg("entry");
-            entry.innerHTML = e.substring(0, e.length - 1 )
-
-            // Add things to phantom.value so that you don't run out of room to delete things
-            // var phantom = gg("phantom")
-            // phantom.value = phantom.value + "///";
-        } */
-
-        if (event.ctrlKey === true && e.key === "p"){
+        if (event.ctrlKey === true && event.key === "p"){
             
             var entry = gg("entry");
             var outry = gg("outry");
@@ -433,7 +423,6 @@ var typing = function(e){
     } else {
         console.log("Unknown input type: ", e.inputType);
     }
-
 }
 
 var exception = function(e){
