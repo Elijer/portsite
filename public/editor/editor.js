@@ -170,6 +170,16 @@ var arrowNav = function(){
                         prev.classList.add("empty");
                         prev.innerHTML = "///";
                     }
+
+                    // Class Swap
+                    var prevClasses = prev.classList;
+                    var twClasses = entry.classList;
+                    prev.classList = twClasses;
+                    entry.classList = prevClasses;
+                    outry.classList = prevClasses;
+
+                    // do te classswap
+
                 } else {
                     entry.innerHTML = e;
                     outry.innerHTML = o;
@@ -258,6 +268,13 @@ var arrowNav = function(){
                         next.innerHTML = "///";
                     }
 
+                    // Class Swap
+                    var prevClasses = prev.classList;
+                    var twClasses = entry.classList;
+                    prev.classList = twClasses;
+                    entry.classList = prevClasses;
+                    outry.classList = prevClasses;
+
                 } else {
                     setIndex(total, e.length);
                 }
@@ -303,28 +320,7 @@ var arrowNav = function(){
         
         // if (event.ctrlKey === true && e.key === "Backspace"){
 
-        if (event.metaKey === true && event.shiftKey === true && event.key === "2"){
-
-            var entry = gg("entry")
-            var outry = gg("outry")
-            var classList = entry.classList
-            var classList2 = outry.classList
-            var current;
-
-            for (var i = 0; i < classList.length; i++){
-                current = classList[i];
-                if (current.includes("text")){
-                    classList.remove(classList[i]);
-                    classList2.remove(classList2[i]);
-                }
-            }
-
-            classList.add("text-title");
-            classList2.add("text-title");
-
-        }
-
-        if (event.metaKey === true && event.shiftKey === true && event.key === "1"){
+        if (event.ctrlKey === true && event.key === "y"){
 
             var entry = gg("entry")
             var outry = gg("outry")
@@ -343,6 +339,27 @@ var arrowNav = function(){
 
             classList.add("text-normal");
             classList2.add("text-normal");
+
+        }
+
+        if (event.ctrlKey === true && event.key === "u"){
+
+            var entry = gg("entry")
+            var outry = gg("outry")
+            var classList = entry.classList
+            var classList2 = outry.classList
+            var current;
+
+            for (var i = 0; i < classList.length; i++){
+                current = classList[i];
+                if (current.includes("text")){
+                    classList.remove(classList[i]);
+                    classList2.remove(classList2[i]);
+                }
+            }
+
+            classList.add("text-title");
+            classList2.add("text-title");
 
         }
 
