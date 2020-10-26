@@ -21,6 +21,8 @@ var arrowNav = function(){
 
     document.onkeydown = function(event){
 
+        console.log(event);
+
         if (event.key == "ArrowLeft"){
 
             // this saves a STRING
@@ -301,37 +303,46 @@ var arrowNav = function(){
         
         // if (event.ctrlKey === true && e.key === "Backspace"){
 
-        if (event.ctrlKey === true && event.key === "p"){
+        if (event.metaKey === true && event.shiftKey === true && event.key === "2"){
 
             var entry = gg("entry")
+            var outry = gg("outry")
             var classList = entry.classList
+            var classList2 = outry.classList
             var current;
 
             for (var i = 0; i < classList.length; i++){
                 current = classList[i];
                 if (current.includes("text")){
                     classList.remove(classList[i]);
+                    classList2.remove(classList2[i]);
                 }
             }
 
             classList.add("text-title");
+            classList2.add("text-title");
 
         }
 
-        if (event.ctrlKey === true && event.key === "o"){
+        if (event.metaKey === true && event.shiftKey === true && event.key === "1"){
 
             var entry = gg("entry")
+            var outry = gg("outry")
             var classList = entry.classList
+            var classList2 = outry.classList
             var current;
 
             for (var i = 0; i < classList.length; i++){
                 current = classList[i];
                 if (current.includes("text")){
                     classList.remove(classList[i]);
+                    classList2.remove(classList2[i]);
+                    
                 }
             }
 
             classList.add("text-normal");
+            classList2.add("text-normal");
 
         }
 
