@@ -6,7 +6,6 @@
     padding: 0px;
 }
 
-
 body {
     float: left;
     text-align: left;
@@ -100,7 +99,8 @@ li {
   }
 
   .empty {
-    visibility: hidden;
+/*     visibility: hidden; */
+    color: rgb(16, 24, 37);
   }
 
   #placeholder {
@@ -112,32 +112,18 @@ li {
   #phantom {
       position: absolute;
       outline-style: none;
-      z-index: 999;
+      z-index: -999;
       margin-left: -1000
   }
-
-/*   #cursor {
-      font-size: 30px;
-      margin-left: -12px;
-      margin-top: -1px;
-      visibility: hidden;
-      display: none;
-      position: absolute;
-      padding: 0px;
-      font-weight: 1000;
-      color: rgb(113, 148, 201);
-      background: none;
-      z-index: 999;
-  } */
 
 #tw {
     /* This is necessary for getClientRects() to work*/
     display: inline;
 }
 
-#entry, #outry {
+/* #entry, #outry {
   background: rgb(35, 32, 55);
-}
+} */
 
 #cursor {
     display: none;
@@ -145,7 +131,7 @@ li {
     padding: 0px;
     margin: 0px;
     height: 20px;
-    outline: 3px solid rgb(113, 148, 201);
+    outline: 3px solid rgb(109, 167, 255);
 
     background: none;
     position: inline;
@@ -156,36 +142,6 @@ li {
     display: inline;
     font-size: 0px;
 }
-
-
-
-/*   .cursor-normal {
-    font-size: 30px;
-    margin-left: -12px;
-    margin-top: -1px;
-    visibility: hidden;
-    display: none;
-    position: absolute;
-    padding: 0px;
-    font-weight: 1000;
-    color: rgb(113, 148, 201);
-    background: none;
-    z-index: 999;
-  } */
-
-/*   .cursor-title {
-    font-size: 30px;
-    margin-left: -12px;
-    margin-top: -1px;
-    visibility: hidden;
-    display: none;
-    position: absolute;
-    padding: 0px;
-    font-weight: 1000;
-    color: rgb(113, 148, 201);
-    background: none;
-    z-index: 999;
-  } */
 
 a {
     padding: 2px 8px 6px 8px;
@@ -213,9 +169,3 @@ noselect {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
-
-
-
-
-
-/* Test stuff. You can delete this */
