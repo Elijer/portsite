@@ -265,27 +265,14 @@ var arrowNav = function(){
         } // END OF ArrowDown
 
         if (event.key === "Backspace"){
-            console.log("test");
-/*             console.log("heyyy yshhh");
 
-            // Okay so the problem I am working on right now is that, when used with the phantom input,
-            // the delete functionality sometimes has problems.
-            // for example, if all the text is deleted in the input, it won't delete anymore even if there is some left in the block!
-            // it also turns out that the up arrow key is a hotkey for going to the beginning of the input, which also prevents deleting,
-            // so that's a problem to. What I should do is eventually transiton as much away from the phantom input as I can
-            // maybe I can do away with it entirely. It will certainly improve the coherence of the codebase.
-            // for now, move the delete functionality to a hotkey and out of here. Too many issues.
-    
-                // Add things to phantom.value to prevent
-                // running out of room to delete things in input
-                var phantom = gg("phantom")
-                phantom.value = phantom.value + "///";
-    
+            var entry = gg("entry");
+            
             if (entry.innerHTML == ""){
-    
+
                 var tw = gg("tw");
                 var prev = tw.previousElementSibling;
-    
+
                 if (prev === null){
                     console.log("you've reached the end of your rope kid!")
                 } else {
@@ -299,7 +286,7 @@ var arrowNav = function(){
                     prev.remove();
     
                 }
-    
+
             } else {
     
                 var parsed = entry.innerHTML;
@@ -307,7 +294,6 @@ var arrowNav = function(){
                 entry.innerHTML = parsed;
     
             }
-     */
         }
 
 
