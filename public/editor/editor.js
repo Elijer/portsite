@@ -21,7 +21,6 @@ var arrowNav = function(){
 
     document.onkeydown = function(event){
 
-        //console.log(e);
         if (event.key == "ArrowLeft"){
 
             // this saves a STRING
@@ -121,7 +120,6 @@ var arrowNav = function(){
 
                     } else {
 
-                        console.log("oh man")
                         let prevText = prev.innerHTML;
                         outry.innerHTML = prevText;
                         entry.innerHTML = ""
@@ -331,9 +329,9 @@ var arrowNav = function(){
 var initiateHotkeys = function(){
     document.onkeyup = function(e) {
         // https://medium.com/@melwinalm/crcreating-keyboard-shortcuts-in-javascripteating-keyboard-shortcuts-in-javascript-763ca19beb9e
-        //console.log(e);
-        if (e.key === "q" && e.ctrlKey === true){
-            //console.log("Yay");
+
+            if (e.key === "q" && e.ctrlKey === true){
+
         }
       };
 }
@@ -341,16 +339,11 @@ var initiateHotkeys = function(){
 
 var whereFocus = function(){
     var phantom = gg('phantom');
-    console.log(document.activeElement);
 
     if (document.activeElement === phantom){
+
         refreshCursor();
-/*      phantom.addEventListener('input', typing);
-        clearInterval(cursorBlinkGlobal);
-        gg("cursor").style.display = "inline";
-        gg("cursor").style.visibility = "visible";
-        cursorBlink()
-        cursorOn = true; */
+        
     } else {
         phantom.removeEventListener('input', typing);
         gg("cursor").style.display = "none";
