@@ -100,7 +100,7 @@ li {
   }
 
   .empty {
-    color: darkslategrey;
+    visibility: hidden;
   }
 
   #placeholder {
@@ -135,13 +135,9 @@ li {
     display: inline;
 }
 
-/* #entry {
-  background: rgb(24, 0, 145);
+#entry, #outry {
+  background: rgb(35, 32, 55);
 }
-
-#outry {
-  background: rgb(1, 35, 1);
-} */
 
 #cursor {
     display: none;
