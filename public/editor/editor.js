@@ -485,6 +485,8 @@ var createNewBlock = function(){
         outry.innerHTML = outry.innerHTML.trim();
     }
 
+
+    refreshCursor();
 }
 
 
