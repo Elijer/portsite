@@ -264,8 +264,56 @@ var arrowNav = function(){
             }
         } // END OF ArrowDown
 
+        if (event.key === "Backspace"){
+            console.log("test");
+/*             console.log("heyyy yshhh");
 
-        if (event.ctrlKey === true && e.key === "Backspace"){
+            // Okay so the problem I am working on right now is that, when used with the phantom input,
+            // the delete functionality sometimes has problems.
+            // for example, if all the text is deleted in the input, it won't delete anymore even if there is some left in the block!
+            // it also turns out that the up arrow key is a hotkey for going to the beginning of the input, which also prevents deleting,
+            // so that's a problem to. What I should do is eventually transiton as much away from the phantom input as I can
+            // maybe I can do away with it entirely. It will certainly improve the coherence of the codebase.
+            // for now, move the delete functionality to a hotkey and out of here. Too many issues.
+    
+                // Add things to phantom.value to prevent
+                // running out of room to delete things in input
+                var phantom = gg("phantom")
+                phantom.value = phantom.value + "///";
+    
+            if (entry.innerHTML == ""){
+    
+                var tw = gg("tw");
+                var prev = tw.previousElementSibling;
+    
+                if (prev === null){
+                    console.log("you've reached the end of your rope kid!")
+                } else {
+    
+                    if (prev.classList.contains("empty")){
+                        entry.innerHTML = "";
+                    } else {
+                        entry.innerHTML = prev.innerHTML
+                    }
+    
+                    prev.remove();
+    
+                }
+    
+            } else {
+    
+                var parsed = entry.innerHTML;
+                parsed = parsed.substring(0, parsed.length - 1);
+                entry.innerHTML = parsed;
+    
+            }
+     */
+        }
+
+
+
+
+/*         if (event.ctrlKey === true && e.key === "Backspace"){
             var e = gg("entry").innerHTML;
             var entry = gg("entry");
             entry.innerHTML = e.substring(0, e.length - 1 )
@@ -273,8 +321,7 @@ var arrowNav = function(){
             // Add things to phantom.value so that you don't run out of room to delete things
             // var phantom = gg("phantom")
             // phantom.value = phantom.value + "///";
-        
-        }
+        } */
 
         if (event.ctrlKey === true && e.key === "p"){
             
@@ -401,47 +448,8 @@ var typing = function(e){
         entry.innerHTML = entry.innerHTML + e.data;
 
     } else if (e.inputType === "deleteContentBackward"){
-        console.log("heyyy yshhh");
 
-        // Okay so the problem I am working on right now is that, when used with the phantom input,
-        // the delete functionality sometimes has problems.
-        // for example, if all the text is deleted in the input, it won't delete anymore even if there is some left in the block!
-        // it also turns out that the up arrow key is a hotkey for going to the beginning of the input, which also prevents deleting,
-        // so that's a problem to. What I should do is eventually transiton as much away from the phantom input as I can
-        // maybe I can do away with it entirely. It will certainly improve the coherence of the codebase.
-        // for now, move the delete functionality to a hotkey and out of here. Too many issues.
-
-            // Add things to phantom.value to prevent
-            // running out of room to delete things in input
-            var phantom = gg("phantom")
-            phantom.value = phantom.value + "///";
-
-        if (entry.innerHTML == ""){
-
-            var tw = gg("tw");
-            var prev = tw.previousElementSibling;
-
-            if (prev === null){
-                console.log("you've reached the end of your rope kid!")
-            } else {
-
-                if (prev.classList.contains("empty")){
-                    entry.innerHTML = "";
-                } else {
-                    entry.innerHTML = prev.innerHTML
-                }
-
-                prev.remove();
-
-            }
-
-        } else {
-
-            var parsed = entry.innerHTML;
-            parsed = parsed.substring(0, parsed.length - 1);
-            entry.innerHTML = parsed;
-
-        }
+        //
 
     } else {
         console.log("Unknown input type: ", e.inputType);
