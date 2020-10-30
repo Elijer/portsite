@@ -108,9 +108,11 @@ var arrowNav = function(){
             if (currentLine === 0){
                 var tw = gg("tw");
                 var prev = tw.previousElementSibling;
+
                 if (prev){
 
                     var page = gg("page");
+
                     page.insertBefore(tw, prev)
 
                     // check to see if previous block is 'empty', meaning it holds non-displayed, placeholder text ('///')
@@ -118,7 +120,6 @@ var arrowNav = function(){
                         entry.innerHTML = "";
                         outry.innerHTML = "";
                         prev.innerHTML = total;
-                        prev.classList.remove("empty");
 
                     } else {
 
@@ -171,15 +172,6 @@ var arrowNav = function(){
                         prev.innerHTML = "///";
                     }
 
-                    // Class Swap
-                    var prevClasses = prev.classList;
-                    var twClasses = entry.classList;
-                    prev.classList = twClasses;
-                    entry.classList = prevClasses;
-                    outry.classList = prevClasses;
-
-                    // do te classswap
-
                 } else {
                     entry.innerHTML = e;
                     outry.innerHTML = o;
@@ -193,7 +185,7 @@ var arrowNav = function(){
             }
 
             refreshCursor();
-        } // End of ArrowUp
+        } // End of ArrahUrp
 
         if (event.key == "ArrowDown"){
 
@@ -246,6 +238,7 @@ var arrowNav = function(){
             if (currentLine === lines.length - 1){
                 let tw = gg("tw");
                 let next = tw.nextElementSibling;
+
                 if (next){
 
                     if (next.classList.contains("empty")){
@@ -262,18 +255,11 @@ var arrowNav = function(){
 
                     refreshCursor();
 
-                                    // if next is empty, style it that way
+                    // if next is empty, style it that way
                     if (next.innerHTML === ""){
                         next.classList.add("empty");
                         next.innerHTML = "///";
                     }
-
-                    // Class Swap
-                    var prevClasses = prev.classList;
-                    var twClasses = entry.classList;
-                    prev.classList = twClasses;
-                    entry.classList = prevClasses;
-                    outry.classList = prevClasses;
 
                 } else {
                     setIndex(total, e.length);
@@ -569,4 +555,13 @@ var setIndex = function(total, index){
 
     refreshCursor();
     
+}
+
+var immutableArray = function(arr){
+    var returnedArray = [];
+
+    for (var i = 0; i < arr.length ; i++){
+        returnedArray[i] = arr[i];
+    }
+    return returnedArray;
 }
