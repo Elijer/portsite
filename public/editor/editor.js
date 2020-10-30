@@ -21,8 +21,6 @@ var arrowNav = function(){
 
     document.onkeydown = function(event){
 
-        console.log(event);
-
         if (event.key == "ArrowLeft"){
 
             // this saves a STRING
@@ -108,6 +106,7 @@ var arrowNav = function(){
             if (currentLine === 0){
                 var tw = gg("tw");
                 var prev = tw.previousElementSibling;
+
                 if (prev){
 
                     var page = gg("page");
@@ -171,12 +170,13 @@ var arrowNav = function(){
                         prev.innerHTML = "///";
                     }
 
-/*                     // Class Swap
-                    var prevClasses = prev.classList;
-                    var twClasses = entry.classList;
-                    prev.classList = twClasses;
-                    entry.classList = prevClasses;
-                    outry.classList = prevClasses; */
+/*                     // swap classes
+                    var entryClass = getActiveClass(entry);
+                    var prevClass = getActiveClass(prev);
+                    entry.classList.add(prevClass); enjtry.classList.remove(entryClass);
+                    outry.classList.add(prevClass); outry.classList.remove(entryClass);
+                    prev.classList.add(entryClass); prev.classList.remove(prevClass); */
+
 
                 } else {
                     entry.innerHTML = e;
@@ -249,14 +249,23 @@ var arrowNav = function(){
                     if (next.classList.contains("empty")){
                         next.classList.remove("empty");
                         next.innerHTML = "";
+
                     }
 
                     var nextText = next.innerHTML;
+                    var nextClass = immutableArray(next.classList)
+                    var entryClass = immutableArray(entry.classList);
                     var page = gg("page");
+
                     page.insertBefore(next, tw);
+
                     next.innerHTML = total;
                     entry.innerHTML = nextText.substring(0, lineIndex)
                     outry.innerHTML = nextText.substring(lineIndex, nextText.length)
+
+                    next.classList = entryClass;
+                    outry.classList = nextClass;
+                    entry.classList = nextClass;
 
                     refreshCursor();
 
@@ -266,12 +275,12 @@ var arrowNav = function(){
                         next.innerHTML = "///";
                     }
 
-/*                     // Class Swap
-                    var prevClasses = prev.classList;
-                    var twClasses = entry.classList;
-                    prev.classList = twClasses;
-                    entry.classList = prevClasses;
-                    outry.classList = prevClasses; */
+/*                     // swap classes
+                    var entryClass = getActiveClass(entry);
+                    var nextClass = getActiveClass(next);
+                    entry.classList.add(nextClass); entry.classList.remove(entryClass);
+                    outry.classList.add(nextClass); outry.classList.remove(entryClass);
+                    next.classList.add(entryClass); next.classList.remove(nextClass); */
 
                 } else {
                     setIndex(total, e.length);
@@ -320,7 +329,14 @@ var arrowNav = function(){
 
         if (event.ctrlKey === true && event.key === "y"){
 
-            var entry = gg("entry")
+        // okay
+        /*
+
+
+
+        */
+
+/*             var entry = gg("entry")
             var outry = gg("outry")
             var classList = entry.classList
             var classList2 = outry.classList
@@ -336,7 +352,7 @@ var arrowNav = function(){
             }
 
             classList.add("text-normal");
-            classList2.add("text-normal");
+            classList2.add("text-normal"); */
 
         }
 
