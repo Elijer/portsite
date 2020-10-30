@@ -565,3 +565,53 @@ var immutableArray = function(arr){
     }
     return returnedArray;
 }
+
+
+var immutableArray = function(arr){
+    var returnedArray = [];
+
+    for (var i = 0; i < arr.length ; i++){
+        returnedArray[i] = arr[i];
+    }
+    return returnedArray;
+}
+
+
+var getActiveClass = function(entry){
+
+    var classes = entry.classList;
+    var activeClass;
+
+    for (var i = 0; i < classes.length ; i++){
+        if (classes[i].includes("text")){
+            activeClass = classes[i];
+        }
+    }
+
+    return activeClass;
+
+}
+
+var immutableArray = function(arr){
+    var returnedArray = [];
+
+    for (var i = 0; i < arr.length ; i++){
+        returnedArray[i] = arr[i];
+    }
+    return returnedArray;
+}
+
+var getActiveClass = function(entry){
+
+    var classes = entry.classList;
+    var activeClass;
+
+    for (var i = 0; i < classes.length ; i++){
+        if (classes[i].includes("text")){
+            activeClass = classes[i];
+        }
+    }
+
+    return activeClass;
+
+}
