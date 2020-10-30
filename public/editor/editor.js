@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         typing: false
     }
 
+    dashHighlightColor = "#161625";
     var dash = gg("grid-container");
-    dash.children[0].style.background = "#292e35";
+    dash.children[0].style.background = dashHighlightColor;
 
 })
 
@@ -381,6 +382,14 @@ var arrowNav = function(){
 
         }
 
+/*         var dashOptions = [
+            {class: "text-normal", hot: "u"},
+            {class: "text-title", hot: "u"},
+            {class: "text-fun", hot: "u"},
+            {class: "text-noah", hot: "u"},
+
+        ] */
+
         if (event.ctrlKey === true && event.key === "u"){
 
             var entry = gg("entry")
@@ -704,7 +713,7 @@ var setDash = function(num){
         dash[i].style.background = "none"
     }
 
-    dash[num].style.background = "#292e35";
+    dash[num].style.background = dashHighlightColor;
 
 
 }
