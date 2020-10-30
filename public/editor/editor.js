@@ -171,14 +171,12 @@ var arrowNav = function(){
                         prev.innerHTML = "///";
                     }
 
-                    // Class Swap
+/*                     // Class Swap
                     var prevClasses = prev.classList;
                     var twClasses = entry.classList;
                     prev.classList = twClasses;
                     entry.classList = prevClasses;
-                    outry.classList = prevClasses;
-
-                    // do te classswap
+                    outry.classList = prevClasses; */
 
                 } else {
                     entry.innerHTML = e;
@@ -268,12 +266,12 @@ var arrowNav = function(){
                         next.innerHTML = "///";
                     }
 
-                    // Class Swap
+/*                     // Class Swap
                     var prevClasses = prev.classList;
                     var twClasses = entry.classList;
                     prev.classList = twClasses;
                     entry.classList = prevClasses;
-                    outry.classList = prevClasses;
+                    outry.classList = prevClasses; */
 
                 } else {
                     setIndex(total, e.length);
@@ -569,4 +567,28 @@ var setIndex = function(total, index){
 
     refreshCursor();
     
+}
+
+var immutableArray = function(arr){
+    var returnedArray = [];
+
+    for (var i = 0; i < arr.length ; i++){
+        returnedArray[i] = arr[i];
+    }
+    return returnedArray;
+}
+
+var getActiveClass = function(entry){
+
+    var classes = entry.classList;
+    var activeClass;
+
+    for (var i = 0; i < classes.length ; i++){
+        if (classes[i].includes("text")){
+            activeClass = classes[i];
+        }
+    }
+
+    return activeClass;
+
 }
