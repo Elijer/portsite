@@ -119,9 +119,18 @@ var arrowNav = function(){
                         prev.innerHTML = total;
                         prev.classList.remove("empty");
 
+                        // class swap
+                        var prevClass = immutableArray(prev.classList);
+                        var entryClass = immutableArray(entry.classList);
+                        prev.classList = entryClass;
+                        entry.classList = prevClass;
+                        outry.classList = prevClass;
+
                     } else {
 
                         let prevText = prev.innerHTML;
+                        var prevClass = immutableArray(prev.classList);
+                        var entryClass = immutableArray(entry.classList);
                         outry.innerHTML = prevText;
                         entry.innerHTML = ""
                         prev.innerHTML = total;
@@ -162,6 +171,10 @@ var arrowNav = function(){
                             var newIndex = lastLine + currentLineIndex;
                             setIndex(prevText, newIndex);
                         }
+
+                        prev.classList = entryClass;
+                        entry.classList = prevClass;
+                        outry.classList = prevClass;
                     }
 
                     // if you are leaving behind an empty block, style it correctly
@@ -169,13 +182,6 @@ var arrowNav = function(){
                         prev.classList.add("empty");
                         prev.innerHTML = "///";
                     }
-
-/*                     // swap classes
-                    var entryClass = getActiveClass(entry);
-                    var prevClass = getActiveClass(prev);
-                    entry.classList.add(prevClass); enjtry.classList.remove(entryClass);
-                    outry.classList.add(prevClass); outry.classList.remove(entryClass);
-                    prev.classList.add(entryClass); prev.classList.remove(prevClass); */
 
 
                 } else {
