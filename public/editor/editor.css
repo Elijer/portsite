@@ -86,21 +86,40 @@ li {
     font-family: 'Inconsolata', monospace;
     line-height: 35px;
     font-size: 25px;
+    background: none;
     color: white;
     display: block;
   }
 
   .text-title {
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 70px;
+    line-height: 70px;
     font-family: 'VT323', monospace;
     background: none;
-    color: red;
+    color: rgb(255, 0, 0);
+  }
+
+  .text-fun {
+    padding: none;
+    margin: none;
+    font-family: 'Inconsolata', monospace;
+    line-height: 35px;
+    font-size: 25px;
+    color: white;
+    display: block;
+    font-family: 'VT323', monospace;
+    background: rgb(22, 22, 37);
+    color: rgb(66, 96, 157)
   }
 
   .empty {
-/*     visibility: hidden; */
-    color: rgb(16, 24, 37);
+    padding: none;
+    margin: none;
+    font-family: 'Inconsolata', monospace;
+    line-height: 35px;
+    font-size: 25px;
+    display: block;
+    color: rgb(22, 22, 37);
   }
 
   #placeholder {

@@ -123,8 +123,10 @@ var arrowNav = function(){
                         var prevClass = immutableArray(prev.classList);
                         var entryClass = immutableArray(entry.classList);
                         prev.classList = entryClass;
-                        entry.classList = prevClass;
-                        outry.classList = prevClass;
+                        
+                        // Switching to empty blocks defaults to text-normal
+                        entry.classList = ["text-normal"];
+                        outry.classList = ["text-normal"];
 
                     } else {
 
@@ -253,7 +255,9 @@ var arrowNav = function(){
                 if (next){
 
                     if (next.classList.contains("empty")){
-                        next.classList.remove("empty");
+                        //next.classList.remove("empty");
+                        // Switching to an empty block defaults tw to "text-normal":
+                        next.classList = ["text-normal"];
                         next.innerHTML = "";
 
                     }
@@ -335,14 +339,7 @@ var arrowNav = function(){
 
         if (event.ctrlKey === true && event.key === "y"){
 
-        // okay
-        /*
-
-
-
-        */
-
-/*             var entry = gg("entry")
+            var entry = gg("entry")
             var outry = gg("outry")
             var classList = entry.classList
             var classList2 = outry.classList
@@ -358,7 +355,7 @@ var arrowNav = function(){
             }
 
             classList.add("text-normal");
-            classList2.add("text-normal"); */
+            classList2.add("text-normal");
 
         }
 
@@ -380,6 +377,27 @@ var arrowNav = function(){
 
             classList.add("text-title");
             classList2.add("text-title");
+
+        }
+
+        if (event.ctrlKey === true && event.key === "i"){
+
+            var entry = gg("entry")
+            var outry = gg("outry")
+            var classList = entry.classList
+            var classList2 = outry.classList
+            var current;
+
+            for (var i = 0; i < classList.length; i++){
+                current = classList[i];
+                if (current.includes("text")){
+                    classList.remove(classList[i]);
+                    classList2.remove(classList2[i]);
+                }
+            }
+
+            classList.add("text-fun");
+            classList2.add("text-fun");
 
         }
 
