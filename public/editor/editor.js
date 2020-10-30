@@ -359,6 +359,28 @@ var arrowNav = function(){
 
         }
 
+        if (event.ctrlKey === true && event.key === "n"){
+
+            var entry = gg("entry")
+            var outry = gg("outry")
+            var classList = entry.classList
+            var classList2 = outry.classList
+            var current;
+
+            for (var i = 0; i < classList.length; i++){
+                current = classList[i];
+                if (current.includes("text")){
+                    classList.remove(classList[i]);
+                    classList2.remove(classList2[i]);
+                    
+                }
+            }
+
+            classList.add("text-noah");
+            classList2.add("text-noah");
+
+        }
+
         if (event.ctrlKey === true && event.key === "u"){
 
             var entry = gg("entry")

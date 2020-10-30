@@ -104,12 +104,29 @@ li {
     margin: none;
     font-family: 'Inconsolata', monospace;
     line-height: 35px;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     display: block;
     font-family: 'VT323', monospace;
+    background: none;
+    text-decoration: underline;
+    color: rgb(68, 111, 195)
+  }
+
+  .text-noah {
+    padding: none;
+    margin: none;
+    font-family: 'Inconsolata', monospace;
+    line-height: 35px;
+    font-size: 30px;
+    display: block;
+    font-family: 'Staatliches', cursive;
+    background: none;
+    color: rgb(55, 255, 0)
+  }
+
+  .text-fun:hover, .text-normal:hover, .text-title:hover {
     background: rgb(22, 22, 37);
-    color: rgb(66, 96, 157)
   }
 
   .empty {
