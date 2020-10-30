@@ -36,22 +36,18 @@
   <body id = "fade-in">
 
     <div id = "box2">
-      <div class="grid-container">
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>  
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>  
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>  
+      <div id="grid-container">
+        <div class="grid-item"> ctrl + y </div>
+        <div class="grid-item">  ctrl + u </div>
+        <div class="grid-item">  ctrl + i </div>  
+        <div class="grid-item">  ctrl + n </div>
       </div>
 
       <!-- This is the element that gets focused when typing -->
       <input id = "phantom">
 
       <div id = "page" onClick = "typeWriter()" >
+        <div id = "placeholder"> Begin typing here... </div>
         <div id = "tw">
 <!--           Messes up the lineheight calculation for ArrowUp and ArrowDown -->
 <!--           <span id = "placeholder">Click here to write something...</span> -->

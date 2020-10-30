@@ -47,11 +47,11 @@ li {
     width: 60%;
 }
 
-.grid-container {
+#grid-container {
     border: 1px dashed pink;
     border-right: none;
     display: grid;
-    grid-template-columns: repeat(9, auto);
+    grid-template-columns: repeat(4, auto);
   }
 
   .grid-item {
@@ -74,6 +74,9 @@ li {
     border-top: 1px dashed pink;
     border-top: none;
     height: 40%;
+    border-right: 1px dashed pink;
+    border-left: 1px dashed pink;
+    border-bottom: 1px dashed pink;
 }
 
   #entry, #outry, #cursor, #placeholder {
@@ -124,18 +127,6 @@ li {
     background: none;
     color: rgb(55, 255, 0)
   }
-
-  #entry, #outry, #cursor {
-    background: rgb(22, 22, 37);
-  }
-
-  #entry {
-    background: rgb(38, 38, 62);
-  }
-
-/*   .text-fun, .text-title, .text-normal, .text-noah {
-    background: rgb(22, 22, 37);
-  } */
 
   .empty {
     padding: none;

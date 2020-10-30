@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         typing: false
     }
 
+    var dash = gg("grid-container");
+    dash.children[0].style.background = "#292e35";
+
 })
 
 var arrowNav = function(){
@@ -350,6 +353,8 @@ var arrowNav = function(){
             classList.add("text-normal");
             classList2.add("text-normal");
 
+            setDash(0);
+
         }
 
         if (event.ctrlKey === true && event.key === "n"){
@@ -372,6 +377,8 @@ var arrowNav = function(){
             classList.add("text-noah");
             classList2.add("text-noah");
 
+            setDash(3);
+
         }
 
         if (event.ctrlKey === true && event.key === "u"){
@@ -392,6 +399,8 @@ var arrowNav = function(){
 
             classList.add("text-title");
             classList2.add("text-title");
+
+            setDash(1);
 
         }
 
@@ -414,6 +423,8 @@ var arrowNav = function(){
             classList.add("text-fun");
             classList2.add("text-fun");
 
+            setDash(2);
+
         }
 
     } // END OF OnKeyDown
@@ -434,7 +445,9 @@ var whereFocus = function(){
     var phantom = gg('phantom');
 
     if (document.activeElement === phantom){
-
+        if (gg("placeholder")){
+            gg("placeholder").style.display = "none";
+        }
         refreshCursor();
         
     } else {
@@ -680,5 +693,18 @@ var getActiveClass = function(entry){
     }
 
     return activeClass;
+
+}
+
+var setDash = function(num){
+    var dash = gg("grid-container").children;
+    var current;
+    
+    for (var i = 0; i < dash.length; i++){
+        dash[i].style.background = "none"
+    }
+
+    dash[num].style.background = "#292e35";
+
 
 }
