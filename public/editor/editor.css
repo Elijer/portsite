@@ -125,9 +125,17 @@ li {
     color: rgb(55, 255, 0)
   }
 
-  .text-fun:hover, .text-normal:hover, .text-title:hover {
+  #entry, #outry, #cursor {
     background: rgb(22, 22, 37);
   }
+
+  #entry {
+    background: rgb(38, 38, 62);
+  }
+
+/*   .text-fun, .text-title, .text-normal, .text-noah {
+    background: rgb(22, 22, 37);
+  } */
 
   .empty {
     padding: none;
