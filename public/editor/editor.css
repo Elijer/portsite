@@ -139,6 +139,7 @@ li {
   }
 
   #placeholder {
+      display: inline;
       font-size: 25px;
       font-weight: 500px;
       color: #292e35;

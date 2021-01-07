@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("What")
     txt = "";
     txt2 = "";
     txt3 = "";
@@ -18,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     dashHighlightColor = "#161625";
     var dash = gg("grid-container");
     dash.children[0].style.background = dashHighlightColor;
+    
+    placeholder = true;
+    typeWriter();
+    refreshCursor();
 
 })
 
@@ -515,6 +520,11 @@ var moveCursor = function(m){
 
 
 var typing = function(e){
+
+    if (placeholder){
+        gg("outry").innerHTML = "";
+        placeholder = false;
+    }
 
     // typing causes cursor to remain solid. After waiting a moment,
     // it begins to blink again.

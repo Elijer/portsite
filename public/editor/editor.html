@@ -47,14 +47,13 @@
       <input id = "phantom">
 
       <div id = "page" onClick = "typeWriter()" >
-        <div id = "placeholder"> Begin typing here... </div>
         <div id = "tw">
 <!--           Messes up the lineheight calculation for ArrowUp and ArrowDown -->
 <!--           <span id = "placeholder">Click here to write something...</span> -->
           <!-- There is a monkey in your uncle and he's pulling all the strings there is a monkey in your uncle and he knows about the pings-->
           <span id="entry" class = "text-normal" onClick="moveCursor('1')"></span><!--
           --><span id = "cursor-wrap">.</span><span id = "cursor"></span><!--
-          --><span id="outry" class = "text-normal" onClick="moveCursor(2)"></span>
+          --><span id="outry" class = "text-normal" onClick="moveCursor(2)"><div id = "placeholder" >Begin typing here...</div></span>
         </div>
 
       </div>
